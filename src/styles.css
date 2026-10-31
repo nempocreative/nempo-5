@@ -75,6 +75,10 @@ body,
   --color-wed-blush: #fbeef1;
   --color-wed-gold: #c79a4a;
   --color-wed-ink: #3a1f2b;
+  --color-sos-pink: #e11d48;
+  --color-sos-blush: #ffe4e6;
+  --color-sos-lilac: #7c3aed;
+  --color-sos-ink: #2a1033;
   --font-wed-serif: "Playfair Display", Georgia, serif;
   --font-wed-hand: "Caveat", "Segoe Script", cursive;
   --color-blue-50:  hsl(39 45% 96%);
