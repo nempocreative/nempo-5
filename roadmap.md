@@ -13,3 +13,4 @@
 - [x] Halaman layanan: Wedding Invitation, Sosmed Management, Web Development, Design Creative, Talent Management
 - [x] Halaman Business System lengkap
 - [x] Sosmed: palet warna kue (pink/mint/cokelat), ikon tile mengkilap, teks Garut dihapus, animasi hero tidak menimpa konten
+- [ ] Selesaikan Nempo Buddy: layanan Organizer, paket, chat admin, tanpa wisata/SOS
