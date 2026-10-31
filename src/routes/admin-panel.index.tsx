@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { lazyWithRetry } from "@/lib/lazy-with-retry";
 import { AppShell } from "@/components/app-shell";
-import { lazy } from "react";
 
-const Entry = lazy(() => import("@/apps/admin/entry"));
+const Entry = lazyWithRetry(() => import("@/apps/admin/entry"));
 
 export const Route = createFileRoute("/admin-panel/")({
   head: () => ({

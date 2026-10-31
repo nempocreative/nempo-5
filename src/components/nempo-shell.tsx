@@ -1,7 +1,8 @@
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
+import { lazyWithRetry } from "@/lib/lazy-with-retry";
 import { ClientOnly } from "@tanstack/react-router";
 
-const NempoApp = lazy(() => import("@/nempo-app"));
+const NempoApp = lazyWithRetry(() => import("@/nempo-app"));
 
 function Loader() {
   return (
