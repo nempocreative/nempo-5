@@ -82,7 +82,8 @@ function BackupPage() {
         <section className="rounded-2xl border border-border bg-card p-6 shadow-sm">
           <p className="text-sm leading-relaxed text-muted-foreground">
             Tekan <b className="text-foreground">Unduh Backup Sekarang</b>. File selalu diambil langsung dari data terbaru, jadi setiap
-            perubahan (data baru, diedit, atau dihapus) otomatis ikut masuk ke backup.
+            perubahan (data baru, diedit, atau dihapus) otomatis ikut masuk ke backup. Desain situs (warna, font, dan gaya tampilan) versi
+            terbaru juga ikut tersimpan.
           </p>
 
           <div className="mt-5 flex flex-wrap gap-3">
