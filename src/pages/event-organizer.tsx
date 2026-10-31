@@ -55,19 +55,41 @@ const faqs = [
 
 const marqueeItems = ["Konser & Festival", "Corporate Event", "Outing & Tour", "Pensi & Wisuda", "Lomba & Turnamen", "Private Party", "Garut • Jawa Barat"];
 
-function StickerIcon({ icon: Icon, color, size = "md", className = "" }: { icon: React.ElementType; color: string; size?: "sm" | "md"; className?: string }) {
+const eoIconCss = `
+@keyframes eo-ring-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes eo-ring-glow { 0%,100% { opacity: .3; } 50% { opacity: .75; } }
+@keyframes eo-tile-shine { 0%, 72% { transform: translateX(-130%) skewX(-18deg); } 100% { transform: translateX(230%) skewX(-18deg); } }
+.eo-ring { position: absolute; inset: -4px -4px -6px; border-radius: 21px; overflow: hidden; pointer-events: none; filter: drop-shadow(0 0 5px var(--ring-color)) saturate(1.2); }
+.eo-ring::before { content: ""; position: absolute; left: 50%; top: 50%; width: 180%; height: 180%; transform: translate(-50%, -50%);
+  background: conic-gradient(from 0deg, transparent 0deg 190deg, var(--ring-tail) 250deg, var(--ring-color) 320deg, #fff 352deg, transparent 360deg);
+  animation: eo-ring-spin 2.6s linear infinite; animation-delay: var(--ring-delay); }
+.eo-glow { position: absolute; inset: -9px; border-radius: 26px; pointer-events: none; background: radial-gradient(circle, var(--ring-color) 0%, transparent 70%); filter: blur(8px); animation: eo-ring-glow 3.2s ease-in-out infinite; animation-delay: var(--ring-delay); }
+.eo-shine { position: absolute; inset: 0; width: 45%; pointer-events: none; background: linear-gradient(90deg, transparent, rgba(255,255,255,.45), transparent); animation: eo-tile-shine 4.8s ease-in-out infinite; animation-delay: var(--ring-delay); }
+.wed-card-pop:hover .eo-ring::before { animation-duration: 1.4s; }
+@media (prefers-reduced-motion: reduce) { .eo-ring::before, .eo-glow, .eo-shine { animation: none; } .eo-shine { display: none; } }
+`;
+
+function StickerIcon({ icon: Icon, color, size = "md", className = "", delay = 0 }: { icon: React.ElementType; color: string; size?: "sm" | "md"; className?: string; delay?: number }) {
   const box = size === "sm" ? "h-11 w-11 rounded-[14px]" : "h-[54px] w-[54px] rounded-[17px]";
   return (
     <span
-      className={`relative flex shrink-0 items-center justify-center overflow-hidden ${box} ${className}`}
-      style={{
-        background: `linear-gradient(148deg, color-mix(in srgb, ${color} 55%, white) 0%, ${color} 58%, color-mix(in srgb, ${color} 72%, black) 100%)`,
-        boxShadow: `0 4px 0 color-mix(in srgb, ${color} 82%, black), 0 8px 13px -9px ${color}88, inset 0 1px 0 rgba(255,255,255,.54)`,
-      }}
+      className={`relative inline-flex w-fit shrink-0 ${className}`}
+      style={{ "--ring-color": color, "--ring-tail": `color-mix(in srgb, ${color} 35%, transparent)`, "--ring-delay": `${-delay * 0.4}s` } as React.CSSProperties}
     >
-      <span aria-hidden className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[radial-gradient(ellipse_at_27%_17%,rgba(255,255,255,.42),transparent_56%)]" />
-      <span aria-hidden className="pointer-events-none absolute inset-[1px] rounded-[inherit] border border-white/20" />
-      <Icon className={`relative z-10 text-white drop-shadow-[0_1px_1px_rgba(0,0,0,.25)] ${size === "sm" ? "h-5 w-5" : "h-6 w-6"}`} strokeWidth={2.2} />
+      <span aria-hidden className="eo-glow" />
+      <span aria-hidden className="eo-ring" />
+      <span
+        className={`relative flex items-center justify-center overflow-hidden ${box}`}
+        style={{
+          background: `linear-gradient(148deg, color-mix(in srgb, ${color} 55%, white) 0%, ${color} 58%, color-mix(in srgb, ${color} 72%, black) 100%)`,
+          boxShadow: `0 4px 0 color-mix(in srgb, ${color} 82%, black), 0 8px 13px -9px ${color}88, inset 0 1px 0 rgba(255,255,255,.54)`,
+        }}
+      >
+        <span aria-hidden className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[radial-gradient(ellipse_at_27%_17%,rgba(255,255,255,.42),transparent_56%)]" />
+        <span aria-hidden className="pointer-events-none absolute inset-[1px] rounded-[inherit] border border-white/20" />
+        <span aria-hidden className="eo-shine" />
+        <Icon className={`relative z-10 text-white drop-shadow-[0_1px_1px_rgba(0,0,0,.25)] ${size === "sm" ? "h-5 w-5" : "h-6 w-6"}`} strokeWidth={2.2} />
+      </span>
     </span>
   );
 }
@@ -171,11 +193,12 @@ export default function EventOrganizerPage() {
 
         {/* Services */}
         <section className="px-4 pt-12">
+          <style>{eoIconCss}</style>
           <SectionHead eyebrow="Layanan" title="Satu tim untuk semua jenis acara" note="apapun acaranya, gas!" />
           <div className="grid grid-cols-2 gap-3">
             {services.map((s, i) => (
               <div key={s.title} className="wed-card-pop rounded-3xl border-2 border-dashed border-border bg-card p-4 hover:border-brand/40">
-                <StickerIcon icon={s.icon} color={s.color} className="mb-3.5" />
+                <StickerIcon icon={s.icon} color={s.color} delay={i} className="mb-3.5" />
                 <h3 className="text-[13px] font-bold leading-snug text-foreground">{s.title}</h3>
                 <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground">{s.desc}</p>
               </div>
