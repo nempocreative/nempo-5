@@ -14,6 +14,7 @@ import { Route as SplatRouteImport } from './routes/$'
 import { Route as BackupRouteImport } from './routes/backup'
 import { Route as DesignCreativeRouteImport } from './routes/design-creative'
 import { Route as SosmedManagementRouteImport } from './routes/sosmed-management'
+import { Route as TalentRouteImport } from './routes/talent'
 import { Route as WebDevelopmentRouteImport } from './routes/web-development'
 import { Route as WeddingInvitationRouteImport } from './routes/wedding-invitation'
 import { Route as WeddingOrganizerRouteImport } from './routes/wedding-organizer'
@@ -53,6 +54,11 @@ const DesignCreativeRoute = DesignCreativeRouteImport.update({
 const SosmedManagementRoute = SosmedManagementRouteImport.update({
   id: '/sosmed-management',
   path: '/sosmed-management',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TalentRoute = TalentRouteImport.update({
+  id: '/talent',
+  path: '/talent',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WebDevelopmentRoute = WebDevelopmentRouteImport.update({
@@ -137,6 +143,7 @@ export interface FileRoutesByFullPath {
   '/backup': typeof BackupRoute
   '/design-creative': typeof DesignCreativeRoute
   '/sosmed-management': typeof SosmedManagementRoute
+  '/talent': typeof TalentRoute
   '/web-development': typeof WebDevelopmentRoute
   '/wedding-invitation': typeof WeddingInvitationRoute
   '/wedding-organizer': typeof WeddingOrganizerRoute
@@ -159,6 +166,7 @@ export interface FileRoutesByTo {
   '/backup': typeof BackupRoute
   '/design-creative': typeof DesignCreativeRoute
   '/sosmed-management': typeof SosmedManagementRoute
+  '/talent': typeof TalentRoute
   '/web-development': typeof WebDevelopmentRoute
   '/wedding-invitation': typeof WeddingInvitationRoute
   '/wedding-organizer': typeof WeddingOrganizerRoute
@@ -182,6 +190,7 @@ export interface FileRoutesById {
   '/backup': typeof BackupRoute
   '/design-creative': typeof DesignCreativeRoute
   '/sosmed-management': typeof SosmedManagementRoute
+  '/talent': typeof TalentRoute
   '/web-development': typeof WebDevelopmentRoute
   '/wedding-invitation': typeof WeddingInvitationRoute
   '/wedding-organizer': typeof WeddingOrganizerRoute
@@ -206,6 +215,7 @@ export interface FileRouteTypes {
     | '/backup'
     | '/design-creative'
     | '/sosmed-management'
+    | '/talent'
     | '/web-development'
     | '/wedding-invitation'
     | '/wedding-organizer'
@@ -228,6 +238,7 @@ export interface FileRouteTypes {
     | '/backup'
     | '/design-creative'
     | '/sosmed-management'
+    | '/talent'
     | '/web-development'
     | '/wedding-invitation'
     | '/wedding-organizer'
@@ -250,6 +261,7 @@ export interface FileRouteTypes {
     | '/backup'
     | '/design-creative'
     | '/sosmed-management'
+    | '/talent'
     | '/web-development'
     | '/wedding-invitation'
     | '/wedding-organizer'
@@ -273,6 +285,7 @@ export interface RootRouteChildren {
   BackupRoute: typeof BackupRoute
   DesignCreativeRoute: typeof DesignCreativeRoute
   SosmedManagementRoute: typeof SosmedManagementRoute
+  TalentRoute: typeof TalentRoute
   WebDevelopmentRoute: typeof WebDevelopmentRoute
   WeddingInvitationRoute: typeof WeddingInvitationRoute
   WeddingOrganizerRoute: typeof WeddingOrganizerRoute
@@ -325,6 +338,13 @@ declare module '@tanstack/react-router' {
       path: '/sosmed-management'
       fullPath: '/sosmed-management'
       preLoaderRoute: typeof SosmedManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/talent': {
+      id: '/talent'
+      path: '/talent'
+      fullPath: '/talent'
+      preLoaderRoute: typeof TalentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/web-development': {
@@ -441,6 +461,7 @@ const rootRouteChildren: RootRouteChildren = {
   BackupRoute: BackupRoute,
   DesignCreativeRoute: DesignCreativeRoute,
   SosmedManagementRoute: SosmedManagementRoute,
+  TalentRoute: TalentRoute,
   WebDevelopmentRoute: WebDevelopmentRoute,
   WeddingInvitationRoute: WeddingInvitationRoute,
   WeddingOrganizerRoute: WeddingOrganizerRoute,

@@ -88,7 +88,7 @@ const WebDevelopmentPage = lazy(() => import("@/pages/web-development"));
 const SosmedManagementPage = lazy(() => import("@/pages/sosmed-management"));
 const PriceListPage = lazy(() => import("@/pages/price-list"));
 const DonasiBibitPage = lazy(() => import("@/pages/donasi-bibit"));
-const TalentPage = lazy(() => import("@/pages/talent"));
+const TalentPage = lazy(() => import("@/pages/talent-management"));
 const MerchandisePage = lazy(() => import("@/pages/merchandise"));
 const SettingsPage = lazy(() => import("@/pages/settings"));
 const ItineraryPage = lazy(() => import("@/pages/itinerary"));

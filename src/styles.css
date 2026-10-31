@@ -95,6 +95,11 @@ body,
   --color-art-plum: #6d3b6e;
   --color-art-ink: #231a12;
   --color-art-cream: #fbf5ea;
+  --color-stage-night: #170d26;
+  --color-stage-gold: #f5b83d;
+  --color-stage-red: #d93b54;
+  --color-stage-violet: #5b3fd1;
+  --color-stage-cream: #fff8ec;
   --font-wed-serif: "Playfair Display", Georgia, serif;
   --font-wed-hand: "Caveat", "Segoe Script", cursive;
   --color-blue-50:  hsl(39 45% 96%);
