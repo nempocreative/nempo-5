@@ -34,6 +34,11 @@ describe("backup", () => {
     expect(buildBackupFile(failed).summary.problems).toEqual(["events: gagal"]);
   });
 
+  it("includes the site design when given", () => {
+    const file = buildBackupFile(empty(), new Date(), { "src/styles.css": ":root{--primary:red}" });
+    expect(file.design?.files["src/styles.css"]).toBe(":root{--primary:red}");
+  });
+
   it("names the file with date and time", () => {
     expect(backupFileName(new Date(2026, 9, 31, 20, 5))).toBe("nempo-organizer-backup-2026-10-31-2005.json");
   });

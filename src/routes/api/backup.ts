@@ -10,6 +10,7 @@ import {
   type BackupTable,
   type BackupTableResult,
 } from "@/lib/backup";
+import stylesCss from "@/styles.css?raw";
 
 function client() {
   const key = process.env["SUPABASE_PUBLISHABLE_KEY"]!;
@@ -53,7 +54,9 @@ export const Route = createFileRoute("/api/backup")({
             }
           }),
         );
-        const file = buildBackupFile(Object.fromEntries(entries) as Record<BackupTable, BackupTableResult>);
+        const file = buildBackupFile(Object.fromEntries(entries) as Record<BackupTable, BackupTableResult>, new Date(), {
+          "src/styles.css": stylesCss,
+        });
         return new Response(JSON.stringify(file, null, 2), {
           headers: {
             "content-type": "application/json; charset=utf-8",
