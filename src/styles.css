@@ -74,6 +74,7 @@ body,
 
 @theme inline {
   --color-brand: #0194f3;
+  --color-brand-on: #ffffff;
   --color-brand-navy: #17314a;
   --color-brand-sky: #e8f5ff;
   --color-brand-orange: #f97316;
