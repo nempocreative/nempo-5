@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
+import { Route as WeddingOrganizerRouteImport } from './routes/wedding-organizer'
 import { Route as AdminPanelIndexRouteImport } from './routes/admin-panel.index'
 import { Route as AdminPanelSplatRouteImport } from './routes/admin-panel.$'
 import { Route as ApiSplatRouteImport } from './routes/api/$'
@@ -31,6 +32,11 @@ const IndexRoute = IndexRouteImport.update({
 const SplatRoute = SplatRouteImport.update({
   id: '/$',
   path: '/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WeddingOrganizerRoute = WeddingOrganizerRouteImport.update({
+  id: '/wedding-organizer',
+  path: '/wedding-organizer',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminPanelIndexRoute = AdminPanelIndexRouteImport.update({
@@ -92,6 +98,7 @@ const TionFeedSplatRoute = TionFeedSplatRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/wedding-organizer': typeof WeddingOrganizerRoute
   '/admin-panel/$': typeof AdminPanelSplatRoute
   '/api/$': typeof ApiSplatRoute
   '/cms/$': typeof CmsSplatRoute
@@ -107,6 +114,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/wedding-organizer': typeof WeddingOrganizerRoute
   '/admin-panel/$': typeof AdminPanelSplatRoute
   '/api/$': typeof ApiSplatRoute
   '/cms/$': typeof CmsSplatRoute
@@ -123,6 +131,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/wedding-organizer': typeof WeddingOrganizerRoute
   '/admin-panel/$': typeof AdminPanelSplatRoute
   '/api/$': typeof ApiSplatRoute
   '/cms/$': typeof CmsSplatRoute
@@ -140,6 +149,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/$'
+    | '/wedding-organizer'
     | '/admin-panel/$'
     | '/api/$'
     | '/cms/$'
@@ -155,6 +165,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/$'
+    | '/wedding-organizer'
     | '/admin-panel/$'
     | '/api/$'
     | '/cms/$'
@@ -170,6 +181,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/$'
+    | '/wedding-organizer'
     | '/admin-panel/$'
     | '/api/$'
     | '/cms/$'
@@ -186,6 +198,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
+  WeddingOrganizerRoute: typeof WeddingOrganizerRoute
   AdminPanelSplatRoute: typeof AdminPanelSplatRoute
   ApiSplatRoute: typeof ApiSplatRoute
   CmsSplatRoute: typeof CmsSplatRoute
@@ -213,6 +226,13 @@ declare module '@tanstack/react-router' {
       path: '/$'
       fullPath: '/$'
       preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wedding-organizer': {
+      id: '/wedding-organizer'
+      path: '/wedding-organizer'
+      fullPath: '/wedding-organizer'
+      preLoaderRoute: typeof WeddingOrganizerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin-panel/': {
@@ -298,6 +318,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
+  WeddingOrganizerRoute: WeddingOrganizerRoute,
   AdminPanelSplatRoute: AdminPanelSplatRoute,
   ApiSplatRoute: ApiSplatRoute,
   CmsSplatRoute: CmsSplatRoute,
