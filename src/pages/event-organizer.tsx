@@ -131,9 +131,7 @@ export default function EventOrganizerPage() {
           <div className="pointer-events-none absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-primary-foreground/25 blur-3xl" />
           {/* floating decor — coretan tangan */}
           <Burst className="wed-float pointer-events-none absolute right-[12%] top-14 h-9 w-9 text-primary-foreground/80" />
-          <Squiggle className="wed-wiggle pointer-events-none absolute left-[7%] top-24 h-5 w-14 text-primary-foreground/40" />
           <Ring className="wed-float-slow pointer-events-none absolute right-[24%] bottom-24 h-6 w-6 text-primary-foreground/60" />
-          <Squiggle className="wed-float pointer-events-none absolute left-[14%] bottom-32 h-5 w-12 -rotate-12 text-primary-foreground/60" />
           <Burst className="wed-float-slow pointer-events-none absolute right-[8%] bottom-40 h-6 w-6 text-primary-foreground/30" />
 
           <p className={`${hand} relative text-2xl text-brand-sky sm:text-3xl`}>punya rencana acara?</p>
