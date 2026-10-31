@@ -19,5 +19,5 @@ export const mainNavItems = [
   { id: "web-development", href: "/web-development", label: "Web Development", icon: Globe, color: "#0EA5E9", bg: "#E0F2FE" },
   { id: "design-creative", href: "/design-creative", label: "Design Creative", icon: Lightbulb, color: "#D97706", bg: "#FEF3C7" },
   { id: "talent-management", href: "/talent", label: "Talent Management", icon: NavTalentIcon, color: "#8B5CF6", bg: "#EDE9FE" },
-  { id: "business-system", href: "/digital-services/super-app", label: "Business System", icon: Building2, color: "#0F766E", bg: "#CCFBF1" },
+  { id: "business-system", href: "/business-system", label: "Business System", icon: Building2, color: "#0F766E", bg: "#CCFBF1" },
 ] as const;

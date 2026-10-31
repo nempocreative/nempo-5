@@ -100,6 +100,11 @@ body,
   --color-stage-red: #d93b54;
   --color-stage-violet: #5b3fd1;
   --color-stage-cream: #fff8ec;
+  --color-biz-ink: #0c2b27;
+  --color-biz-teal: #0f766e;
+  --color-biz-mint: #d7f1eb;
+  --color-biz-paper: #f5faf8;
+  --color-biz-amber: #f2a93b;
   --font-wed-serif: "Playfair Display", Georgia, serif;
   --font-wed-hand: "Caveat", "Segoe Script", cursive;
   --color-blue-50:  hsl(39 45% 96%);

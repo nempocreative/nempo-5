@@ -79,21 +79,4 @@ export const WEB_PLANS: WebPlan[] = [
 export const firstMonthTotal = (p: WebPlan) => p.price + p.setup;
 export const monthlySaving = (p: WebPlan) => p.regularPrice - p.price;
 
-export const WEB_MODULES = [
-  { name: "Kasir", price: 149_000 },
-  { name: "QR Menu", price: 49_000 },
-  { name: "Booking & Reservasi", price: 149_000 },
-  { name: "Sistem Antrian", price: 149_000 },
-  { name: "CRM", price: 149_000 },
-  { name: "Loyalty & Membership", price: 129_000 },
-  { name: "Invoice & Faktur", price: 79_000 },
-  { name: "Gudang", price: 99_000 },
-  { name: "Dapur Stock", price: 99_000 },
-  { name: "HPP", price: 79_000 },
-  { name: "Resep", price: 79_000 },
-  { name: "Human Resource", price: 129_000 },
-  { name: "Pembelian & Supplier", price: 99_000 },
-  { name: "Marketing Tools", price: 249_000 },
-] as const;
-
 export const webRupiah = (n: number) => `Rp${n.toLocaleString("id-ID")}`;

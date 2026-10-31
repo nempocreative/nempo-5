@@ -10,3 +10,5 @@
 - [x] Bagian lain digabung: /admin-panel, /cms, /nempo-feed, /nempo-mou, /tion-feed
 - [ ] Lewati (belum diminta ulang): mockup-sandbox (alat desain Replit), nempo-garut versi lama
 - [x] Hapus Cerita Rakyat (section beranda, halaman /cerita-rakyat, kartu kategori, tautan sponsorship)
+- [x] Halaman layanan: Wedding Invitation, Sosmed Management, Web Development, Design Creative, Talent Management
+- [x] Halaman Business System lengkap
