@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { lazyWithRetry } from "@/lib/lazy-with-retry";
 import { AppShell } from "@/components/app-shell";
-import { lazy } from "react";
 
-const Entry = lazy(() => import("@/apps/feed/entry"));
+const Entry = lazyWithRetry(() => import("@/apps/feed/entry"));
 
 export const Route = createFileRoute("/nempo-feed/$")({
   head: () => ({
