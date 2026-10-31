@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
-import { Heart, Check, ArrowRight, Users, Music, Plus, Minus, Sparkles, Flower2, Gem, PartyPopper, HeartHandshake } from "lucide-react";
+import { Heart, Check, ArrowRight, Users, Music, Plus, Minus, Flower2, Gem, PartyPopper, HeartHandshake } from "lucide-react";
 import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
 import { weddingPackages, weddingAdatOptions, weddingTotal, weddingRupiah, weddingVendorNote, weddingAdatNote } from "@/data/wedding-packages";
 
@@ -31,7 +31,7 @@ export default function WeddingOrganizerPage() {
           {/* floating decor */}
           <Heart className="wed-float absolute left-[6%] top-16 h-8 w-8 fill-wed-rose/30 text-wed-rose/30" aria-hidden />
           <Heart className="wed-float-slow absolute right-[10%] top-24 h-12 w-12 fill-wed-rose/20 text-wed-rose/20" aria-hidden />
-          <Sparkles className="wed-wiggle absolute left-[16%] bottom-24 h-6 w-6 text-wed-gold/60" aria-hidden />
+          <Flower2 className="wed-wiggle absolute left-[16%] bottom-24 h-6 w-6 text-wed-gold/60" aria-hidden />
           <Flower2 className="wed-float absolute right-[18%] bottom-28 h-9 w-9 text-wed-rose/40" aria-hidden />
           <Gem className="wed-wiggle absolute left-[42%] top-10 h-6 w-6 text-wed-gold/50" aria-hidden />
           <Heart className="wed-float-slow absolute left-[70%] top-40 h-5 w-5 fill-wed-gold/30 text-wed-gold/30" aria-hidden />
@@ -98,7 +98,7 @@ export default function WeddingOrganizerPage() {
                 }`}
               >
                 <span className="flex flex-col items-center gap-1">
-                  {i === 0 && <Sparkles className="h-4 w-4" />}
+                  {i === 0 && <Flower2 className="h-4 w-4" />}
                   {i === 1 && <Heart className="h-4 w-4 fill-current" />}
                   {i === 2 && <Gem className="h-4 w-4" />}
                   {p.name}
@@ -240,7 +240,7 @@ export default function WeddingOrganizerPage() {
         <section className="relative isolate overflow-hidden bg-wed-rose px-6 py-14 text-center text-primary-foreground">
           <Heart className="wed-float absolute left-[10%] top-10 h-8 w-8 fill-primary-foreground/20 text-primary-foreground/20" aria-hidden />
           <Heart className="wed-float-slow absolute right-[12%] bottom-12 h-10 w-10 fill-primary-foreground/15 text-primary-foreground/15" aria-hidden />
-          <Sparkles className="wed-wiggle absolute right-[22%] top-8 h-6 w-6 text-wed-gold" aria-hidden />
+          <Flower2 className="wed-wiggle absolute right-[22%] top-8 h-6 w-6 text-wed-gold" aria-hidden />
           <Heart className="wed-pulse-heart mx-auto h-8 w-8 fill-current" aria-hidden />
           <p className={`${hand} mt-4 text-2xl`}>yuk wujudkan</p>
           <h2 className={`${serif} mt-1 text-3xl font-bold sm:text-4xl`}>Hari Istimewa Kalian</h2>
