@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import { SEO } from "@/components/seo";
 import { Button } from "@/components/ui/button";

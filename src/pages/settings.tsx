@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { Link, useLocation } from "wouter";
+import { Link, useLocation } from "@/lib/wouter";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useAuth } from "@/contexts/auth-context";
 import { useDisplayPrefs, LANGUAGE_OPTIONS, CURRENCY_OPTIONS } from "@/lib/use-display-prefs";

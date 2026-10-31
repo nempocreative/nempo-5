@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import { useEffect, useMemo, useState } from "react";
 import {
   ChefHat,

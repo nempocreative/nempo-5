@@ -2,10 +2,10 @@ import React, { useEffect, useState, useRef } from "react";
 import { SEO } from "@/components/seo";
 import { Layout } from "@/components/layout";
 import { PlacePhoto } from "@/components/place-photo";
-import { Search, MapPin, MapPinned, Route, TrainFront, ChevronRight, ChevronLeft, ArrowRight, Flame, ThumbsUp, Info, Map, CalendarDays, Users, Building2, Ticket, Leaf, Award, Gift, TreePine, Heart, Mountain, Compass, Droplets, Wind, Eye, Thermometer, Newspaper, Clock, Radio, UtensilsCrossed, UserPlus, Star, Shield, Crown, Coffee, Music, Tv, Mic, BookOpen, Instagram } from "lucide-react";
+import { Search, MapPin, MapPinned, Route, TrainFront, ChevronRight, ArrowRight, Flame, ThumbsUp, Info, Map, CalendarDays, Users, Building2, Ticket, Leaf, Award, Gift, TreePine, Heart, Mountain, Compass, Droplets, Wind, Eye, Thermometer, Newspaper, Clock, Radio, UtensilsCrossed, UserPlus, Star, Shield, Crown, Coffee, Music, Tv, Mic, BookOpen, Instagram } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { Link, useLocation } from "wouter";
+import { Link, useLocation } from "@/lib/wouter";
 import { CategoryGrid } from "@/components/icons3d";
 import { TrainArrivalPlayer } from "@/components/train-arrival-player";
 import { ALL_CITIES, useCityFilter, type CityName } from "@/contexts/city-filter-context";
@@ -15,17 +15,17 @@ import { NempoFactsSection } from "@/components/nempo-facts-section";
 import { NempoHomeCtaBanner } from "@/components/nempo-home-cta-banner";
 import { NempoPartnershipCarousel } from "@/components/nempo-partnership-carousel";
 import { NempoCreatorTeamCard } from "@/components/nempo-creator-team-card";
-import adventureHeroImage from "@assets/5c92c12744ccc725fce2d971df3dd4b4_1789407665394.jpg";
-import stayHeroImage from "@assets/4a995825d019114708a042b06256a9f9_1789407625253.jpg";
-import eventHeroImage from "@assets/6999fa21d5935dd58a0c1c2e375212a1_1789407991954.jpg";
-import natureHeroImage from "@assets/e51616056f69ad317e6c3a4e960c52f4_1789408035923.jpg";
-import culinaryHeroImage from "@assets/c225d4fb4ba1595ae8e06fe3c5abeb05_1789408460390.jpg";
-import venueHeroImage from "@assets/36b2a2caf7f2749ca53bb3190322259d_1789408390264.jpg";
-import collaborationHeroImage from "@assets/076ae51bf23030e0b8cfb7975b94609a_1789408708055.jpg";
-import kalaMudaHeroImage from "@assets/94d218d05080a6554bc7214283cb8a88_1789408730013.jpg";
-import digiNempoHeroImage from "@assets/d8bb582f2f075b716c1d0d1dc01bb672_1789408801865.jpg";
-import digitalGrowthBannerImage from "@assets/generated_images/digital-growth-banner.jpg";
-import cafePartnershipBannerImage from "@assets/generated_images/cafe-partnership-banner.jpg";
+import adventureHeroImage from "@/assets/5c92c12744ccc725fce2d971df3dd4b4_1789407665394.jpg";
+import stayHeroImage from "@/assets/4a995825d019114708a042b06256a9f9_1789407625253.jpg";
+import eventHeroImage from "@/assets/6999fa21d5935dd58a0c1c2e375212a1_1789407991954.jpg";
+import natureHeroImage from "@/assets/e51616056f69ad317e6c3a4e960c52f4_1789408035923.jpg";
+import culinaryHeroImage from "@/assets/c225d4fb4ba1595ae8e06fe3c5abeb05_1789408460390.jpg";
+import venueHeroImage from "@/assets/36b2a2caf7f2749ca53bb3190322259d_1789408390264.jpg";
+import collaborationHeroImage from "@/assets/076ae51bf23030e0b8cfb7975b94609a_1789408708055.jpg";
+import kalaMudaHeroImage from "@/assets/94d218d05080a6554bc7214283cb8a88_1789408730013.jpg";
+import digiNempoHeroImage from "@/assets/d8bb582f2f075b716c1d0d1dc01bb672_1789408801865.jpg";
+import digitalGrowthBannerImage from "@/assets/generated_images/digital-growth-banner.jpg";
+import cafePartnershipBannerImage from "@/assets/generated_images/cafe-partnership-banner.jpg";
 
 type HeroBanner = {
   id: number;
@@ -546,85 +546,6 @@ function WeatherWidget() {
   );
 }
 
-/* ── News Ticker Component ───────────────────────────────────────────────── */
-const catDotColor: Record<string, string> = {
-  Pariwisata: "#0ea5e9", Budaya: "#8b5cf6", Kuliner: "#f97316",
-  Ekonomi: "#10b981", Teknologi: "#06b6d4", Tradisi: "#0194f3", Peringatan: "#ef4444",
-};
-
-function NewsTicker({ news }: { news: { title: string; category: string; date: string }[] }) {
-  const [idx, setIdx] = useState(0);
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    const cycle = setInterval(() => {
-      setVisible(false);
-      setTimeout(() => {
-        setIdx(i => (i + 1) % news.length);
-        setVisible(true);
-      }, 350);
-    }, 4000);
-    return () => clearInterval(cycle);
-  }, [news.length]);
-
-  const current = news[idx];
-  const dot = catDotColor[current.category] ?? "#64748b";
-
-  return (
-    <Link href="/berita" className="block">
-      {/* Mobile: compact pill  |  Desktop: full-width bar like weather widget */}
-      <div className="relative overflow-hidden cursor-pointer group
-        flex
-        rounded-full md:rounded-2xl
-        w-full
-        items-center"
-        style={{ background: "linear-gradient(135deg, #15803d 0%, #16a34a 60%, #22c55e 100%)" }}
-      >
-        {/* Shimmer */}
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ backgroundImage: "radial-gradient(circle at 85% 50%, rgba(187,247,208,0.2) 0%, transparent 60%)" }} />
-
-        {/* Label */}
-        <div className="shrink-0 flex items-center gap-1.5 border-r border-white/15 relative z-10"
-          style={{ padding: "7px 10px" }}>
-          <span className="block rounded-full animate-pulse shrink-0"
-            style={{ width: 6, height: 6, background: "#f87171" }} />
-          <span className="font-black text-white uppercase"
-            style={{ fontSize: 9, letterSpacing: "0.12em", lineHeight: 1, whiteSpace: "nowrap" }}>
-            Berita Terkini
-          </span>
-        </div>
-
-        {/* Headline */}
-        <div className="relative z-10 overflow-hidden flex items-center"
-          style={{ padding: "7px 10px", minWidth: 0, flex: 1 }}>
-          <div style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? "translateX(0)" : "translateX(5px)",
-            transition: "opacity 0.3s ease, transform 0.3s ease",
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            fontSize: 12,
-            fontWeight: 700,
-            color: "white",
-          }}>
-            <span className="text-white/60 mr-1.5" style={{ fontSize: 10 }}>
-              {current.category} ·
-            </span>
-            {current.title}
-          </div>
-        </div>
-
-        {/* Arrow */}
-        <div className="shrink-0 relative z-10 flex items-center" style={{ padding: "7px 10px 7px 4px" }}>
-          <ArrowRight className="text-white/60 group-hover:text-white group-hover:translate-x-0.5 transition-all"
-            style={{ width: 13, height: 13 }} strokeWidth={2.5} />
-        </div>
-      </div>
-    </Link>
-  );
-}
 
 /* ── Animated stats counter for the home page stats bar ── */
 const statsSchema = [
@@ -802,43 +723,11 @@ const INFO_BANNERS = [
     id: "wisata",
     image: digitalGrowthBannerImage,
     alt: "Pemandangan pegunungan Jawa Barat untuk kolaborasi digital",
-    title: "Tumbuh bersama di era digital.",
-    description: "Perkuat usaha dan destinasi lokal lewat kolaborasi bersama Nempo.",
-    cta: "Mulai berkolaborasi",
+    title: "Tumbuh bersama NEMPO Organizer.",
+    description: "Event & wedding organizer, sosmed management, desain kreatif, web development, sampai talent management — semua ada di satu tim.",
+    cta: "Lihat layanan & harga",
   },
-] as const;
 
-const HOME_FOLKLORE_STORIES = [
-  {
-    id: "situ-bagendit",
-    title: "Legenda Situ Bagendit",
-    place: "Garut",
-    category: "Legenda tempat",
-    duration: "6 menit",
-    image: "situ-bagendit.jpg",
-    description: "Kisah tentang keserakahan, kepedulian, dan danau yang menjadi ikon Garut.",
-    accent: "#0f766e",
-  },
-  {
-    id: "lutung-kasarung",
-    title: "Lutung Kasarung",
-    place: "Tatar Sunda",
-    category: "Kisah kerajaan",
-    duration: "8 menit",
-    image: "lutung-kasarung.jpg",
-    description: "Perjalanan Purbasari menemukan keberanian, ketulusan, dan cinta.",
-    accent: "#7c3aed",
-  },
-  {
-    id: "nyi-anteh",
-    title: "Nyi Anteh Sang Penunggu Bulan",
-    place: "Bandung Raya",
-    category: "Legenda langit",
-    duration: "7 menit",
-    image: "nyi-anteh.jpg",
-    description: "Kisah perempuan tekun yang hidup dalam imajinasi masyarakat Sunda.",
-    accent: "#4338ca",
-  },
 ] as const;
 
 function InfoPhotoBanner({ banner }: { banner: (typeof INFO_BANNERS)[number] }) {
@@ -878,8 +767,6 @@ export default function Home() {
   const [activeEvent, setActiveEvent] = useState(0);
   const [activeCafe, setActiveCafe] = useState(0);
   const [activeDiskon, setActiveDiskon] = useState(0);
-  const [folkloreActive, setFolkloreActive] = useState(0);
-  const [folklorePaused, setFolklorePaused] = useState(false);
   const diskonTouchX = useRef(0);
   const [infoBannerIdx, setInfoBannerIdx] = useState(0);
   const infoBannerTouchX = useRef(0);
@@ -905,7 +792,6 @@ export default function Home() {
   const [kulinerItems, setKulinerItems] = useState<ApiItem[] | null>(null);
   const [cafeItems, setCafeItems] = useState<ApiItem[] | null>(null);
   const [eventItems, setEventItems] = useState<ApiItem[] | null>(null);
-  const [beritaItems, setBeritaItems] = useState<ApiItem[] | null>(null);
 
   const [liveStats, setLiveStats] = useState<{ destinasi: number; kuliner: number; events: number; visitors: number } | null>(null);
   const [donationStats, setDonationStats] = useState<{ total_bibit: number; total_donors: number; pohon_tumbuh: number } | null>(null);
@@ -919,22 +805,6 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    HOME_FOLKLORE_STORIES.forEach((story) => {
-      const image = new window.Image();
-      image.src = `${import.meta.env.BASE_URL}images/cerita/${story.image}`;
-    });
-  }, []);
-
-  useEffect(() => {
-    if (folklorePaused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setInterval(() => {
-      if (window.innerWidth >= 1024) return;
-      setFolkloreActive((current) => (current + 1) % HOME_FOLKLORE_STORIES.length);
-    }, 6500);
-    return () => window.clearInterval(timer);
-  }, [folklorePaused]);
-
-  useEffect(() => {
     const load = (path: string, setter: (d: ApiItem[]) => void) =>
       fetch(`/api${path}`)
         .then(r => r.ok ? r.json() : [])
@@ -946,7 +816,6 @@ export default function Home() {
       load("/kuliner", setKulinerItems);
       load("/cafe", setCafeItems);
       load("/events", setEventItems);
-      load("/berita", setBeritaItems);
 
       fetch("/api/stats")
         .then(r => r.ok ? r.json() : null)
@@ -1269,6 +1138,39 @@ export default function Home() {
       badge: "Olahraga",
     },
   ];
+  const [eventRowEl, eventRowRef] = useState<HTMLElement | null>(null);
+  useEffect(() => {
+    const el = eventRowEl;
+    if (!el) return;
+    let raf = 0;
+    let pausedUntil = 0;
+    let pos = el.scrollLeft;
+    const pause = () => { pausedUntil = Date.now() + 2500; };
+    const tick = () => {
+      if (Date.now() > pausedUntil) {
+        const max = el.scrollWidth - el.clientWidth;
+        if (max > 0) {
+          pos = Math.abs(el.scrollLeft - pos) > 2 ? el.scrollLeft : pos;
+          pos += 0.5;
+          if (pos >= max) pos = 0;
+          el.scrollLeft = pos;
+        }
+      } else {
+        pos = el.scrollLeft;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    el.addEventListener("touchstart", pause, { passive: true });
+    el.addEventListener("pointerdown", pause);
+    el.addEventListener("wheel", pause, { passive: true });
+    raf = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(raf);
+      el.removeEventListener("touchstart", pause);
+      el.removeEventListener("pointerdown", pause);
+      el.removeEventListener("wheel", pause);
+    };
+  }, [eventRowEl]);
   const homeMoodPicks = homeMoodConfigs
     .map((mood) => {
       const sourceItems = mood.source === "wisata"
@@ -1670,14 +1572,10 @@ export default function Home() {
         .home-section-creator-team { order: 18; }
         .home-section-promo { order: 51; }
         .home-section-cafe { order: 52; }
-        .home-section-kuliner { order: 53; }
         .home-section-events { order: 50; }
-        .home-section-news { order: 99; }
         .home-section-service-promos { order: 20; }
         .home-section-facts { order: 11; }
         .home-section-partnership { order: 90; }
-        .home-section-folklore { order: 101; }
-        .home-section-about { order: 100; }
         .home-section-organizer { order: 110; }
         .home-section-partners { order: 120; }
       `}</style>
@@ -1992,224 +1890,6 @@ export default function Home() {
           <NempoPartnershipCarousel />
         </section>
 
-        {/* ── Tentang Nempo Organizer ── */}
-        <section
-          id="tentang-nempo"
-          className="home-section-about relative isolate overflow-hidden rounded-[2rem] border border-[#dcebf4] bg-gradient-to-br from-[#eef8ff] via-white to-[#f0fbf5] text-[#123d54]"
-        >
-          <div className="pointer-events-none absolute -right-12 -top-16 h-48 w-48 rounded-full bg-[#9ed8f1]/25 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-24 left-1/3 h-48 w-48 rounded-full bg-[#bcebd8]/45 blur-3xl" />
-
-          <div className="relative grid gap-4 p-4 sm:grid-cols-[minmax(0,1fr)_220px] sm:items-center sm:gap-6 sm:p-5 md:grid-cols-[minmax(0,1fr)_250px] md:p-6">
-            <div className="min-w-0">
-              <div className="mb-2.5 flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-[#0194f3] shadow-[0_0_0_5px_rgba(1,148,243,0.13)]" />
-                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-[#0172b1]">Tentang Nempo Organizer</p>
-              </div>
-              <h2 className="max-w-xl text-2xl font-black leading-[1.06] tracking-[-0.045em] text-[#123d54] sm:text-3xl">
-                Jawa Barat lebih dekat
-                <span className="mt-1 block text-[#0172b1]">kalau diceritakan dari orang lokal.</span>
-              </h2>
-              <p className="mt-3 max-w-2xl text-xs leading-relaxed text-[#627d80] sm:text-sm">
-                Nempo mengajak kamu menemukan tempat, rasa, dan aktivitas seru tanpa kehilangan cerita di baliknya.
-              </p>
-              <div className="mt-4 flex flex-wrap items-center gap-2">
-                <Link
-                  href="/komunitas"
-                  className="inline-flex items-center gap-1.5 rounded-full bg-[#123d54] px-3.5 py-2 text-[11px] font-black text-white shadow-md shadow-[#123d54]/15 transition hover:-translate-y-0.5 hover:bg-[#168b68]"
-                >
-                  Mulai menjelajah <ChevronRight className="h-3 w-3" />
-                </Link>
-                <Link
-                  href="/price-list"
-                  className="inline-flex items-center gap-1 rounded-full px-2.5 py-2 text-[11px] font-bold text-[#168b68] transition hover:bg-[#e7f6ef]"
-                >
-                  Ceritakan punyamu <ArrowRight className="h-3 w-3" />
-                </Link>
-              </div>
-            </div>
-
-            <div className="relative flex min-h-[128px] w-full items-center justify-center sm:min-h-[150px]">
-              <div className="absolute bottom-1 right-2 h-24 w-56 rounded-full bg-[#ccefe1]/80 blur-xl sm:h-32 sm:w-52" />
-              <img
-                src={`${import.meta.env.BASE_URL}images/nempo-about-creative.webp`}
-                alt="Maskot Nempo sedang berkarya"
-                decoding="async"
-                className="relative z-10 h-[132px] w-full max-w-[250px] object-contain object-center drop-shadow-[0_12px_10px_rgba(18,61,84,0.14)] transition-transform duration-300 hover:-translate-y-1 sm:h-[164px] sm:w-[244px]"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* ── Cerita Rakyat ── */}
-        <section
-          id="cerita-rakyat-home"
-          className="home-section-folklore scroll-mt-6 relative isolate w-full text-[#243b35]"
-        >
-          {(() => {
-            const visibleStories = [0, 1, 2].map((offset) => ({
-              story: HOME_FOLKLORE_STORIES[(folkloreActive + offset) % HOME_FOLKLORE_STORIES.length],
-              index: (folkloreActive + offset) % HOME_FOLKLORE_STORIES.length,
-            }));
-            const nextIndex = (folkloreActive + 1) % HOME_FOLKLORE_STORIES.length;
-            const previousIndex =
-              (folkloreActive + HOME_FOLKLORE_STORIES.length - 1) % HOME_FOLKLORE_STORIES.length;
-
-            return (
-              <div
-                className="relative mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10"
-                onMouseEnter={() => setFolklorePaused(true)}
-                onMouseLeave={() => setFolklorePaused(false)}
-              >
-                <div className="mb-5 flex flex-wrap items-end justify-between gap-3 sm:mb-6">
-                  <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#b86f51]">
-                      Cerita rakyat
-                    </p>
-                    <h2 className="mt-1 font-serif text-2xl font-bold leading-tight tracking-[-0.035em] text-[#293f37] sm:text-3xl">
-                      Kisah dari tanah Jawa Barat
-                    </h2>
-                    <p className="mt-1.5 max-w-xl text-xs leading-relaxed text-[#6d7d75] sm:text-sm">
-                      Kenali legenda dan kisah yang diwariskan dari generasi ke generasi.
-                    </p>
-                  </div>
-                  <Link
-                    href="/cerita-rakyat"
-                    className="inline-flex items-center gap-1.5 rounded-full border border-[#d6c3a2] bg-[#fffaf0] px-3.5 py-2 text-[10px] font-black text-[#315a4e] transition hover:border-[#315a4e] hover:bg-white sm:text-xs"
-                  >
-                    Semua cerita <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                </div>
-
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
-                  {visibleStories.map(({ story, index }, position) => (
-                    <article
-                      key={story.id}
-                      className={`group overflow-hidden rounded-2xl border border-[#e2d3ba] bg-[#fffaf0] shadow-[0_12px_28px_rgba(94,70,38,0.1)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_34px_rgba(94,70,38,0.16)] ${
-                        position === 1 ? "hidden sm:block" : position === 2 ? "hidden lg:block" : ""
-                      }`}
-                    >
-                      <Link href={`/cerita-rakyat/${story.id}`} className="block">
-                        <div className="relative aspect-[16/8.5] overflow-hidden bg-[#d8c3a0]">
-                          <img
-                            src={`${import.meta.env.BASE_URL}images/cerita/${story.image}`}
-                            alt={`Ilustrasi ${story.title}`}
-                            className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.035]"
-                            loading={position === 0 ? "eager" : "lazy"}
-                            decoding="async"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-[#1c2c25]/75 via-transparent to-[#1c2c25]/10" />
-                          <span className="absolute left-3 top-3 rounded-full border border-white/35 bg-[#1d2d27]/40 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.1em] text-white backdrop-blur-sm">
-                            Cerita {String(index + 1).padStart(2, "0")}
-                          </span>
-                          <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-3 text-white sm:bottom-4 sm:left-4 sm:right-4">
-                            <div>
-                              <p className="text-[9px] font-black uppercase tracking-[0.14em] text-white/75">
-                                {story.category}
-                              </p>
-                              <p className="mt-0.5 text-xs font-black sm:text-sm">{story.place}</p>
-                            </div>
-                            <BookOpen className="h-5 w-5 shrink-0 text-white/80" />
-                          </div>
-                        </div>
-                      </Link>
-                      <div className="flex min-h-[160px] flex-col p-4 sm:min-h-[178px] sm:p-5">
-                        <div className="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.1em] text-[#b86f51]">
-                          <span>Legenda Jawa Barat</span>
-                          <span className="h-1 w-1 rounded-full bg-[#c6ae88]" />
-                          <Clock className="h-3 w-3" />
-                          <span>{story.duration} baca</span>
-                        </div>
-                        <h3 className="mt-2 font-serif text-xl font-bold leading-tight tracking-[-0.035em] text-[#293f37] sm:text-2xl">
-                          {story.title}
-                        </h3>
-                        <p className="mt-2 line-clamp-2 text-xs leading-[1.65] text-[#6d7d75] sm:text-sm">
-                          {story.description}
-                        </p>
-                        <Link
-                          href={`/cerita-rakyat/${story.id}`}
-                          className="mt-auto inline-flex w-fit items-center gap-1.5 pt-3 text-[10px] font-black text-[#315a4e] transition hover:text-[#b86f51] sm:text-xs"
-                        >
-                          Baca ceritanya <ArrowRight className="h-3.5 w-3.5" />
-                        </Link>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-
-                <div className="relative mx-auto mt-4 flex max-w-6xl items-center justify-between gap-3 lg:hidden">
-                  <button
-                    type="button"
-                    onClick={() => setFolkloreActive(previousIndex)}
-                    aria-label={`Cerita sebelumnya: ${HOME_FOLKLORE_STORIES[previousIndex].title}`}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-[#d6c3a2] bg-[#fffaf0] px-3 py-2 text-[10px] font-black text-[#6d7d75] transition hover:border-[#315a4e] hover:text-[#315a4e]"
-                  >
-                    <ChevronLeft className="h-3.5 w-3.5" />
-                    Sebelumnya
-                  </button>
-                  <div className="flex items-center gap-1.5" role="group" aria-label="Pilih halaman cerita">
-                    {HOME_FOLKLORE_STORIES.map((item, index) => (
-                      <button
-                        key={item.id}
-                        type="button"
-                        onClick={() => setFolkloreActive(index)}
-                        aria-label={`Buka ${item.title}`}
-                        aria-pressed={folkloreActive === index}
-                        className={`h-1.5 rounded-full transition-all ${
-                          folkloreActive === index ? "w-7 bg-[#b86f51]" : "w-1.5 bg-[#bda982]/60 hover:bg-[#b86f51]/70"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setFolkloreActive(nextIndex)}
-                    aria-label={`Cerita berikutnya: ${HOME_FOLKLORE_STORIES[nextIndex].title}`}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-[#d6c3a2] bg-[#fffaf0] px-3 py-2 text-[10px] font-black text-[#6d7d75] transition hover:border-[#315a4e] hover:text-[#315a4e]"
-                  >
-                    Berikutnya
-                    <ChevronRight className="h-3.5 w-3.5" />
-                  </button>
-                </div>
-              </div>
-            );
-          })()}
-        </section>
-
-        {/* ── Berita Terbaru Ticker ── */}
-        <div className="home-section-news">
-          {beritaItems !== null && beritaItems.length > 0 && (
-            <NewsTicker news={beritaItems as { title: string; category: string; date: string }[]} />
-          )}
-          {beritaItems !== null && beritaItems.length === 0 && (
-            <Link href="/berita" className="block">
-              <div className="group relative flex w-full cursor-pointer items-center overflow-hidden rounded-full md:rounded-2xl"
-                style={{ background: "linear-gradient(135deg, #15803d 0%, #16a34a 60%, #22c55e 100%)" }}>
-                <div className="pointer-events-none absolute inset-0"
-                  style={{ backgroundImage: "radial-gradient(circle at 85% 50%, rgba(187,247,208,0.2) 0%, transparent 60%)" }} />
-                <div className="relative z-10 flex shrink-0 items-center gap-1.5 border-r border-white/15"
-                  style={{ padding: "7px 10px" }}>
-                  <span className="block shrink-0 rounded-full"
-                    style={{ width: 6, height: 6, background: "#f87171" }} />
-                  <span className="font-black uppercase text-white"
-                    style={{ fontSize: 9, letterSpacing: "0.12em", lineHeight: 1, whiteSpace: "nowrap" }}>
-                    Berita Terkini
-                  </span>
-                </div>
-                <div className="relative z-10 flex min-w-0 flex-1 items-center overflow-hidden" style={{ padding: "7px 10px" }}>
-                  <span style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.6)", whiteSpace: "nowrap" }}>
-                    Belum ada berita saat ini
-                  </span>
-                </div>
-                <div className="relative z-10 flex shrink-0 items-center" style={{ padding: "7px 10px 7px 4px" }}>
-                  <ArrowRight className="text-white/60 transition-all group-hover:translate-x-0.5 group-hover:text-white"
-                    style={{ width: 13, height: 13 }} strokeWidth={2.5} />
-                </div>
-              </div>
-            </Link>
-          )}
-        </div>
-
         {/* ── Kuliner Populer ── */}
         {eventPortfolioItems.length > 0 && (
           <div className="home-section-cafe">
@@ -2262,7 +1942,7 @@ export default function Home() {
               Semua <ChevronRight className="h-3.5 w-3.5" />
             </Link>
           </div>
-           <section className="touch-card-row relative -mx-4 overflow-x-auto scrollbar-hide px-4 md:mx-0 md:px-0">
+           <section ref={eventRowRef} className="touch-card-row relative -mx-4 overflow-x-auto scrollbar-hide px-4 md:mx-0 md:px-0">
             <div
                className="flex items-end gap-3"
               style={{
@@ -2336,11 +2016,6 @@ export default function Home() {
               ))}
             </div>
 
-             {/* Soft edge fades keep the moving reel focused without covering the cards. */}
-             <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-5"
-               style={{ background: "linear-gradient(to right, white, transparent)" }} />
-             <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-5"
-               style={{ background: "linear-gradient(to left, white, transparent)" }} />
           </section>
           </div>
         )}
@@ -2386,7 +2061,7 @@ export default function Home() {
                       const isBonusPromo = c.kind === "bonus";
                       return (
                          <div key={c.id} className="promo-card promo-shine relative flex min-w-0 flex-1 flex-col overflow-hidden rounded-[1.35rem] ring-1 ring-white/15 cursor-pointer select-none"
-                          style={{ background:`linear-gradient(145deg,${clr.from} 0%,${clr.to} 100%)`, boxShadow:`0 6px 24px ${clr.shadow}55` }}>
+                          style={{ background:`linear-gradient(145deg,${clr.from} 0%,${clr.to} 100%)` }}>
                            <div aria-hidden="true" className="pointer-events-none absolute -left-2 top-1/2 z-[3] h-4 w-4 -translate-y-1/2 rounded-full bg-white" />
                            <div aria-hidden="true" className="pointer-events-none absolute -right-2 top-1/2 z-[3] h-4 w-4 -translate-y-1/2 rounded-full bg-white" />
                            <div className="absolute -right-1 -bottom-2 font-black text-white/[0.07] leading-none select-none pointer-events-none" style={{ fontSize:68, fontFamily:"system-ui" }}>{c.amount}</div>
@@ -2466,7 +2141,7 @@ export default function Home() {
 
                   return (
                     <div key={`d-${c.id}`} className="promo-card promo-shine relative overflow-hidden rounded-[1.35rem] ring-1 ring-white/15 cursor-pointer select-none"
-                      style={{ background:`linear-gradient(135deg,${clr.from} 0%,${clr.to} 100%)`, boxShadow:`0 6px 20px ${clr.shadow}55` }}>
+                      style={{ background:`linear-gradient(135deg,${clr.from} 0%,${clr.to} 100%)` }}>
 
                       {/* Decorative blobs */}
                       <div aria-hidden="true" className="pointer-events-none absolute -left-2 top-1/2 z-[3] h-4 w-4 -translate-y-1/2 rounded-full bg-white" />
@@ -2724,149 +2399,8 @@ export default function Home() {
           <NempoCreatorTeamCard />
         </section>
 
-        {/* ── Kuliner Paling Populer ── (hanya non-Cafe) */}
-        {nonCafeKuliner.length > 0 && (
-        <section className="home-section-kuliner">
-          <style>{`
-            @keyframes kuliner-badge-pulse {
-              0%, 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0.55); }
-              50% { box-shadow: 0 0 0 6px rgba(249,115,22,0); }
-            }
-            @keyframes kuliner-shine {
-              0% { background-position: -200% center; }
-              100% { background-position: 200% center; }
-            }
-            @keyframes kuliner-icon-spin {
-              0% { transform: rotate(-10deg) scale(1); }
-              50% { transform: rotate(10deg) scale(1.15); }
-              100% { transform: rotate(-10deg) scale(1); }
-            }
-            @keyframes kuliner-dot-blink {
-              0%, 100% { opacity: 1; transform: scale(1); }
-              50% { opacity: 0.4; transform: scale(0.7); }
-            }
-            .kuliner-title-shine {
-              background: linear-gradient(105deg, #ea580c 0%, #f97316 30%, #fb923c 50%, #fdba74 65%, #f97316 80%, #ea580c 100%);
-              background-size: 200% auto;
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              background-clip: text;
-              animation: kuliner-shine 3s linear infinite;
-            }
-            .home-destination-card {
-              box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.04);
-              border-color: rgba(226, 232, 240, 0.9);
-            }
-            .home-destination-card:hover {
-              box-shadow: 0 18px 38px rgba(15, 23, 42, 0.15), 0 5px 12px rgba(15, 23, 42, 0.06);
-              border-color: rgba(186, 230, 253, 0.95);
-            }
-            .home-card-media {
-              isolation: isolate;
-            }
-            .home-card-media img {
-              filter: saturate(0.98);
-            }
-            .home-destination-card:hover .home-card-media img {
-              filter: saturate(1.08);
-            }
-          `}</style>
-          <div className="flex items-end justify-between mb-4">
-            <div className="flex items-center gap-2.5">
-              <div className="relative shrink-0">
-                <div className="w-10 h-10 rounded-2xl flex items-center justify-center"
-                  style={{ background: "linear-gradient(135deg, #f97316 0%, #ea580c 100%)", animation: "kuliner-badge-pulse 2s ease-in-out infinite" }}>
-                  <UtensilsCrossed className="h-4 w-4 text-white" strokeWidth={2}
-                    style={{ animation: "kuliner-icon-spin 3s ease-in-out infinite" }} />
-                </div>
-                <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-white"
-                  style={{ animation: "kuliner-dot-blink 1.5s ease-in-out infinite" }} />
-              </div>
-              <div>
-                <p className="text-[#f97316] text-[10px] font-bold uppercase tracking-[0.18em] mb-1">Rasa yang wajib dicoba</p>
-                <h2 className="kuliner-title-shine font-black text-lg leading-none">Kuliner</h2>
-              </div>
-            </div>
-            <Link href="/kuliner" className="flex items-center gap-0.5 text-[#f97316] text-xs font-bold hover:underline">
-              Semua <ChevronRight className="h-3.5 w-3.5" />
-            </Link>
-          </div>
-           <div className="mobile-card-slider home-feature-card-slider grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-            {nonCafeKuliner.slice(0, 4).map((k) => (
-              <Link key={k.id} href={`/kuliner/${(k as any).slug || k.id}`}
-                className="home-destination-card bg-white rounded-[1.35rem] shadow-sm hover:shadow-xl border overflow-hidden group transition-all duration-300 hover:-translate-y-1 flex flex-col"
-                data-testid={`kuliner-card-${k.id}`}>
-                <div className="home-card-media relative aspect-square overflow-hidden bg-orange-50 md:h-52 md:aspect-auto">
-                  <PlacePhoto
-                    kind="culinary"
-                    src={k.image}
-                    alt={k.name}
-                    className="h-full w-full"
-                    imageClassName="group-hover:scale-105 transition duration-700 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent" />
-                  {/* Category badge */}
-                  {k.category && (
-                    <span className="absolute top-3 left-3 text-[9px] font-extrabold uppercase tracking-wide text-white rounded-full px-2.5 py-1 backdrop-blur-md"
-                      style={{ boxShadow: "0 3px 10px rgba(15,23,42,0.18)", background: ({
-                        "Makanan Berat": "#f97316",
-                        "Makanan Ringan": "#16a34a",
-                        "Minuman": "#0194f3",
-                        "Cafe": "#7c3aed",
-                        "Oleh-oleh": "#0172B1",
-                        "Dessert": "#ec4899",
-                        "Street Food": "#ea580c",
-                        "Snack": "#64748b",
-                      }[k.category as string] ?? "#475569") }}>
-                       {k.category === "Makanan Berat" ? "Makanan" : k.category}
-                    </span>
-                  )}
-                  <span className="absolute bottom-3 left-3 flex items-center gap-1 text-[9px] font-semibold text-white/90">
-                    <MapPin className="h-3 w-3" strokeWidth={2.5} />
-                    {selectedCity === ALL_CITIES ? "Jawa Barat" : selectedCity}
-                  </span>
-                  {getGoogleRating(k) != null ? (
-                    <div className="absolute top-3 right-3 flex items-center gap-1 rounded-full bg-white/95 backdrop-blur-sm text-amber-700 text-[10px] md:text-xs font-extrabold px-2.5 py-1 shadow-md" title="Rating Google Maps">
-                      <Star className="h-3 w-3 fill-amber-400 text-amber-500" strokeWidth={1.5} />
-                      {getGoogleRating(k)!.toLocaleString("id-ID", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}
-                    </div>
-                  ) : k.computed_rating != null && (
-                    <div className="absolute top-3 right-3 flex items-center gap-1 rounded-full bg-slate-950/65 backdrop-blur-md text-white text-[10px] md:text-xs font-bold px-2.5 py-1 shadow-md" title="Rating Nempo">
-                      <Star className="h-3 w-3 fill-amber-300 text-amber-300" strokeWidth={1.5} />
-                      Nempo {k.computed_rating}
-                    </div>
-                  )}
-                </div>
-                <div className="p-3.5 md:p-4 flex flex-col flex-1">
-                  <h3 className="font-extrabold text-slate-900 text-sm md:text-[15px] leading-snug line-clamp-2 min-h-[2.5em]">{k.name}</h3>
-                  <div className="flex items-center gap-1.5 text-slate-500 text-[10px] md:text-[11px] mt-2 min-w-0">
-                    <MapPin className="h-3 w-3 shrink-0 text-orange-500" strokeWidth={2.5} />
-                    <span className="truncate">{k.location}</span>
-                  </div>
-                  {k.instagram && (
-                    <span role="link" tabIndex={0}
-                       onClick={e => { e.preventDefault(); e.stopPropagation(); window.open(`https://instagram.com/${(k.instagram as string).replace(/^@/, "")}`, "_blank", "noopener,noreferrer"); }}
-                       onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); window.open(`https://instagram.com/${(k.instagram as string).replace(/^@/, "")}`, "_blank", "noopener,noreferrer"); } }}
-                       className="flex items-center gap-1 text-pink-500 text-[10px] font-semibold mt-2 min-w-0 overflow-hidden cursor-pointer">
-                      <svg viewBox="0 0 24 24" className="h-3 w-3 fill-current shrink-0"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                      <span className="truncate">{(k.instagram as string).startsWith("@") ? k.instagram : `@${k.instagram}`}</span>
-                    </span>
-                  )}
-                  {k.review_count > 0 && (
-                    <div className="flex items-center gap-1 text-slate-400 text-[10px] md:text-[11px] mt-2">
-                      <ThumbsUp className="h-3 w-3" />
-                      <span>{k.review_count} ulasan</span>
-                    </div>
-                  )}
-                  <span className="flex items-center justify-between gap-2 mt-3 pt-3 border-t border-slate-100 text-[10px] md:text-[11px] font-extrabold text-orange-600">
-                    Temukan rasanya <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-        )}
+        {/* ── Kuliner Paling Populer — dihapus ── */}
+
 
         {/* ── Donasi Bibit Jawa Barat Hijau — hidden ── */}
         {/* <section className="relative overflow-hidden rounded-2xl">

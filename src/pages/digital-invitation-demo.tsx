@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 import { DigitalPreviewGate } from "@/components/digital-preview-gate";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import { useEffect, useState, type FormEvent } from "react";
 import "./digital-demo-super-app.css";
 import {

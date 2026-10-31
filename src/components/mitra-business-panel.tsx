@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import QRCode from "react-qr-code";
-import { useLocation } from "wouter";
+import { useLocation } from "@/lib/wouter";
 import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
 import {
   Store, Loader2, AlertCircle, CheckCircle, Pencil, MapPin, Clock, Wallet,

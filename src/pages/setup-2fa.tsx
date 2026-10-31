@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { useLocation } from "wouter";
+import { useLocation } from "@/lib/wouter";
 import {
   ArrowLeft, Shield, QrCode, KeyRound, CheckCircle,
   Loader2, AlertCircle, Copy, Eye, EyeOff, Smartphone,

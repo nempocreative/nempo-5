@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import {
   Ticket, Percent, Clock, ChevronLeft, Copy, CheckCircle2,
   Gift, Zap, Info, Tag, Calendar, Flame, AlertCircle, Loader2,

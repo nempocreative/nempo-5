@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 import { useAuth } from "@/contexts/auth-context";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import { ArrowLeft, User, Phone, Camera, CheckCircle, Loader2, AlertCircle } from "lucide-react";
 
 const API = import.meta.env.BASE_URL.replace(/\/$/, "") + "/../api";

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 import { SedangDipersiapkan } from "@/components/sedang-dipersiapkan";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
 import {

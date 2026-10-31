@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { useLocation } from "wouter";
+import { useLocation } from "@/lib/wouter";
 import {
   ArrowLeft, Shield, Eye, Database, Lock, UserCheck,
   RefreshCw, Globe, Mail, ChevronDown, ChevronUp,

@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { useRoute, Link } from "wouter";
+import { useRoute, Link } from "@/lib/wouter";
 import { useState, useEffect } from "react";
 import {
   MapPin, Star, Clock, Heart, Share2, ArrowLeft,

@@ -27,6 +27,15 @@ body,
 }
 
 @theme inline {
+  --color-brand: #0194f3;
+  --color-brand-navy: #17314a;
+  --color-brand-sky: #e8f5ff;
+  --color-brand-orange: #f97316;
+  --color-wed-rose: #b4466a;
+  --color-wed-blush: #fbeef1;
+  --color-wed-gold: #c79a4a;
+  --color-wed-ink: #3a1f2b;
+  --font-wed-serif: "Playfair Display", Georgia, serif;
   --color-blue-50:  hsl(39 45% 96%);
   --color-blue-100: hsl(38 42% 91%);
   --color-blue-200: hsl(37 38% 83%);
@@ -1055,12 +1064,7 @@ html, body, #root {
 .touch-card-row {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
-  scroll-snap-type: x proximity;
-  touch-action: pan-x pinch-zoom;
-}
-
-.touch-card-row > * {
-  scroll-snap-align: start;
+  touch-action: pan-x pan-y pinch-zoom;
 }
 
 .mobile-card-slider {

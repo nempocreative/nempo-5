@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 import { ArrowLeft, Lock, Eye, EyeOff, Loader2, CheckCircle, AlertCircle, KeyRound } from "lucide-react";
-import { useLocation } from "wouter";
+import { useLocation } from "@/lib/wouter";
 import { useAuth } from "@/contexts/auth-context";
 
 export default function ChangePasswordPage() {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import {
   Ticket, Clock, ChevronLeft, CheckCircle2, AlertCircle,
   Loader2, Gift, Compass, Coffee, UtensilsCrossed, Tag,

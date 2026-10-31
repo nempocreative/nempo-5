@@ -1,4 +1,4 @@
-import { useLocation } from "wouter";
+import { useLocation } from "@/lib/wouter";
 import { Home, Compass, MessageCircle, RefreshCw } from "lucide-react";
 
 export default function NotFound() {

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useLocation } from "wouter";
+import { useLocation } from "@/lib/wouter";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 import { useAuth } from "@/contexts/auth-context";

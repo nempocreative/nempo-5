@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Star, MessageSquare, Send, ThumbsUp, LogIn, User } from "lucide-react";
 import { useReviews } from "@/hooks/use-reviews";
 import { useAuth } from "@/contexts/auth-context";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 
 /* ── Star display ── */
 function Stars({ value, max = 5, size = "md" }: { value: number; max?: number; size?: "sm" | "md" | "lg" }) {

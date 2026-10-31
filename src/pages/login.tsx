@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "wouter";
+import { Link, useLocation } from "@/lib/wouter";
 import { SEO } from "@/components/seo";
 import {
   Mail, Lock, Eye, EyeOff, Loader2, AlertCircle,

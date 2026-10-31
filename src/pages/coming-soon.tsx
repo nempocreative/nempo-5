@@ -1,5 +1,5 @@
 import { Layout } from "@/components/layout";
-import { useLocation } from "wouter";
+import { useLocation } from "@/lib/wouter";
 import { ArrowLeft, Clock } from "lucide-react";
 
 export default function ComingSoonPage() {

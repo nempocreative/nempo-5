@@ -19,7 +19,7 @@ import {
   X,
 } from "lucide-react";
 import { useState, type FormEvent } from "react";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 
 type Student = {
   name: string;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import {
   Heart, MapPin, Utensils, Hotel, Calendar,
   Compass, ChevronRight, BookmarkX, Loader2, Search, X,

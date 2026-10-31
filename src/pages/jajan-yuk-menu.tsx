@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent, type PointerEvent } from "react";
-import { Link, useRoute } from "wouter";
+import { Link, useRoute } from "@/lib/wouter";
 import {
   ArrowLeft,
   ArrowRight,

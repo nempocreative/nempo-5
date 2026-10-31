@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import {
   Zap, ChevronLeft, Flame, Shield, Award, Crown, Gem,
   TrendingUp, ArrowUpRight, CheckCircle2, Lock, Loader2,

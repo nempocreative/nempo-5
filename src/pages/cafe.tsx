@@ -3,7 +3,7 @@ import { PageLoader } from "@/components/page-loader";
 import { SEO } from "@/components/seo";
 import { CityUnavailable } from "@/components/city-unavailable";
 import { PlacePhoto } from "@/components/place-photo";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import { useState, useEffect } from "react";
 import { useCityFilter } from "@/contexts/city-filter-context";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";

@@ -1,19 +1,14 @@
-User-agent: *
+User-agent: Googlebot
 Allow: /
 
-# Block admin and API paths from indexing
-Disallow: /admin-panel/
-Disallow: /api/
-Disallow: /api/admin/
+User-agent: Bingbot
+Allow: /
 
-# Allow important resources
-Allow: /Assets/
-Allow: /animations/
-Allow: /opengraph.jpg
-Allow: /favicon-*.png
+User-agent: Twitterbot
+Allow: /
 
-# Crawl delay (be polite to crawlers)
-Crawl-delay: 1
+User-agent: facebookexternalhit
+Allow: /
 
-# Sitemaps
-Sitemap: https://nempo.id/sitemap.xml
+User-agent: *
+Allow: /

@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import { ArrowLeft, FileText, ShieldCheck, Scale, AlertTriangle } from "lucide-react";
 
 const SECTIONS = [

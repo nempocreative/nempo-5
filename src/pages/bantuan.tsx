@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import { ArrowLeft, HelpCircle, ChevronDown, ChevronUp, MessageCircle, Phone, Search, X } from "lucide-react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";

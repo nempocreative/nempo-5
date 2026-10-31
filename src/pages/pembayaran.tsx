@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import { Copy, Clock, AlertCircle } from "lucide-react";
 import { SEO } from "@/components/seo";
 import { Button } from "@/components/ui/button";

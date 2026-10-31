@@ -1,4 +1,4 @@
-import { Link, useLocation } from "wouter";
+import { Link, useLocation } from "@/lib/wouter";
 import { useState, useEffect, useRef } from "react";
 import { Home, Compass, Calendar, Newspaper, Ticket, User, Bell, Search, X, ChevronDown, MapPin, LockKeyhole, Utensils, Trophy, Car, Backpack, BookOpen, Globe, MessageCircle, Phone, Mail, Instagram, ChevronRight as ChevronRightIcon, ChevronLeft, Leaf, Route, Send, Bot, AlertTriangle, Wallet, Music, ArrowLeft, Heart, Crown, Coffee, Mountain, Users, Zap, Lightbulb, Shield, Flame, HeartPulse, Anchor, Building2, Handshake, Stethoscope, Play, Pause, Volume2, Award, Droplet, ClipboardList, Shirt, Gift, ChefHat } from "lucide-react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";

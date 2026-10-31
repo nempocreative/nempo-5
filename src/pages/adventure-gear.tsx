@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 import { SedangDipersiapkan } from "@/components/sedang-dipersiapkan";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import { mockGear } from "@/data/mockGear";
 import { useEffect, useState } from "react";
 import {
