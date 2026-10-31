@@ -35,6 +35,6 @@ describe("backup", () => {
   });
 
   it("names the file with date and time", () => {
-    expect(backupFileName(new Date(2026, 9, 31, 20, 5))).toBe("nempo-backup-2026-10-31-2005.json");
+    expect(backupFileName(new Date(2026, 9, 31, 20, 5))).toBe("nempo-organizer-backup-2026-10-31-2005.json");
   });
 });
