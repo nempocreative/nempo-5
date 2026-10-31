@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as BackupRouteImport } from './routes/backup'
+import { Route as SosmedManagementRouteImport } from './routes/sosmed-management'
 import { Route as WeddingOrganizerRouteImport } from './routes/wedding-organizer'
 import { Route as AdminPanelIndexRouteImport } from './routes/admin-panel.index'
 import { Route as AdminPanelSplatRouteImport } from './routes/admin-panel.$'
@@ -39,6 +40,11 @@ const SplatRoute = SplatRouteImport.update({
 const BackupRoute = BackupRouteImport.update({
   id: '/backup',
   path: '/backup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SosmedManagementRoute = SosmedManagementRouteImport.update({
+  id: '/sosmed-management',
+  path: '/sosmed-management',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WeddingOrganizerRoute = WeddingOrganizerRouteImport.update({
@@ -111,6 +117,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/backup': typeof BackupRoute
+  '/sosmed-management': typeof SosmedManagementRoute
   '/wedding-organizer': typeof WeddingOrganizerRoute
   '/admin-panel/$': typeof AdminPanelSplatRoute
   '/api/$': typeof ApiSplatRoute
@@ -129,6 +136,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/backup': typeof BackupRoute
+  '/sosmed-management': typeof SosmedManagementRoute
   '/wedding-organizer': typeof WeddingOrganizerRoute
   '/admin-panel/$': typeof AdminPanelSplatRoute
   '/api/$': typeof ApiSplatRoute
@@ -148,6 +156,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/backup': typeof BackupRoute
+  '/sosmed-management': typeof SosmedManagementRoute
   '/wedding-organizer': typeof WeddingOrganizerRoute
   '/admin-panel/$': typeof AdminPanelSplatRoute
   '/api/$': typeof ApiSplatRoute
@@ -168,6 +177,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/backup'
+    | '/sosmed-management'
     | '/wedding-organizer'
     | '/admin-panel/$'
     | '/api/$'
@@ -186,6 +196,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/backup'
+    | '/sosmed-management'
     | '/wedding-organizer'
     | '/admin-panel/$'
     | '/api/$'
@@ -204,6 +215,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/backup'
+    | '/sosmed-management'
     | '/wedding-organizer'
     | '/admin-panel/$'
     | '/api/$'
@@ -223,6 +235,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
   BackupRoute: typeof BackupRoute
+  SosmedManagementRoute: typeof SosmedManagementRoute
   WeddingOrganizerRoute: typeof WeddingOrganizerRoute
   AdminPanelSplatRoute: typeof AdminPanelSplatRoute
   ApiSplatRoute: typeof ApiSplatRoute
@@ -259,6 +272,13 @@ declare module '@tanstack/react-router' {
       path: '/backup'
       fullPath: '/backup'
       preLoaderRoute: typeof BackupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sosmed-management': {
+      id: '/sosmed-management'
+      path: '/sosmed-management'
+      fullPath: '/sosmed-management'
+      preLoaderRoute: typeof SosmedManagementRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/wedding-organizer': {
@@ -359,6 +379,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
   BackupRoute: BackupRoute,
+  SosmedManagementRoute: SosmedManagementRoute,
   WeddingOrganizerRoute: WeddingOrganizerRoute,
   AdminPanelSplatRoute: AdminPanelSplatRoute,
   ApiSplatRoute: ApiSplatRoute,

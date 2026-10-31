@@ -82,6 +82,7 @@ const SponsorshipEventPage = lazy(() => import("@/pages/sponsorship-event"));
 const HalloweenProposalPage = lazy(() => import("@/pages/sponsorship-proposal"));
 const EventOrganizerPage = lazy(() => import("@/pages/event-organizer"));
 const WeddingOrganizerPage = lazy(() => import("@/pages/wedding-organizer"));
+const SosmedManagementPage = lazy(() => import("@/pages/sosmed-management"));
 const PriceListPage = lazy(() => import("@/pages/price-list"));
 const DonasiBibitPage = lazy(() => import("@/pages/donasi-bibit"));
 const TalentPage = lazy(() => import("@/pages/talent"));
@@ -239,6 +240,7 @@ function Router() {
       <Route path="/sponsorship" component={SponsorshipPage} />
       <Route path="/event-organizer" component={EventOrganizerPage} />
       <Route path="/wedding-organizer" component={WeddingOrganizerPage} />
+      <Route path="/sosmed-management" component={SosmedManagementPage} />
       <Route path="/kerja-sama" component={PriceListPage} />
       <Route path="/price-list" component={PriceListPage} />
       {/* <Route path="/donasi-bibit" component={DonasiBibitPage} /> */}
