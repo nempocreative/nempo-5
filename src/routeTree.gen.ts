@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
+import { Route as BackupRouteImport } from './routes/backup'
 import { Route as WeddingOrganizerRouteImport } from './routes/wedding-organizer'
 import { Route as AdminPanelIndexRouteImport } from './routes/admin-panel.index'
 import { Route as AdminPanelSplatRouteImport } from './routes/admin-panel.$'
@@ -33,6 +34,11 @@ const IndexRoute = IndexRouteImport.update({
 const SplatRoute = SplatRouteImport.update({
   id: '/$',
   path: '/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BackupRoute = BackupRouteImport.update({
+  id: '/backup',
+  path: '/backup',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WeddingOrganizerRoute = WeddingOrganizerRouteImport.update({
@@ -104,6 +110,7 @@ const TionFeedSplatRoute = TionFeedSplatRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/backup': typeof BackupRoute
   '/wedding-organizer': typeof WeddingOrganizerRoute
   '/admin-panel/$': typeof AdminPanelSplatRoute
   '/api/$': typeof ApiSplatRoute
@@ -121,6 +128,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/backup': typeof BackupRoute
   '/wedding-organizer': typeof WeddingOrganizerRoute
   '/admin-panel/$': typeof AdminPanelSplatRoute
   '/api/$': typeof ApiSplatRoute
@@ -139,6 +147,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/backup': typeof BackupRoute
   '/wedding-organizer': typeof WeddingOrganizerRoute
   '/admin-panel/$': typeof AdminPanelSplatRoute
   '/api/$': typeof ApiSplatRoute
@@ -158,6 +167,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/$'
+    | '/backup'
     | '/wedding-organizer'
     | '/admin-panel/$'
     | '/api/$'
@@ -175,6 +185,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/$'
+    | '/backup'
     | '/wedding-organizer'
     | '/admin-panel/$'
     | '/api/$'
@@ -192,6 +203,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/$'
+    | '/backup'
     | '/wedding-organizer'
     | '/admin-panel/$'
     | '/api/$'
@@ -210,6 +222,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
+  BackupRoute: typeof BackupRoute
   WeddingOrganizerRoute: typeof WeddingOrganizerRoute
   AdminPanelSplatRoute: typeof AdminPanelSplatRoute
   ApiSplatRoute: typeof ApiSplatRoute
@@ -239,6 +252,13 @@ declare module '@tanstack/react-router' {
       path: '/$'
       fullPath: '/$'
       preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/backup': {
+      id: '/backup'
+      path: '/backup'
+      fullPath: '/backup'
+      preLoaderRoute: typeof BackupRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/wedding-organizer': {
@@ -338,6 +358,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
+  BackupRoute: BackupRoute,
   WeddingOrganizerRoute: WeddingOrganizerRoute,
   AdminPanelSplatRoute: AdminPanelSplatRoute,
   ApiSplatRoute: ApiSplatRoute,
