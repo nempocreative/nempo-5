@@ -191,9 +191,7 @@ export const api = {
 
   backup: {
     download: async () => {
-      const res = await fetch(`${BASE}/admin/backup/export`, {
-        headers: { Authorization: `Bearer ${getToken()}` },
-      });
+      const res = await fetch(`${BASE}/backup`, { cache: "no-store" });
       if (!res.ok) {
         const err = await safeJson(res);
         throw new Error(err.error || "Backup gagal dibuat");
