@@ -99,7 +99,7 @@ export default function EventOrganizerPage() {
     <Layout>
       <div className="bg-background pb-12">
         {/* Hero */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-brand-navy via-brand-navy to-brand px-5 pb-20 pt-12 text-primary-foreground">
+        <section className="relative overflow-hidden bg-gradient-to-br from-brand via-brand to-brand-orange/70 px-5 pb-20 pt-12 text-primary-foreground">
           <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand/40 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-brand-orange/25 blur-3xl" />
           {/* floating decor — coretan tangan */}
@@ -205,7 +205,7 @@ export default function EventOrganizerPage() {
                 key={p.name}
                 className={`wed-card-pop relative overflow-hidden rounded-3xl p-6 ${
                   p.popular
-                    ? "bg-gradient-to-br from-brand-navy to-brand text-primary-foreground shadow-xl shadow-brand/25"
+                    ? "bg-gradient-to-br from-brand to-brand/75 text-primary-foreground shadow-xl shadow-brand/25"
                     : "border-2 border-dashed border-border bg-card text-foreground"
                 }`}
               >
@@ -284,7 +284,7 @@ export default function EventOrganizerPage() {
 
         {/* CTA */}
         <section className="px-4 pt-12">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand to-brand-navy p-7 text-center text-primary-foreground">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand via-brand to-brand-orange/70 p-7 text-center text-primary-foreground">
             <div className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-brand-orange/30 blur-2xl" />
             <Burst className="wed-float pointer-events-none absolute left-[10%] top-8 h-7 w-7 text-brand-orange/60" />
             <Squiggle className="wed-wiggle pointer-events-none absolute right-[12%] bottom-10 h-5 w-12 text-primary-foreground/30" />
