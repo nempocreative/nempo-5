@@ -6,7 +6,10 @@ import {
   PartyPopper, Building2, Music, GraduationCap, Trophy,
   MessageCircle, ClipboardList, Palette, Wrench, FileCheck,
   Check, ChevronDown, Award, Users, CalendarCheck, MapPin, ArrowRight,
+  Sparkles, Star, Zap,
 } from "lucide-react";
+
+const hand = "font-[family-name:var(--font-wed-hand)]";
 
 const services = [
   { icon: MapPin, title: "Outing & Tour", color: "#6366F1", desc: "Perjalanan wisata rombongan, outing kantor, dan tur komunitas dengan transportasi lengkap." },
@@ -51,6 +54,8 @@ const faqs = [
   { q: "Bagaimana sistem pembayarannya?", a: "DP 30% untuk mengunci tanggal, 50% saat persiapan, dan pelunasan H-3 acara." },
 ];
 
+const marqueeItems = ["Konser & Festival", "Corporate Event", "Outing & Tour", "Pensi & Wisuda", "Lomba & Turnamen", "Private Party", "Garut • Jawa Barat"];
+
 function LuxIcon({ icon: Icon, color, size = "md", className = "" }: { icon: React.ElementType; color: string; size?: "sm" | "md"; className?: string }) {
   const box = size === "sm" ? "h-11 w-11 rounded-[14px]" : "h-[52px] w-[52px] rounded-[16px]";
   return (
@@ -75,34 +80,65 @@ export default function EventOrganizerPage() {
     <Layout>
       <div className="bg-background pb-12">
         {/* Hero */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-brand-navy via-brand-navy to-brand px-5 pb-16 pt-10 text-primary-foreground">
+        <section className="relative overflow-hidden bg-gradient-to-br from-brand-navy via-brand-navy to-brand px-5 pb-20 pt-12 text-primary-foreground">
           <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand/40 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-brand-orange/25 blur-3xl" />
-          <span className="relative inline-flex items-center gap-1.5 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider backdrop-blur">
-            NEMPO Event Organizer
-          </span>
-          <h1 className="relative mt-5 text-[28px] font-extrabold leading-[1.15] tracking-tight">
+          {/* floating decor */}
+          <PartyPopper className="wed-float pointer-events-none absolute right-[12%] top-14 h-8 w-8 text-brand-orange/70" aria-hidden />
+          <Sparkles className="wed-wiggle pointer-events-none absolute left-[8%] top-24 h-6 w-6 text-primary-foreground/40" aria-hidden />
+          <Star className="wed-float-slow pointer-events-none absolute right-[24%] bottom-24 h-5 w-5 fill-brand-orange/50 text-brand-orange/50" aria-hidden />
+          <Zap className="wed-float pointer-events-none absolute left-[16%] bottom-32 h-6 w-6 text-brand-orange/50" aria-hidden />
+          <Music className="wed-float-slow pointer-events-none absolute right-[8%] bottom-40 h-7 w-7 text-primary-foreground/30" aria-hidden />
+
+          <p className={`${hand} relative text-2xl text-brand-orange sm:text-3xl`}>punya rencana acara?</p>
+          <h1 className="relative mt-3 text-[32px] font-extrabold leading-[1.12] tracking-tight sm:text-5xl">
             Acara impianmu,<br />
             <span className="text-brand-orange">kami yang urus</span> dari awal sampai akhir.
           </h1>
           <p className="relative mt-4 max-w-md text-sm leading-relaxed text-primary-foreground/80">
             Event organizer asal Garut — konsep kreatif, vendor terpercaya, dan tim lapangan berpengalaman di seluruh Jawa Barat.
           </p>
-          <div className="relative mt-7 flex gap-3">
-            <a href="#paket" className="flex-1 rounded-xl bg-brand-orange px-5 py-3.5 text-center text-sm font-bold text-primary-foreground shadow-lg shadow-brand-orange/30 active:scale-[0.98]">
+          <div className="relative mt-7 flex flex-wrap gap-3">
+            <a href="#paket" className="wed-sticker flex-1 rounded-full bg-brand-orange px-5 py-3.5 text-center text-sm font-bold text-primary-foreground shadow-lg shadow-brand-orange/30 transition-transform active:scale-[0.98] sm:flex-none sm:px-8">
               Lihat Paket
             </a>
-            <Link href="/price-list" className="flex-1 rounded-xl border border-primary-foreground/30 bg-primary-foreground/10 px-5 py-3.5 text-center text-sm font-bold backdrop-blur active:scale-[0.98]">
+            <Link href="/price-list" className="flex-1 rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-5 py-3.5 text-center text-sm font-bold backdrop-blur transition-transform active:scale-[0.98] sm:flex-none sm:px-8">
               Daftar Harga
             </Link>
           </div>
+          <div className="relative mt-6 flex flex-wrap gap-2">
+            {["150+ event", "50rb+ peserta", "Rating 4.9"].map((chip) => (
+              <span key={chip} className="inline-flex items-center gap-1.5 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-3.5 py-1.5 text-[11px] font-semibold backdrop-blur">
+                <Star className="h-3 w-3 fill-brand-orange text-brand-orange" />
+                {chip}
+              </span>
+            ))}
+          </div>
+
+          {/* wavy divider */}
+          <svg className="absolute bottom-0 left-0 w-full text-brand-orange" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden>
+            <path d="M0,32 C240,60 480,4 720,28 C960,52 1200,8 1440,32 L1440,60 L0,60 Z" fill="currentColor" />
+          </svg>
         </section>
 
+        {/* Marquee ribbon */}
+        <div className="overflow-hidden bg-brand-orange py-3 text-primary-foreground" aria-hidden>
+          <div className="wed-marquee flex w-max items-center gap-8">
+            {[...marqueeItems, ...marqueeItems].map((item, i) => (
+              <span key={i} className="flex items-center gap-8 text-sm font-semibold tracking-wide">
+                {item}
+                <Sparkles className="h-3.5 w-3.5" />
+              </span>
+            ))}
+          </div>
+        </div>
+
         {/* Stats */}
-        <section className="relative -mt-9 px-4">
-          <div className="grid grid-cols-4 divide-x divide-border rounded-2xl border border-border bg-card py-4 shadow-xl shadow-brand-navy/10">
+        <section className="relative -mt-0 px-4 pt-8">
+          <div className="grid grid-cols-4 divide-x divide-border rounded-3xl border-2 border-dashed border-brand/25 bg-card py-5 shadow-xl shadow-brand-navy/10">
             {stats.map((s) => (
               <div key={s.label} className="px-1 text-center">
+                <s.icon className="mx-auto mb-1.5 h-4 w-4 text-brand-orange" aria-hidden />
                 <p className="text-lg font-extrabold text-brand">{s.value}</p>
                 <p className="mt-0.5 text-[10px] font-medium leading-tight text-muted-foreground">{s.label}</p>
               </div>
@@ -111,11 +147,11 @@ export default function EventOrganizerPage() {
         </section>
 
         {/* Services */}
-        <section className="px-4 pt-10">
-          <SectionHead eyebrow="Layanan" title="Satu tim untuk semua jenis acara" />
+        <section className="px-4 pt-12">
+          <SectionHead eyebrow="Layanan" title="Satu tim untuk semua jenis acara" note="apapun acaranya, gas!" />
           <div className="grid grid-cols-2 gap-3">
             {services.map((s) => (
-              <div key={s.title} className="rounded-2xl border border-border bg-card p-4 transition-colors hover:border-brand/40">
+              <div key={s.title} className="wed-card-pop rounded-3xl border-2 border-dashed border-border bg-card p-4 hover:border-brand/40">
                 <LuxIcon icon={s.icon} color={s.color} className="mb-3.5" />
                 <h3 className="text-[13px] font-bold leading-snug text-foreground">{s.title}</h3>
                 <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground">{s.desc}</p>
@@ -125,15 +161,15 @@ export default function EventOrganizerPage() {
         </section>
 
         {/* Process */}
-        <section className="mt-10 bg-brand-sky px-4 py-10">
-          <SectionHead eyebrow="Cara Kerja" title="5 langkah, tanpa ribet" />
+        <section className="mt-12 bg-brand-sky px-4 py-12">
+          <SectionHead eyebrow="Cara Kerja" title="5 langkah, tanpa ribet" note="kamu santai, kami yang gerak" />
           <ol className="space-y-3">
             {steps.map((s, i) => (
-              <li key={s.title} className="flex gap-4 rounded-2xl bg-card p-4 shadow-sm">
+              <li key={s.title} className="wed-card-pop flex gap-4 rounded-3xl border-2 border-transparent bg-card p-4 shadow-sm hover:border-brand/30">
                 <LuxIcon icon={s.icon} color={s.color} size="sm" />
                 <div>
                   <h3 className="flex items-center gap-1.5 text-sm font-bold text-brand-navy">
-                    <span className="text-[11px] font-extrabold text-brand">{String(i + 1).padStart(2, "0")}</span> {s.title}
+                    <span className="rounded-full bg-brand-sky px-2 py-0.5 text-[11px] font-extrabold text-brand">{String(i + 1).padStart(2, "0")}</span> {s.title}
                   </h3>
                   <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{s.desc}</p>
                 </div>
@@ -143,27 +179,28 @@ export default function EventOrganizerPage() {
         </section>
 
         {/* Packages */}
-        <section id="paket" className="scroll-mt-20 px-4 pt-10">
-          <SectionHead eyebrow="Paket" title="Pilih sesuai kebutuhanmu" sub="Harga indikatif, bisa disesuaikan dengan budget." />
-          <div className="space-y-4">
+        <section id="paket" className="scroll-mt-20 px-4 pt-12">
+          <SectionHead eyebrow="Paket" title="Pilih sesuai kebutuhanmu" sub="Harga indikatif, bisa disesuaikan dengan budget." note="ada yang pas buat semua" />
+          <div className="space-y-5">
             {packages.map((p) => (
               <div
                 key={p.name}
-                className={`relative overflow-hidden rounded-2xl p-5 ${
+                className={`wed-card-pop relative overflow-hidden rounded-3xl p-6 ${
                   p.popular
                     ? "bg-gradient-to-br from-brand-navy to-brand text-primary-foreground shadow-xl shadow-brand/25"
-                    : "border border-border bg-card text-foreground"
+                    : "border-2 border-dashed border-border bg-card text-foreground"
                 }`}
               >
                 {p.popular && (
-                  <span className="absolute right-4 top-4 rounded-full bg-brand-orange px-2.5 py-1 text-[10px] font-bold tracking-wide text-primary-foreground">
+                  <span className="wed-sticker wed-wiggle absolute -right-1 top-5 rotate-3 rounded-full bg-brand-orange px-3.5 py-1.5 text-[10px] font-bold tracking-wide text-primary-foreground">
                     PALING DIMINATI
                   </span>
                 )}
-                <h3 className="text-lg font-extrabold">{p.name}</h3>
+                <p className={`${hand} text-xl ${p.popular ? "text-brand-orange" : "text-brand"}`}>paket</p>
+                <h3 className="-mt-1 text-xl font-extrabold">{p.name}</h3>
                 <p className={`text-xs ${p.popular ? "text-primary-foreground/75" : "text-muted-foreground"}`}>{p.note}</p>
                 <p className={`mt-3 text-2xl font-extrabold ${p.popular ? "" : "text-brand"}`}>{p.price}</p>
-                <div className={`my-4 h-px ${p.popular ? "bg-primary-foreground/20" : "bg-border"}`} />
+                <div className={`my-4 border-t-2 border-dashed ${p.popular ? "border-primary-foreground/20" : "border-border"}`} />
                 <ul className="space-y-2">
                   {p.items.map((it) => (
                     <li key={it} className="flex items-start gap-2.5 text-[13px]">
@@ -176,7 +213,7 @@ export default function EventOrganizerPage() {
                 </ul>
                 <Link
                   href="/price-list"
-                  className={`mt-5 block rounded-xl py-3 text-center text-sm font-bold ${
+                  className={`wed-sticker mt-5 block rounded-full py-3 text-center text-sm font-bold ${
                     p.popular ? "bg-primary-foreground text-brand-navy" : "bg-brand text-primary-foreground"
                   }`}
                 >
@@ -188,13 +225,14 @@ export default function EventOrganizerPage() {
         </section>
 
         {/* Testimonials */}
-        <section className="pt-10">
-          <div className="px-4"><SectionHead eyebrow="Testimoni" title="Kata klien kami" /></div>
+        <section className="pt-12">
+          <div className="px-4"><SectionHead eyebrow="Testimoni" title="Kata klien kami" note="mereka puas, kamu kapan?" /></div>
           <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none]">
             {testimonials.map((t) => (
-              <div key={t.name} className="flex w-[78%] shrink-0 snap-start flex-col rounded-2xl border border-border bg-card p-5">
+              <div key={t.name} className="wed-card-pop flex w-[78%] shrink-0 snap-start flex-col rounded-3xl border-2 border-dashed border-border bg-card p-5 sm:w-[46%]">
+                <Sparkles className="mb-3 h-5 w-5 text-brand-orange" aria-hidden />
                 <p className="flex-1 text-[13px] leading-relaxed text-foreground">“{t.text}”</p>
-                <div className="mt-4 flex items-center gap-3 border-t border-border pt-4">
+                <div className="mt-4 flex items-center gap-3 border-t border-dashed border-border pt-4">
                   <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-sky text-sm font-bold text-brand">
                     {t.name.charAt(0)}
                   </div>
@@ -209,11 +247,11 @@ export default function EventOrganizerPage() {
         </section>
 
         {/* FAQ */}
-        <section className="px-4 pt-10">
-          <SectionHead eyebrow="FAQ" title="Pertanyaan umum" />
-          <div className="space-y-2.5">
+        <section className="px-4 pt-12">
+          <SectionHead eyebrow="FAQ" title="Pertanyaan umum" note="biar gak penasaran" />
+          <div className="space-y-3">
             {faqs.map((f, i) => (
-              <div key={f.q} className={`rounded-2xl border bg-card transition-colors ${open === i ? "border-brand/40" : "border-border"}`}>
+              <div key={f.q} className={`rounded-2xl border-2 bg-card transition-colors ${open === i ? "border-brand/40" : "border-dashed border-border"}`}>
                 <button onClick={() => setOpen(open === i ? null : i)} className="flex w-full items-center justify-between gap-3 p-4 text-left text-[13px] font-semibold text-brand-navy">
                   {f.q}
                   <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${open === i ? "bg-brand text-primary-foreground" : "bg-brand-sky text-brand"}`}>
@@ -227,12 +265,16 @@ export default function EventOrganizerPage() {
         </section>
 
         {/* CTA */}
-        <section className="px-4 pt-10">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand to-brand-navy p-6 text-primary-foreground">
+        <section className="px-4 pt-12">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand to-brand-navy p-7 text-center text-primary-foreground">
             <div className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-brand-orange/30 blur-2xl" />
-            <h2 className="relative text-xl font-extrabold leading-snug">Siap bikin acara yang berkesan?</h2>
-            <p className="relative mt-2 text-sm text-primary-foreground/80">Konsultasi gratis — ceritakan rencana acaramu, kami bantu wujudkan.</p>
-            <Link href="/price-list" className="relative mt-5 inline-flex items-center gap-2 rounded-xl bg-brand-orange px-5 py-3 text-sm font-bold text-primary-foreground shadow-lg shadow-brand-orange/30">
+            <PartyPopper className="wed-float pointer-events-none absolute left-[10%] top-8 h-7 w-7 text-brand-orange/60" aria-hidden />
+            <Sparkles className="wed-wiggle pointer-events-none absolute right-[12%] bottom-10 h-6 w-6 text-primary-foreground/30" aria-hidden />
+            <PartyPopper className="wed-pulse-heart relative mx-auto h-9 w-9 text-brand-orange" aria-hidden />
+            <p className={`${hand} relative mt-3 text-2xl text-brand-orange`}>jangan cuma jadi wacana</p>
+            <h2 className="relative mt-1 text-2xl font-extrabold leading-snug">Siap bikin acara yang berkesan?</h2>
+            <p className="relative mx-auto mt-2 max-w-sm text-sm text-primary-foreground/80">Konsultasi gratis — ceritakan rencana acaramu, kami bantu wujudkan.</p>
+            <Link href="/price-list" className="wed-sticker relative mt-6 inline-flex items-center gap-2 rounded-full bg-brand-orange px-7 py-3.5 text-sm font-bold text-primary-foreground shadow-lg shadow-brand-orange/30">
               Mulai Konsultasi <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -242,11 +284,12 @@ export default function EventOrganizerPage() {
   );
 }
 
-function SectionHead({ eyebrow, title, sub }: { eyebrow: string; title: string; sub?: string }) {
+function SectionHead({ eyebrow, title, sub, note }: { eyebrow: string; title: string; sub?: string; note?: string }) {
   return (
-    <div className="mb-5">
+    <div className="mb-6">
       <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-brand-orange">{eyebrow}</p>
       <h2 className="mt-1 text-[22px] font-extrabold leading-tight text-brand-navy">{title}</h2>
+      {note && <p className={`${hand} mt-0.5 text-xl text-brand`}>{note}</p>}
       {sub && <p className="mt-1 text-sm text-muted-foreground">{sub}</p>}
     </div>
   );
