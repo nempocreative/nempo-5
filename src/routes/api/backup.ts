@@ -3,6 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import {
   BACKUP_PAGE_SIZE,
   BACKUP_TABLES,
+  backupFileName,
   buildBackupFile,
   fetchAllRows,
   orderColumn,
@@ -29,7 +30,7 @@ function client() {
 export const Route = createFileRoute("/api/backup")({
   server: {
     handlers: {
-      GET: async () => {
+      GET: async ({ request }) => {
         const sb = client();
         const entries = await Promise.all(
           BACKUP_TABLES.map(async (table): Promise<[BackupTable, BackupTableResult]> => {
@@ -57,6 +58,9 @@ export const Route = createFileRoute("/api/backup")({
           headers: {
             "content-type": "application/json; charset=utf-8",
             "cache-control": "no-store",
+            ...(new URL(request.url).searchParams.has("download")
+              ? { "content-disposition": `attachment; filename="${backupFileName()}"` }
+              : {}),
           },
         });
       },

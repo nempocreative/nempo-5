@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { AlertTriangle, CheckCircle2, Database, Download, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { backupFileName, type BackupFile } from "@/lib/backup";
+import type { BackupFile } from "@/lib/backup";
 
 export const Route = createFileRoute("/backup")({
   head: () => ({
@@ -40,40 +40,31 @@ const LABELS: Record<string, string> = {
   wisata: "Wisata",
 };
 
-function downloadBlob(blob: Blob, filename: string) {
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 30_000);
-}
 
 function BackupPage() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [backup, setBackup] = useState<{ file: BackupFile; blob: Blob; name: string } | null>(null);
+  const [file, setFile] = useState<BackupFile | null>(null);
 
-  async function prepare() {
+  async function check() {
     setLoading(true);
     setError("");
-    setBackup(null);
     try {
       const res = await fetch("/api/backup", { cache: "no-store" });
       if (!res.ok) throw new Error("Server tidak merespons");
-      const text = await res.text();
-      const file = JSON.parse(text) as BackupFile;
-      setBackup({ file, blob: new Blob([text], { type: "application/json;charset=utf-8" }), name: backupFileName() });
+      setFile((await res.json()) as BackupFile);
     } catch {
-      setError("Backup gagal disiapkan. Coba lagi sebentar lagi.");
+      setError("Isi backup belum bisa dicek. Tombol unduh tetap bisa dipakai.");
     } finally {
       setLoading(false);
     }
   }
 
-  const s = backup?.file.summary;
+  useEffect(() => {
+    void check();
+  }, []);
+
+  const s = file?.summary;
 
   return (
     <main className="min-h-screen bg-brand-sky px-4 py-12">
@@ -90,21 +81,21 @@ function BackupPage() {
 
         <section className="rounded-2xl border border-border bg-card p-6 shadow-sm">
           <p className="text-sm leading-relaxed text-muted-foreground">
-            Tekan <b className="text-foreground">Siapkan Backup</b> untuk mengambil semua data dari {Object.keys(LABELS).length} tabel. Setelah jumlah
-            datanya tampil, tekan <b className="text-foreground">Unduh File JSON</b> dan simpan filenya di tempat yang aman.
+            Tekan <b className="text-foreground">Unduh Backup Sekarang</b>. File selalu diambil langsung dari data terbaru, jadi setiap
+            perubahan (data baru, diedit, atau dihapus) otomatis ikut masuk ke backup.
           </p>
 
           <div className="mt-5 flex flex-wrap gap-3">
-            <Button onClick={prepare} disabled={loading}>
-              {loading ? <RefreshCw className="h-4 w-4 animate-spin" /> : <RefreshCw className="h-4 w-4" />}
-              {loading ? "Menyiapkan..." : backup ? "Siapkan Ulang" : "Siapkan Backup"}
-            </Button>
-            {backup && (
-              <Button onClick={() => downloadBlob(backup.blob, backup.name)}>
+            <Button asChild size="lg">
+              <a href="/api/backup?download=1" download>
                 <Download className="h-4 w-4" />
-                Unduh File JSON
-              </Button>
-            )}
+                Unduh Backup Sekarang
+              </a>
+            </Button>
+            <Button variant="secondary" size="lg" onClick={check} disabled={loading}>
+              <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
+              {loading ? "Mengecek isi..." : "Cek Ulang Isi"}
+            </Button>
           </div>
 
           {error && (
@@ -124,8 +115,8 @@ function BackupPage() {
                 {s.complete ? <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" /> : <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />}
                 <span>
                   {s.complete
-                    ? `Lengkap: ${s.totalRows.toLocaleString("id-ID")} data dari ${s.tables} tabel siap diunduh.`
-                    : `Ada tabel yang belum lengkap: ${s.problems.join("; ")}. Coba siapkan ulang.`}
+                    ? `Lengkap: ${s.totalRows.toLocaleString("id-ID")} data dari ${s.tables} tabel akan masuk ke backup.`
+                    : `Ada tabel yang belum lengkap: ${s.problems.join("; ")}. Coba cek ulang.`}
                 </span>
               </div>
               <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
