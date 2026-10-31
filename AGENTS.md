@@ -16,3 +16,4 @@
 - tsconfig strict extras (noUncheckedIndexedAccess, exactOptionalPropertyTypes, etc.) are off; why: the imported code was written without them.
 - Other Replit artifacts live in `src/apps/<key>/` (own `@/apps/<key>/` imports, `entry.tsx`, public files under `public/<base>/`) and mount at `/<base>` via `src/routes/<base>.index.tsx` + `<base>.$.tsx` using `AppShell`; why: each was a separate Vite app and they must not collide.
 - Full-data JSON backup: `src/lib/backup.ts` lists every database table (a type check fails if a table is missing), `/api/backup` serves the file, and `/backup` is the download page; why: one source for "everything" so new tables can't silently drop out of backups.
+- Sub-app stylesheets (`src/apps/*/index.css`) can end up loaded on main-site pages, so they must never set shared theme variables (`--primary`, `--primary-foreground`, ...) to placeholder values; why: a leaked placeholder made white text on every main-site page fall back to dark.
