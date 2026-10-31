@@ -8,6 +8,7 @@ import { useAuth } from "@/contexts/auth-context";
 import { ALL_CITIES, CITY_OPTIONS, useCityFilter, type CityName } from "@/contexts/city-filter-context";
 import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
 import { mainNavItems } from "@/data/main-nav-items";
+import { GREET_MSG, botReply, type ChatMsg } from "@/data/buddy-chat";
 import {
   NavAdventureIcon,
   NavBeritaIcon,
@@ -280,125 +281,6 @@ function CityPicker({ mobile = false, compact = false }: { mobile?: boolean; com
       )}
     </div>
   );
-}
-
-type ChatMsg = { from: "bot" | "user"; text: string; chips?: string[]; wa?: boolean };
-
-const GREET_MSG: ChatMsg = {
-  from: "bot",
-  text: "Halo, aku Buddy. Aku bisa bantu cari ide wisata, kuliner, event, tiket, sampai rencana perjalanan. Pilih topik di bawah atau ceritakan tujuanmu.",
-  chips: ["Wisata dekat sini", "Kuliner wajib coba", "Cara pesan tiket", "Event terdekat", "Rencana trip 1 hari", "Cara pakai Nempo"],
-};
-
-const BOT_QA: { keys: string[]; answer: string; chips?: string[]; wa?: boolean }[] = [
-  {
-    keys: ["wisata", "destinasi", "objek", "tempat wisata", "liburan"],
-    answer: "Bisa! Nempo punya pilihan wisata alam, budaya, keluarga, dan tempat healing di Jawa Barat. Kamu ingin rekomendasi berdasarkan suasana, aktivitas, atau lokasi?",
-    chips: ["Wisata alam", "Wisata keluarga", "Pantai", "Budaya"],
-  },
-  {
-    keys: ["kuliner", "makan", "makanan", "restoran", "kafe", "cafe", "warung"],
-    answer: "Siap! Temukan cafe, resto, dan kuliner khas Sunda di sekitar tujuanmu. Nempo bisa bantu mulai dari tempat ngopi santai sampai makanan lokal yang wajib dicoba.",
-    chips: ["Cari cafe", "Kuliner khas Sunda", "Kuliner terdekat"],
-  },
-  {
-    keys: ["hotel", "penginapan", "villa", "menginap", "homestay", "resort", "inap"],
-    answer: "Ada pilihan homestay, villa, hotel, sampai resort. Buka menu Penginapan untuk melihat foto, fasilitas, lokasi, dan pilihan yang sesuai dengan rencana perjalananmu.",
-    chips: ["Lihat Penginapan"],
-  },
-  {
-    keys: ["tiket", "beli tiket", "harga tiket", "pesan tiket", "bayar"],
-    answer: "Pesan tiketnya mudah: pilih destinasi atau event, cek detail dan tanggal, isi data pemesan, lalu lanjutkan pembayaran. Setelah berhasil, tiket bisa dicek kembali dari menu Tiket.",
-    chips: ["Tiket Wisata", "Tiket Event", "Cek tiket saya"],
-  },
-  {
-    keys: ["event", "acara", "festival", "konser"],
-    answer: "Ada event budaya, musik, olahraga, komunitas, dan kuliner yang bisa kamu temukan di Nempo. Cek daftar event untuk melihat tanggal, lokasi, dan tiket yang tersedia.",
-    chips: ["Lihat Event"],
-  },
-  {
-    keys: ["transportasi", "transport", "travel", "ojek", "angkot", "sewa", "kendaraan"],
-    answer: "Untuk perjalanan, kamu bisa melihat pilihan sewa kendaraan dan layanan travel. Buka menu Transportasi, lalu pilih layanan yang paling sesuai dengan rute dan jumlah orang.",
-    chips: ["Sewa Kendaraan", "Travel antar kota"],
-  },
-  {
-    keys: ["itinerary", "rencana", "perjalanan", "trip plan", "jadwal"],
-    answer: "Nempo membantu menyusun ide perjalanan berdasarkan durasi, minat, dan budget. Mulai dari memilih destinasi, lalu gabungkan wisata, kuliner, penginapan, dan event yang ingin kamu kunjungi.",
-  },
-  {
-    keys: ["promo", "diskon", "voucher", "kupon", "gratis", "murah"],
-    answer: "Promo dan voucher terbaru akan muncul di halaman utama atau Instagram @nempo.id. Cek syarat, periode berlaku, dan partner yang ikut sebelum digunakan.",
-    chips: ["Instagram @nempo.id"],
-  },
-  {
-    keys: ["refund", "batal", "cancel", "pembatalan", "kembalikan uang"],
-    answer: "Kebijakan pembatalan dan refund dapat berbeda untuk setiap tiket. Siapkan nomor pesanan dan detail transaksinya agar Admin CS bisa membantu mengecek statusnya.",
-    chips: ["Hubungi Admin CS"],
-  },
-  {
-    keys: ["alam", "gunung", "hiking", "mendaki", "trekking"],
-    answer: "Untuk wisata alam & hiking di Jawa Barat, ada banyak gunung dan jalur pendakian dari yang ramah pemula hingga menantang. Semua bisa ditemukan di halaman Wisata!",
-    chips: ["Lihat Wisata Alam"],
-  },
-  {
-    keys: ["pantai", "laut", "beach"],
-    answer: "Pantai di Jawa Barat yang populer tersebar di pesisir selatan dan utara. Mau info rute atau penginapan dekat pantai?",
-  },
-  {
-    keys: ["air panas", "cipanas", "spa", "kolam"],
-    answer: "Jawa Barat terkenal dengan sumber air panasnya! Banyak hotel & resort yang menyediakan kolam rendam air panas. Cocok buat relaksasi!",
-    chips: ["Penginapan Cipanas"],
-  },
-  {
-    keys: ["cara pakai", "cara menggunakan", "fitur", "nempo itu apa", "apa itu nempo"],
-    answer: "Nempo adalah teman perjalanan untuk menemukan wisata, kuliner, cafe, penginapan, event, dan transportasi. Pilih menu yang kamu butuhkan, gunakan filter lokasi, lalu buka detail tempat untuk melihat informasi lengkapnya.",
-    chips: ["Cara cari wisata", "Cara pesan tiket", "Buka Wishlist"],
-  },
-  {
-    keys: ["wishlist", "favorit", "simpan tempat", "simpan"],
-    answer: "Temukan tempat yang kamu suka, lalu tekan ikon hati untuk menyimpannya ke Wishlist. Kamu bisa membuka kembali semua tempat favorit dari menu Wishlist.",
-    chips: ["Buka Wishlist"],
-  },
-  {
-    keys: ["cuaca", "hujan", "ramalan", "suhu"],
-    answer: "Widget cuaca Nempo mengikuti lokasi yang kamu pilih atau izinkan dari perangkat. Jika lokasi belum sesuai, buka pilihan lokasi di header dan pilih kota secara manual.",
-    chips: ["Pilih lokasi"],
-  },
-  {
-    keys: ["jam buka", "jam operasional", "buka jam", "tutup jam"],
-    answer: "Jam operasional bisa berbeda di setiap tempat. Cek halaman detail destinasi, cafe, atau kuliner sebelum berangkat agar rencanamu lebih aman.",
-    chips: ["Lihat Wisata", "Lihat Cafe"],
-  },
-  {
-    keys: ["login", "masuk", "daftar", "akun", "profil"],
-    answer: "Website publik Nempo Organizer tidak menampilkan panduan login. Untuk bantuan akun, hubungi Admin Nempo melalui DM Instagram.",
-    chips: ["Buka Wishlist", "Cek tiket saya"],
-  },
-  {
-    keys: ["kerja sama", "mitra", "promosi cafe", "promosi wisata", "daftarkan tempat"],
-    answer: "Punya cafe, wisata, penginapan, atau usaha lokal? Nempo bisa membantu tempatmu tampil ke lebih banyak penjelajah. Hubungi Admin untuk membahas profil usaha dan bentuk kolaborasinya.",
-    chips: ["Hubungi Admin CS"],
-    wa: true,
-  },
-  {
-    keys: ["admin", "cs", "manusia", "orang", "operator", "bantuan", "staff", "butuh bantuan"],
-    answer: "Tentu! Admin CS Nempo siap membantu melalui DM Instagram setiap hari pukul 08.00–21.00 WIB. Ceritakan kendala atau kebutuhanmu agar bisa dibantu lebih cepat.",
-    wa: true,
-  },
-];
-
-function botReply(input: string): ChatMsg {
-  const txt = input.toLowerCase();
-  for (const qa of BOT_QA) {
-    if (qa.keys.some((k) => txt.includes(k))) {
-      return { from: "bot", text: qa.answer, chips: qa.chips, wa: qa.wa };
-    }
-  }
-  return {
-    from: "bot",
-    text: "Aku belum menemukan jawaban yang paling pas. Coba tanyakan tentang wisata, cafe, kuliner, tiket, event, penginapan, Wishlist, cuaca, atau cara memakai Nempo.",
-    chips: ["Rekomendasi wisata", "Pesan tiket", "Hubungi Admin CS"],
-  };
 }
 
 type BuddyMode = "home" | "chat" | "budget" | "jingle" | "sos";
@@ -1178,7 +1060,7 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
                       </div>
                       <div>
                         <p className="font-bold text-slate-800 text-xs">Tanya Buddy</p>
-                        <p className="text-cyan-700/70 text-[10px] leading-tight mt-0.5">Cari ide & info trip</p>
+                        <p className="text-cyan-700/70 text-[10px] leading-tight mt-0.5">Info layanan Nempo</p>
                       </div>
                     </button>
                     {/* Jingle Nempo */}
@@ -1232,16 +1114,16 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
                         <Compass className="h-4 w-4 text-white" />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-[11.5px] font-extrabold leading-tight text-slate-800">Cari jawaban tentang perjalananmu</p>
-                        <p className="mt-0.5 text-[10px] leading-relaxed text-slate-500">Buddy membantu menemukan tempat, memahami cara pesan, dan menyiapkan langkah berikutnya.</p>
+                        <p className="text-[11.5px] font-extrabold leading-tight text-slate-800">Tanya tentang layanan Nempo</p>
+                        <p className="mt-0.5 text-[10px] leading-relaxed text-slate-500">Acara, wedding, konten, website, desain, talent, dan sistem usaha.</p>
                       </div>
                     </div>
                     <div className="mt-2.5 grid grid-cols-2 gap-1.5">
                       {[
-                        { label: "Wisata & rute", query: "Rekomendasi wisata" },
-                        { label: "Kuliner & cafe", query: "Cari cafe dan kuliner" },
-                        { label: "Tiket & event", query: "Cara pesan tiket" },
-                        { label: "Akun & bantuan", query: "Cara pakai Nempo" },
+                        { label: "Acara & wedding", query: "Event Organizer" },
+                        { label: "Konten & desain", query: "Sosmed Management" },
+                        { label: "Website & sistem", query: "Web Development" },
+                        { label: "Talent & model", query: "Talent Management" },
                       ].map((topic) => (
                         <button
                           key={topic.label}
@@ -1301,7 +1183,7 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
                         {msg.from === "bot" && msg.wa && (
                           <a href={NEMPO_INSTAGRAM_DM_URL} target="_blank" rel="noopener noreferrer" className="ml-9 mt-0.5 flex items-center gap-3 p-3 rounded-2xl bg-white hover:bg-pink-50 border border-pink-200 transition-colors group w-fit shadow-sm">
                             <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-pink-500 to-violet-600 flex items-center justify-center shrink-0 shadow-sm shadow-pink-200"><Instagram className="h-4 w-4 text-white" /></div>
-                            <div><p className="font-bold text-gray-900 text-xs">Chat via DM Instagram</p><p className="text-gray-400 text-[10px]">Admin online 08.00 – 21.00 WIB</p></div>
+                            <div><p className="font-bold text-gray-900 text-xs">Chat via DM Instagram</p><p className="text-gray-400 text-[10px]">Konsultasi kebutuhanmu dengan admin</p></div>
                             <ChevronRightIcon className="h-4 w-4 text-gray-300 group-hover:text-pink-500 transition-colors" />
                           </a>
                         )}
@@ -1322,7 +1204,7 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
                     )}
                   </div>
                   <div className="border-t border-gray-100 px-3 py-2.5 flex items-center gap-2 bg-white shrink-0">
-                    <input type="text" value={chatInput} onChange={(e) => setChatInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && sendChat(chatInput)} placeholder="Ceritakan rencanamu…" className="flex-1 text-[12.5px] bg-gray-50 rounded-2xl px-3.5 py-2 outline-none border border-gray-200 focus:border-cyan-400 transition-colors" />
+                    <input type="text" value={chatInput} onChange={(e) => setChatInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && sendChat(chatInput)} placeholder="Tanyakan layanan Nempo…" className="flex-1 text-[12.5px] bg-gray-50 rounded-2xl px-3.5 py-2 outline-none border border-gray-200 focus:border-cyan-400 transition-colors" />
                     <button onClick={() => sendChat(chatInput)} disabled={!chatInput.trim() || botTyping} className="h-9 w-9 rounded-full bg-gradient-to-br from-[#0284c7] to-[#0f766e] hover:from-[#0369a1] hover:to-[#115e59] disabled:opacity-40 flex items-center justify-center transition-all shadow-sm shadow-cyan-200 shrink-0">
                       <Send className="text-white" style={{ height: 14, width: 14 }} />
                     </button>
