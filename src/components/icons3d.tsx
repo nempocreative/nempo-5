@@ -713,19 +713,20 @@ export function CategoryGrid() {
         }
         /* cahaya berjalan mengelilingi bentuk menu */
         @keyframes nempo-ring-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
-        @keyframes nempo-ring-glow { 0%,100% { opacity: .35; } 50% { opacity: .8; } }
+        @keyframes nempo-ring-glow { 0%,100% { opacity: .3; } 50% { opacity: .75; } }
         @keyframes nempo-tile-shine { 0%, 72% { transform: translateX(-130%) skewX(-18deg); } 100% { transform: translateX(230%) skewX(-18deg); } }
         .nempo-service__ring {
-          position: absolute; inset: -3px; border-radius: 20px; overflow: hidden; pointer-events: none;
+          position: absolute; inset: -4px -4px -6px; border-radius: 21px; overflow: hidden; pointer-events: none;
+          filter: drop-shadow(0 0 4px var(--ring-color));
         }
         .nempo-service__ring::before {
           content: ""; position: absolute; left: 50%; top: 50%; width: 180%; height: 180%;
-          background: conic-gradient(from 0deg, transparent 0deg 250deg, var(--ring-color) 300deg, #fff 340deg, transparent 360deg);
-          animation: nempo-ring-spin 3.2s linear infinite; animation-delay: var(--ring-delay);
+          background: conic-gradient(from 0deg, transparent 0deg 200deg, var(--ring-tail) 260deg, var(--ring-color) 315deg, #fff 350deg, transparent 360deg);
+          animation: nempo-ring-spin 2.6s linear infinite; animation-delay: var(--ring-delay);
           transform: translate(-50%, -50%);
         }
         .nempo-service__glow {
-          position: absolute; inset: -7px; border-radius: 24px; pointer-events: none;
+          position: absolute; inset: -9px; border-radius: 26px; pointer-events: none;
           background: radial-gradient(circle, var(--ring-color) 0%, transparent 70%);
           filter: blur(8px); animation: nempo-ring-glow 3.2s ease-in-out infinite; animation-delay: var(--ring-delay);
         }
@@ -754,7 +755,7 @@ export function CategoryGrid() {
             >
               <span
                 className="relative inline-flex"
-                style={{ "--ring-color": `color-mix(in srgb, ${item.color} 55%, white)`, "--ring-delay": `${-index * 0.4}s` } as React.CSSProperties}
+                style={{ "--ring-color": `color-mix(in srgb, ${item.color} 45%, white)`, "--ring-tail": `color-mix(in srgb, ${item.color} 60%, transparent)`, "--ring-delay": `${-index * 0.4}s` } as React.CSSProperties}
               >
                 <span aria-hidden="true" className="nempo-service__glow" />
                 <span aria-hidden="true" className="nempo-service__ring" />
