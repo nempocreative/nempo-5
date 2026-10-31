@@ -36,7 +36,6 @@ const packages = [
 const stats = [
   { value: "150+", label: "Event terlaksana" },
   { value: "50rb+", label: "Peserta dilayani" },
-  { value: "4.9", label: "Rating klien" },
   { value: "Jabar", label: "Area layanan" },
 ];
 
@@ -151,7 +150,7 @@ export default function EventOrganizerPage() {
             </Link>
           </div>
           <div className="relative mt-6 flex flex-wrap gap-2">
-            {["150+ event", "50rb+ peserta", "Rating 4.9"].map((chip) => (
+            {["150+ event", "50rb+ peserta", "Melayani seluruh Jabar"].map((chip) => (
               <span key={chip} className="inline-flex items-center gap-1.5 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-3.5 py-1.5 text-[11px] font-semibold backdrop-blur">
                 <Burst className="h-3 w-3 text-brand-sky" />
                 {chip}
