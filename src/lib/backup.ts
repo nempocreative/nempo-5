@@ -53,6 +53,8 @@ export type BackupFile = {
     problems: string[];
   };
   data: Record<string, Record<string, unknown>[]>;
+  /** Site design (colours, fonts, styles) as of this backup. */
+  design?: { files: Record<string, string> };
 };
 
 /** Order column for stable pagination. */
@@ -76,6 +78,7 @@ export async function fetchAllRows(
 export function buildBackupFile(
   results: Record<BackupTable, BackupTableResult>,
   createdAt: Date = new Date(),
+  designFiles?: Record<string, string>,
 ): BackupFile {
   const data: BackupFile["data"] = {};
   const counts: Record<string, number> = {};
@@ -104,6 +107,7 @@ export function buildBackupFile(
     createdAt: createdAt.toISOString(),
     summary: { tables: BACKUP_TABLES.length, totalRows, complete: problems.length === 0, counts, problems },
     data,
+    ...(designFiles ? { design: { files: designFiles } } : {}),
   };
 }
 
