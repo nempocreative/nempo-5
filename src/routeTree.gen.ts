@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as BackupRouteImport } from './routes/backup'
+import { Route as BusinessSystemRouteImport } from './routes/business-system'
 import { Route as DesignCreativeRouteImport } from './routes/design-creative'
 import { Route as SosmedManagementRouteImport } from './routes/sosmed-management'
 import { Route as TalentRouteImport } from './routes/talent'
@@ -44,6 +45,11 @@ const SplatRoute = SplatRouteImport.update({
 const BackupRoute = BackupRouteImport.update({
   id: '/backup',
   path: '/backup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessSystemRoute = BusinessSystemRouteImport.update({
+  id: '/business-system',
+  path: '/business-system',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DesignCreativeRoute = DesignCreativeRouteImport.update({
@@ -141,6 +147,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/backup': typeof BackupRoute
+  '/business-system': typeof BusinessSystemRoute
   '/design-creative': typeof DesignCreativeRoute
   '/sosmed-management': typeof SosmedManagementRoute
   '/talent': typeof TalentRoute
@@ -164,6 +171,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/backup': typeof BackupRoute
+  '/business-system': typeof BusinessSystemRoute
   '/design-creative': typeof DesignCreativeRoute
   '/sosmed-management': typeof SosmedManagementRoute
   '/talent': typeof TalentRoute
@@ -188,6 +196,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/backup': typeof BackupRoute
+  '/business-system': typeof BusinessSystemRoute
   '/design-creative': typeof DesignCreativeRoute
   '/sosmed-management': typeof SosmedManagementRoute
   '/talent': typeof TalentRoute
@@ -213,6 +222,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/backup'
+    | '/business-system'
     | '/design-creative'
     | '/sosmed-management'
     | '/talent'
@@ -236,6 +246,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/backup'
+    | '/business-system'
     | '/design-creative'
     | '/sosmed-management'
     | '/talent'
@@ -259,6 +270,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/backup'
+    | '/business-system'
     | '/design-creative'
     | '/sosmed-management'
     | '/talent'
@@ -283,6 +295,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
   BackupRoute: typeof BackupRoute
+  BusinessSystemRoute: typeof BusinessSystemRoute
   DesignCreativeRoute: typeof DesignCreativeRoute
   SosmedManagementRoute: typeof SosmedManagementRoute
   TalentRoute: typeof TalentRoute
@@ -324,6 +337,13 @@ declare module '@tanstack/react-router' {
       path: '/backup'
       fullPath: '/backup'
       preLoaderRoute: typeof BackupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business-system': {
+      id: '/business-system'
+      path: '/business-system'
+      fullPath: '/business-system'
+      preLoaderRoute: typeof BusinessSystemRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/design-creative': {
@@ -459,6 +479,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
   BackupRoute: BackupRoute,
+  BusinessSystemRoute: BusinessSystemRoute,
   DesignCreativeRoute: DesignCreativeRoute,
   SosmedManagementRoute: SosmedManagementRoute,
   TalentRoute: TalentRoute,
