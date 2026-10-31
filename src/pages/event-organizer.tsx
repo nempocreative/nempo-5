@@ -5,8 +5,7 @@ import { Link } from "@/lib/wouter";
 import {
   PartyPopper, Building2, Music, GraduationCap, Trophy,
   MessageCircle, ClipboardList, Palette, Wrench, FileCheck,
-  Check, ChevronDown, Award, Users, CalendarCheck, MapPin, ArrowRight,
-  Sparkles, Star, Zap,
+  Check, ChevronDown, MapPin, ArrowRight,
 } from "lucide-react";
 
 const hand = "font-[family-name:var(--font-wed-hand)]";
@@ -35,10 +34,10 @@ const packages = [
 ];
 
 const stats = [
-  { icon: CalendarCheck, value: "150+", label: "Event terlaksana" },
-  { icon: Users, value: "50rb+", label: "Peserta dilayani" },
-  { icon: Award, value: "4.9", label: "Rating klien" },
-  { icon: MapPin, value: "Jabar", label: "Area layanan" },
+  { value: "150+", label: "Event terlaksana" },
+  { value: "50rb+", label: "Peserta dilayani" },
+  { value: "4.9", label: "Rating klien" },
+  { value: "Jabar", label: "Area layanan" },
 ];
 
 const testimonials = [
