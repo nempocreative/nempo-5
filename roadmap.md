@@ -1,5 +1,5 @@
 # Roadmap — NEMPO Garut migration
-- [ ] Samakan isi Wedding Organizer dengan materi wedding di Kenalan Nempo (Nempo MOU)
+- [x] Samakan isi Wedding Organizer dengan materi wedding di Kenalan Nempo (Nempo MOU)
 - [x] Hapus Berita dari website (ticker beranda, halaman /berita, kartu kategori, hasil cari)
 - [x] Website utama (nempo-garut-web): semua halaman, gambar, tampilan
 - [x] Database & API ke Lovable Cloud: 18 tabel + jembatan endpoint /api
