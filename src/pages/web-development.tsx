@@ -3,7 +3,8 @@ import { Layout } from "@/components/layout";
 import { Link } from "@/lib/wouter";
 import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
 import { ArrowRight, Check, ChevronDown, Globe2, Link2, Ticket, MousePointer2 } from "lucide-react";
-import { WEB_MODULES, WEB_PLANS, WEB_PROJECTS, firstMonthTotal, monthlySaving, webRupiah } from "@/data/web-development";
+import { WEB_PLANS, WEB_PROJECTS, firstMonthTotal, monthlySaving, webRupiah } from "@/data/web-development";
+import { BIZ_MODULES } from "@/data/business-system";
 
 const mono = "font-mono";
 const hand = "font-[family-name:var(--font-wed-hand)]";
@@ -244,14 +245,14 @@ export default function WebDevelopmentPage() {
             <div className="mt-6 rounded-2xl border-[3px] border-dev-ink bg-card p-5">
               <p className={`${mono} text-[11px] font-bold text-dev-sky`}>// atau ambil modul satuan</p>
               <div className="mt-3 flex flex-wrap gap-2">
-                {WEB_MODULES.map((m) => (
+                {BIZ_MODULES.map((m) => (
                   <span key={m.name} className="inline-flex items-center gap-1.5 rounded-full border-2 border-dashed border-dev-ink/25 px-3 py-1.5 text-xs">
                     <b>{m.name}</b> <span className={`${mono} text-[10px] text-dev-ink/60`}>{webRupiah(m.price)}/bln</span>
                   </span>
                 ))}
               </div>
-              <Link href="/digital-services" className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-dev-sky">
-                Lihat semua layanan digital <ArrowRight className="h-3.5 w-3.5" />
+              <Link href="/business-system" className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-dev-sky">
+                Lihat semua sistem bisnis <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </section>

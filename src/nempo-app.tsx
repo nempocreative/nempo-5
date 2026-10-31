@@ -83,6 +83,7 @@ const HalloweenProposalPage = lazy(() => import("@/pages/sponsorship-proposal"))
 const EventOrganizerPage = lazy(() => import("@/pages/event-organizer"));
 const WeddingOrganizerPage = lazy(() => import("@/pages/wedding-organizer"));
 const WeddingInvitationPage = lazy(() => import("@/pages/wedding-invitation"));
+const BusinessSystemPage = lazy(() => import("@/pages/business-system"));
 const DesignCreativePage = lazy(() => import("@/pages/design-creative"));
 const WebDevelopmentPage = lazy(() => import("@/pages/web-development"));
 const SosmedManagementPage = lazy(() => import("@/pages/sosmed-management"));
@@ -244,6 +245,7 @@ function Router() {
       <Route path="/event-organizer" component={EventOrganizerPage} />
       <Route path="/wedding-organizer" component={WeddingOrganizerPage} />
       <Route path="/wedding-invitation" component={WeddingInvitationPage} />
+      <Route path="/business-system" component={BusinessSystemPage} />
       <Route path="/design-creative" component={DesignCreativePage} />
       <Route path="/web-development" component={WebDevelopmentPage} />
       <Route path="/sosmed-management" component={SosmedManagementPage} />
