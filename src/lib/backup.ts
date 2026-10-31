@@ -109,5 +109,5 @@ export function buildBackupFile(
 
 export function backupFileName(date: Date = new Date()): string {
   const p = (n: number) => String(n).padStart(2, "0");
-  return `nempo-backup-${date.getFullYear()}-${p(date.getMonth() + 1)}-${p(date.getDate())}-${p(date.getHours())}${p(date.getMinutes())}.json`;
+  return `nempo-organizer-backup-${date.getFullYear()}-${p(date.getMonth() + 1)}-${p(date.getDate())}-${p(date.getHours())}${p(date.getMinutes())}.json`;
 }
