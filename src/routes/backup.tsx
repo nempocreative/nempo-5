@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { AlertTriangle, CheckCircle2, Database, Download, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { backupFileName, type BackupFile } from "@/lib/backup";
+import type { BackupFile } from "@/lib/backup";
 
 export const Route = createFileRoute("/backup")({
   head: () => ({
