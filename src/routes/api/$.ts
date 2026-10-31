@@ -34,9 +34,12 @@ const json = (body: unknown, status = 200) =>
     headers: { "content-type": "application/json", "cache-control": "public, max-age=10" },
   });
 
+// Returns null when no database is configured, so pages get empty data instead of a 500.
 function client() {
-  const key = process.env["SUPABASE_PUBLISHABLE_KEY"]!;
-  return createClient(process.env["SUPABASE_URL"]!, key, {
+  const url = process.env["SUPABASE_URL"];
+  const key = process.env["SUPABASE_PUBLISHABLE_KEY"];
+  if (!url || !key) return null;
+  return createClient(url, key, {
     auth: { persistSession: false, autoRefreshToken: false },
     global: {
       fetch: (input, init) => {
@@ -55,7 +58,14 @@ export const Route = createFileRoute("/api/$")({
       GET: async ({ params }) => {
         const parts = (params._splat ?? "").split("/").filter(Boolean);
         const [name, idOrSlug] = parts;
+        const cfg = name ? TABLES[name] : undefined;
+        if (name !== "stats" && !cfg) return json({ error: "Not found" }, 404);
+
         const sb = client();
+        if (!sb) {
+          if (name === "stats") return json({ wisata: 0, kuliner: 0, penginapan: 0, events: 0 });
+          return parts.length === 2 ? json({ error: "Not found" }, 404) : json([]);
+        }
 
         if (name === "stats") {
           const counts = await Promise.all(
@@ -67,7 +77,6 @@ export const Route = createFileRoute("/api/$")({
           return json(Object.fromEntries(counts));
         }
 
-        const cfg = name ? TABLES[name] : undefined;
         if (!cfg) return json({ error: "Not found" }, 404);
 
         let q: any = sb.from(cfg.table).select("*");

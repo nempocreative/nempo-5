@@ -51,10 +51,15 @@ function BackupPage() {
     setError("");
     try {
       const res = await fetch("/api/backup", { cache: "no-store" });
+      if (res.status === 503) {
+        setFile(null);
+        setError("Database belum terhubung, jadi belum ada data untuk dibackup.");
+        return;
+      }
       if (!res.ok) throw new Error("Server tidak merespons");
       setFile((await res.json()) as BackupFile);
     } catch {
-      setError("Isi backup belum bisa dicek. Tombol unduh tetap bisa dipakai.");
+      setError("Isi backup belum bisa dicek. Coba lagi sebentar lagi.");
     } finally {
       setLoading(false);
     }

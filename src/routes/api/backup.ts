@@ -13,8 +13,10 @@ import {
 import stylesCss from "@/styles.css?raw";
 
 function client() {
-  const key = process.env["SUPABASE_PUBLISHABLE_KEY"]!;
-  return createClient(process.env["SUPABASE_URL"]!, key, {
+  const url = process.env["SUPABASE_URL"];
+  const key = process.env["SUPABASE_PUBLISHABLE_KEY"];
+  if (!url || !key) return null;
+  return createClient(url, key, {
     auth: { persistSession: false, autoRefreshToken: false, storage: undefined },
     global: {
       fetch: (input, init) => {
@@ -33,6 +35,12 @@ export const Route = createFileRoute("/api/backup")({
     handlers: {
       GET: async ({ request }) => {
         const sb = client();
+        if (!sb) {
+          return new Response(JSON.stringify({ error: "Database belum terhubung" }), {
+            status: 503,
+            headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" },
+          });
+        }
         const entries = await Promise.all(
           BACKUP_TABLES.map(async (table): Promise<[BackupTable, BackupTableResult]> => {
             try {
