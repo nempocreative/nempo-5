@@ -17,6 +17,46 @@
   animation-play-state: paused;
 }
 
+/* ── WEDDING PAGE PLAYFUL DECOR ── */
+@keyframes wed-float {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50%      { transform: translateY(-14px) rotate(6deg); }
+}
+@keyframes wed-wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50%      { transform: rotate(3deg); }
+}
+@keyframes wed-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes wed-pulse-heart {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.18); }
+}
+.wed-float { animation: wed-float 5s ease-in-out infinite; }
+.wed-float-slow { animation: wed-float 7.5s ease-in-out infinite; }
+.wed-wiggle { animation: wed-wiggle 3.2s ease-in-out infinite; }
+.wed-marquee { animation: wed-marquee 24s linear infinite; }
+.wed-pulse-heart { animation: wed-pulse-heart 1.6s ease-in-out infinite; }
+.wed-hero-bg {
+  background:
+    radial-gradient(42rem 26rem at 12% 8%, rgba(180, 70, 106, 0.20), transparent 60%),
+    radial-gradient(36rem 24rem at 88% 18%, rgba(199, 154, 74, 0.22), transparent 60%),
+    radial-gradient(30rem 22rem at 50% 100%, rgba(180, 70, 106, 0.14), transparent 65%),
+    #fbeef1;
+}
+.wed-sticker {
+  box-shadow: 0 3px 0 rgba(58, 31, 43, 0.18);
+}
+.wed-card-pop {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.wed-card-pop:hover {
+  transform: translateY(-4px) rotate(-0.5deg);
+  box-shadow: 0 14px 30px -12px rgba(180, 70, 106, 0.35);
+}
+
 /* ── GLOBAL OVERFLOW FIX ── */
 html,
 body,
@@ -36,6 +76,7 @@ body,
   --color-wed-gold: #c79a4a;
   --color-wed-ink: #3a1f2b;
   --font-wed-serif: "Playfair Display", Georgia, serif;
+  --font-wed-hand: "Caveat", "Segoe Script", cursive;
   --color-blue-50:  hsl(39 45% 96%);
   --color-blue-100: hsl(38 42% 91%);
   --color-blue-200: hsl(37 38% 83%);
