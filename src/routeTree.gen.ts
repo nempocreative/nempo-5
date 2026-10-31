@@ -15,6 +15,7 @@ import { Route as WeddingOrganizerRouteImport } from './routes/wedding-organizer
 import { Route as AdminPanelIndexRouteImport } from './routes/admin-panel.index'
 import { Route as AdminPanelSplatRouteImport } from './routes/admin-panel.$'
 import { Route as ApiSplatRouteImport } from './routes/api/$'
+import { Route as ApiBackupRouteImport } from './routes/api/backup'
 import { Route as CmsIndexRouteImport } from './routes/cms.index'
 import { Route as CmsSplatRouteImport } from './routes/cms.$'
 import { Route as NempoFeedIndexRouteImport } from './routes/nempo-feed.index'
@@ -52,6 +53,11 @@ const AdminPanelSplatRoute = AdminPanelSplatRouteImport.update({
 const ApiSplatRoute = ApiSplatRouteImport.update({
   id: '/api/$',
   path: '/api/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiBackupRoute = ApiBackupRouteImport.update({
+  id: '/api/backup',
+  path: '/api/backup',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CmsIndexRoute = CmsIndexRouteImport.update({
@@ -101,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/wedding-organizer': typeof WeddingOrganizerRoute
   '/admin-panel/$': typeof AdminPanelSplatRoute
   '/api/$': typeof ApiSplatRoute
+  '/api/backup': typeof ApiBackupRoute
   '/cms/$': typeof CmsSplatRoute
   '/nempo-feed/$': typeof NempoFeedSplatRoute
   '/nempo-mou/$': typeof NempoMouSplatRoute
@@ -117,6 +124,7 @@ export interface FileRoutesByTo {
   '/wedding-organizer': typeof WeddingOrganizerRoute
   '/admin-panel/$': typeof AdminPanelSplatRoute
   '/api/$': typeof ApiSplatRoute
+  '/api/backup': typeof ApiBackupRoute
   '/cms/$': typeof CmsSplatRoute
   '/nempo-feed/$': typeof NempoFeedSplatRoute
   '/nempo-mou/$': typeof NempoMouSplatRoute
@@ -134,6 +142,7 @@ export interface FileRoutesById {
   '/wedding-organizer': typeof WeddingOrganizerRoute
   '/admin-panel/$': typeof AdminPanelSplatRoute
   '/api/$': typeof ApiSplatRoute
+  '/api/backup': typeof ApiBackupRoute
   '/cms/$': typeof CmsSplatRoute
   '/nempo-feed/$': typeof NempoFeedSplatRoute
   '/nempo-mou/$': typeof NempoMouSplatRoute
@@ -152,6 +161,7 @@ export interface FileRouteTypes {
     | '/wedding-organizer'
     | '/admin-panel/$'
     | '/api/$'
+    | '/api/backup'
     | '/cms/$'
     | '/nempo-feed/$'
     | '/nempo-mou/$'
@@ -168,6 +178,7 @@ export interface FileRouteTypes {
     | '/wedding-organizer'
     | '/admin-panel/$'
     | '/api/$'
+    | '/api/backup'
     | '/cms/$'
     | '/nempo-feed/$'
     | '/nempo-mou/$'
@@ -184,6 +195,7 @@ export interface FileRouteTypes {
     | '/wedding-organizer'
     | '/admin-panel/$'
     | '/api/$'
+    | '/api/backup'
     | '/cms/$'
     | '/nempo-feed/$'
     | '/nempo-mou/$'
@@ -201,6 +213,7 @@ export interface RootRouteChildren {
   WeddingOrganizerRoute: typeof WeddingOrganizerRoute
   AdminPanelSplatRoute: typeof AdminPanelSplatRoute
   ApiSplatRoute: typeof ApiSplatRoute
+  ApiBackupRoute: typeof ApiBackupRoute
   CmsSplatRoute: typeof CmsSplatRoute
   NempoFeedSplatRoute: typeof NempoFeedSplatRoute
   NempoMouSplatRoute: typeof NempoMouSplatRoute
@@ -254,6 +267,13 @@ declare module '@tanstack/react-router' {
       path: '/api/$'
       fullPath: '/api/$'
       preLoaderRoute: typeof ApiSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/backup': {
+      id: '/api/backup'
+      path: '/api/backup'
+      fullPath: '/api/backup'
+      preLoaderRoute: typeof ApiBackupRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cms/': {
@@ -321,6 +341,7 @@ const rootRouteChildren: RootRouteChildren = {
   WeddingOrganizerRoute: WeddingOrganizerRoute,
   AdminPanelSplatRoute: AdminPanelSplatRoute,
   ApiSplatRoute: ApiSplatRoute,
+  ApiBackupRoute: ApiBackupRoute,
   CmsSplatRoute: CmsSplatRoute,
   NempoFeedSplatRoute: NempoFeedSplatRoute,
   NempoMouSplatRoute: NempoMouSplatRoute,
