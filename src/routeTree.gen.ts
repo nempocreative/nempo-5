@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as BackupRouteImport } from './routes/backup'
+import { Route as DesignCreativeRouteImport } from './routes/design-creative'
 import { Route as SosmedManagementRouteImport } from './routes/sosmed-management'
 import { Route as WebDevelopmentRouteImport } from './routes/web-development'
 import { Route as WeddingInvitationRouteImport } from './routes/wedding-invitation'
@@ -42,6 +43,11 @@ const SplatRoute = SplatRouteImport.update({
 const BackupRoute = BackupRouteImport.update({
   id: '/backup',
   path: '/backup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignCreativeRoute = DesignCreativeRouteImport.update({
+  id: '/design-creative',
+  path: '/design-creative',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SosmedManagementRoute = SosmedManagementRouteImport.update({
@@ -129,6 +135,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/backup': typeof BackupRoute
+  '/design-creative': typeof DesignCreativeRoute
   '/sosmed-management': typeof SosmedManagementRoute
   '/web-development': typeof WebDevelopmentRoute
   '/wedding-invitation': typeof WeddingInvitationRoute
@@ -150,6 +157,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/backup': typeof BackupRoute
+  '/design-creative': typeof DesignCreativeRoute
   '/sosmed-management': typeof SosmedManagementRoute
   '/web-development': typeof WebDevelopmentRoute
   '/wedding-invitation': typeof WeddingInvitationRoute
@@ -172,6 +180,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/backup': typeof BackupRoute
+  '/design-creative': typeof DesignCreativeRoute
   '/sosmed-management': typeof SosmedManagementRoute
   '/web-development': typeof WebDevelopmentRoute
   '/wedding-invitation': typeof WeddingInvitationRoute
@@ -195,6 +204,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/backup'
+    | '/design-creative'
     | '/sosmed-management'
     | '/web-development'
     | '/wedding-invitation'
@@ -216,6 +226,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/backup'
+    | '/design-creative'
     | '/sosmed-management'
     | '/web-development'
     | '/wedding-invitation'
@@ -237,6 +248,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/backup'
+    | '/design-creative'
     | '/sosmed-management'
     | '/web-development'
     | '/wedding-invitation'
@@ -259,6 +271,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
   BackupRoute: typeof BackupRoute
+  DesignCreativeRoute: typeof DesignCreativeRoute
   SosmedManagementRoute: typeof SosmedManagementRoute
   WebDevelopmentRoute: typeof WebDevelopmentRoute
   WeddingInvitationRoute: typeof WeddingInvitationRoute
@@ -298,6 +311,13 @@ declare module '@tanstack/react-router' {
       path: '/backup'
       fullPath: '/backup'
       preLoaderRoute: typeof BackupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design-creative': {
+      id: '/design-creative'
+      path: '/design-creative'
+      fullPath: '/design-creative'
+      preLoaderRoute: typeof DesignCreativeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sosmed-management': {
@@ -419,6 +439,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
   BackupRoute: BackupRoute,
+  DesignCreativeRoute: DesignCreativeRoute,
   SosmedManagementRoute: SosmedManagementRoute,
   WebDevelopmentRoute: WebDevelopmentRoute,
   WeddingInvitationRoute: WeddingInvitationRoute,
