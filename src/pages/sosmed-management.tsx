@@ -34,7 +34,7 @@ const faqs = [
   { q: "Mau sekalian tampil di website Nempo?", a: "Pilih All Promotion: semua isi Paket Social Media plus banner dan rekomendasi event di website selama 2 minggu." },
 ];
 
-const marqueeItems = ["Instagram Feed", "Reels", "Story", "Highlight", "Instagram Ads", "TikTok", "Garut • Jawa Barat"];
+const marqueeItems = ["Instagram Feed", "Reels", "Story", "Highlight", "Instagram Ads", "TikTok"];
 
 type Filter = "Semua" | SosmedItem["platform"];
 const FILTERS: Filter[] = ["Semua", "Instagram", "TikTok"];
@@ -83,7 +83,6 @@ function PhoneMockup() {
         <span className="h-7 w-7 rounded-full border-2 border-sos-pink bg-sos-blush" />
         <div>
           <p className="text-[10px] font-extrabold text-sos-ink">nempo.id</p>
-          <p className="text-[8px] text-muted-foreground">Garut, Jawa Barat</p>
         </div>
       </div>
       <div className="grid grid-cols-3 gap-1">
