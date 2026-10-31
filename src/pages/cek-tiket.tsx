@@ -2,7 +2,7 @@ import { Layout } from "@/components/layout";
 import { useEffect, useState, useCallback } from "react";
 import { SEO } from "@/components/seo";
 import { Ticket, Search, CheckCircle2, XCircle, Clock, RefreshCw, CalendarDays, X, ChevronRight, Mail, CreditCard, Trash2 } from "lucide-react";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
 
 interface OrderStatus {

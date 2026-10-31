@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { useRoute, useLocation } from "wouter";
+import { useRoute, useLocation } from "@/lib/wouter";
 import {
   ArrowLeft, CheckCircle2, ChevronRight, Upload, Copy,
   User, Phone, Mail, Calendar, School, FileText,

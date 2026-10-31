@@ -1,5 +1,5 @@
 import { Layout } from "@/components/layout";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import { Trash2, Minus, Plus, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 

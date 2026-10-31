@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { Link, useLocation } from "wouter";
+import { Link, useLocation } from "@/lib/wouter";
 import {
   User, Settings, Package, Heart, Star, Ticket, LogOut,
   ChevronRight, Phone, Crown, Shield, Award, Zap, Flame,

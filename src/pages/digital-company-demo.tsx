@@ -27,7 +27,7 @@ import {
   X,
 } from "lucide-react";
 import { useState, type FormEvent } from "react";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 
 const COMPANY_PREVIEW_PASSWORD = "nemposukses";
 const COMPANY_PREVIEW_ACCESS_KEY = "nempo_company_preview_access";

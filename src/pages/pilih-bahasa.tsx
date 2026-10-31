@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { useLocation } from "wouter";
+import { useLocation } from "@/lib/wouter";
 import { ArrowLeft, Check, Globe } from "lucide-react";
 import { useDisplayPrefs, LANGUAGE_OPTIONS, type Language } from "@/lib/use-display-prefs";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import { mainNavItems } from "@/data/main-nav-items";
 import { HomeServiceIcon } from "@/components/home-service-icons";
 

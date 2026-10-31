@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { useRoute, Link, useLocation, useSearch } from "wouter";
+import { useRoute, Link, useLocation, useSearch } from "@/lib/wouter";
 import { useState, useEffect } from "react";
 import { useAuth } from "@/contexts/auth-context";
 import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";

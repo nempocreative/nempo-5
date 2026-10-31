@@ -36,7 +36,7 @@ import {
   X,
 } from "lucide-react";
 import { useMemo, useState, type FormEvent, type ReactNode } from "react";
-import { Link, useRoute } from "wouter";
+import { Link, useRoute } from "@/lib/wouter";
 import "./digital-demo-super-app.css";
 
 type QrMenuView = "overview" | "menu" | "orders" | "tables" | "insights" | "customer";

@@ -38,7 +38,7 @@ import {
   X,
 } from "lucide-react";
 import { useMemo, useState, type FormEvent, type ReactNode } from "react";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import "./digital-demo-super-app.css";
 
 type QueueView = "overview" | "tickets" | "display" | "counters" | "reports";

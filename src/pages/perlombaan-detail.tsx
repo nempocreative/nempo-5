@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { useRoute, Link } from "wouter";
+import { useRoute, Link } from "@/lib/wouter";
 import { Trophy, ArrowLeft, Share2, Clock, Gift, CheckCircle2, Users, MapPin, Building2, ChevronRight, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 

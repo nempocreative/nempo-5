@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import {
   ArrowRight,
   Check,

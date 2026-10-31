@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import { SEO } from "@/components/seo";
 import { ArrowLeft, Mail, Lock, Eye, EyeOff, Loader2, AlertCircle, CheckCircle, KeyRound } from "lucide-react";
 import { useAuth } from "@/contexts/auth-context";

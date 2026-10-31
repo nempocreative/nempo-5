@@ -2,7 +2,7 @@ import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useAuth } from "@/contexts/auth-context";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import {
   Ticket, Search, CheckCircle2, XCircle, Clock, RefreshCw,
   Download, CalendarDays, MapPin, User, Loader2, ChevronRight,

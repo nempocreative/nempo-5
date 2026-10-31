@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, MessageCircle } from "lucide-react";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
 import "./nempo-home-cta-banner.css";
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 import { CityUnavailable } from "@/components/city-unavailable";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import { useCityFilter } from "@/contexts/city-filter-context";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import {

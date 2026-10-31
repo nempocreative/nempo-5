@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import {
   MapPin, Clock, Wallet, Calendar, ChevronRight, RotateCcw,
   Mountain, Utensils, Hotel, Car, Sun, Sunset, Moon, Star, Download,

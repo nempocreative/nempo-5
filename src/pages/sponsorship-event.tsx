@@ -1,5 +1,5 @@
 import { ArrowLeft, ArrowRight, MessageCircle } from "lucide-react";
-import { useLocation } from "wouter";
+import { useLocation } from "@/lib/wouter";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";

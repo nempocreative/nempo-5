@@ -3,7 +3,7 @@ import * as XLSX from "xlsx";
 import { toPng } from "html-to-image";
 import jsPDF from "jspdf";
 import QRCode from "react-qr-code";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import { getTypeLabel, getAgeLabel, TYPE_COLORS, getMatchJam, MATCH_BREAKS, daftarTunggu, RUNDOWN_DAY1, RUNDOWN_DAY2, type MatchItem, type MatchStatus, type RundownItem } from "@/data/temu-tarung";
 import { useMatchContext } from "@/contexts/match-context";
 import { usePancoContext } from "@/contexts/panco-context";

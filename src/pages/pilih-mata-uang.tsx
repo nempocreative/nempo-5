@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { useLocation } from "wouter";
+import { useLocation } from "@/lib/wouter";
 import { ArrowLeft, Check, TrendingUp, Info } from "lucide-react";
 import { useDisplayPrefs, CURRENCY_OPTIONS, type Currency } from "@/lib/use-display-prefs";
 

@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { Link, useLocation } from "wouter";
+import { Link, useLocation } from "@/lib/wouter";
 import { useEffect, useState } from "react";
 import {
   Building2, Phone, Tag, LogOut, Loader2, ArrowRight, ChevronRight,

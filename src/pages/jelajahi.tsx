@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import { Search, X, MapPin, Star, Utensils, Calendar, Map } from "lucide-react";
 import { useState, useEffect } from "react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";

@@ -2,9 +2,9 @@ import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 import { NEMPO_INSTAGRAM_DM_URL } from "@/lib/contact";
 import "./digital-services.css";
-import digitalServicesHeroImage from "@assets/generated_images/digital-services-hero.jpg";
+import digitalServicesHeroImage from "@/assets/generated_images/digital-services-hero.jpg";
 import type { LucideIcon } from "lucide-react";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import {
   ArrowRight,
   ArrowUpRight,

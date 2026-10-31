@@ -1,6 +1,6 @@
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { ArrowLeft, ArrowRight, Check, Eye, EyeOff, LayoutDashboard, Lock, MonitorSmartphone, ShieldCheck } from "lucide-react";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 
 const PREVIEW_SESSION_URL = "/api/digital-services/preview/session";
 const PREVIEW_UNLOCK_URL = "/api/digital-services/preview/unlock";

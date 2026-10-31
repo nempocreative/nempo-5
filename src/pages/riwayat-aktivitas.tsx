@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { useLocation } from "wouter";
+import { useLocation } from "@/lib/wouter";
 import { useAuth } from "@/contexts/auth-context";
 import {
   ArrowLeft, LogIn, LogOut, User, Key, Shield, Star,

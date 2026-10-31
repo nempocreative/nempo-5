@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { Link, useLocation } from "wouter";
+import { Link, useLocation } from "@/lib/wouter";
 import { ArrowLeft, ArrowRight, CheckCircle2, KeyRound, Loader2, MapPinned, MessageCircle, Search, ShieldCheck, WalletCards } from "lucide-react";
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";

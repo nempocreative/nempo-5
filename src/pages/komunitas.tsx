@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -18,7 +18,7 @@ import {
   Store,
   Users,
 } from "lucide-react";
-import communityHeroImage from "@assets/94d218d05080a6554bc7214283cb8a88_1789408730013.jpg";
+import communityHeroImage from "@/assets/94d218d05080a6554bc7214283cb8a88_1789408730013.jpg";
 
 const focusAreas = [
   {

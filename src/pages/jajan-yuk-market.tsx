@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import {
   ArrowRight,
   Check,
@@ -17,7 +17,7 @@ import { Layout } from "@/components/layout";
 import { SEO } from "@/components/seo";
 import { CityUnavailable } from "@/components/city-unavailable";
 import { useCityFilter } from "@/contexts/city-filter-context";
-import streetFoodBannerImage from "@assets/generated_images/jajan-yuk-street-food-banner.png";
+import streetFoodBannerImage from "@/assets/generated_images/jajan-yuk-street-food-banner.png";
 
 interface JajanItem {
   id: number;

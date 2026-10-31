@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Link } from "wouter";
+import { Link } from "@/lib/wouter";
 import { ArrowRight, type LucideIcon } from "lucide-react";
 
 interface Props {
