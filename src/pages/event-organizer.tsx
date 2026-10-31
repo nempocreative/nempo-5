@@ -5,8 +5,7 @@ import { Link } from "@/lib/wouter";
 import {
   PartyPopper, Building2, Music, GraduationCap, Trophy,
   MessageCircle, ClipboardList, Palette, Wrench, FileCheck,
-  Check, ChevronDown, Award, Users, CalendarCheck, MapPin, ArrowRight,
-  Sparkles, Star, Zap,
+  Check, ChevronDown, MapPin, ArrowRight,
 } from "lucide-react";
 
 const hand = "font-[family-name:var(--font-wed-hand)]";
@@ -35,10 +34,10 @@ const packages = [
 ];
 
 const stats = [
-  { icon: CalendarCheck, value: "150+", label: "Event terlaksana" },
-  { icon: Users, value: "50rb+", label: "Peserta dilayani" },
-  { icon: Award, value: "4.9", label: "Rating klien" },
-  { icon: MapPin, value: "Jabar", label: "Area layanan" },
+  { value: "150+", label: "Event terlaksana" },
+  { value: "50rb+", label: "Peserta dilayani" },
+  { value: "4.9", label: "Rating klien" },
+  { value: "Jabar", label: "Area layanan" },
 ];
 
 const testimonials = [
@@ -56,20 +55,40 @@ const faqs = [
 
 const marqueeItems = ["Konser & Festival", "Corporate Event", "Outing & Tour", "Pensi & Wisuda", "Lomba & Turnamen", "Private Party", "Garut • Jawa Barat"];
 
-function LuxIcon({ icon: Icon, color, size = "md", className = "" }: { icon: React.ElementType; color: string; size?: "sm" | "md"; className?: string }) {
-  const box = size === "sm" ? "h-11 w-11 rounded-[14px]" : "h-[52px] w-[52px] rounded-[16px]";
+function StickerIcon({ icon: Icon, color, size = "md", className = "" }: { icon: React.ElementType; color: string; size?: "sm" | "md"; className?: string }) {
+  const box = size === "sm" ? "h-11 w-11 rounded-2xl" : "h-[52px] w-[52px] rounded-2xl";
   return (
     <span
-      className={`relative flex shrink-0 items-center justify-center overflow-hidden ${box} ${className}`}
-      style={{
-        background: `linear-gradient(148deg, color-mix(in srgb, ${color} 55%, white) 0%, ${color} 58%, color-mix(in srgb, ${color} 72%, black) 100%)`,
-        boxShadow: `0 4px 0 color-mix(in srgb, ${color} 82%, black), 0 8px 13px -9px ${color}88, inset 0 1px 0 rgba(255,255,255,.54)`,
-      }}
+      className={`flex shrink-0 items-center justify-center border-[2.5px] border-brand-navy ${box} ${className}`}
+      style={{ background: color, boxShadow: "3px 3px 0 0 var(--color-brand-navy)" }}
     >
-      <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[radial-gradient(ellipse_at_27%_17%,rgba(255,255,255,.42),transparent_56%)]" />
-      <span aria-hidden="true" className="pointer-events-none absolute inset-[1px] rounded-[inherit] border border-white/20" />
-      <Icon className={`relative z-10 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,.25)] ${size === "sm" ? "h-5 w-5" : "h-6 w-6"}`} strokeWidth={2.2} />
+      <Icon className={`text-white ${size === "sm" ? "h-5 w-5" : "h-6 w-6"}`} strokeWidth={2.4} />
     </span>
+  );
+}
+
+/* Coretan tangan — pengganti ikon dekorasi biar tidak kaku */
+function Squiggle({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 60 20" fill="none" className={className} aria-hidden>
+      <path d="M3 13 C 11 3, 19 19, 27 10 S 43 3, 51 12 S 57 15, 57 8" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function Burst({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 40 40" fill="none" className={className} aria-hidden>
+      <path d="M20 4v8M20 28v8M4 20h8M28 20h8M9 9l5.5 5.5M25.5 25.5L31 31M31 9l-5.5 5.5M14.5 25.5L9 31" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function Ring({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 40 40" fill="none" className={className} aria-hidden>
+      <path d="M20 5 C 30 4, 36 12, 35 21 C 34 31, 24 37, 15 34 C 7 31, 3 22, 7 14 C 10 8, 15 6, 19 6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+    </svg>
   );
 }
 
@@ -83,12 +102,12 @@ export default function EventOrganizerPage() {
         <section className="relative overflow-hidden bg-gradient-to-br from-brand-navy via-brand-navy to-brand px-5 pb-20 pt-12 text-primary-foreground">
           <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand/40 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-brand-orange/25 blur-3xl" />
-          {/* floating decor */}
-          <PartyPopper className="wed-float pointer-events-none absolute right-[12%] top-14 h-8 w-8 text-brand-orange/70" aria-hidden />
-          <Sparkles className="wed-wiggle pointer-events-none absolute left-[8%] top-24 h-6 w-6 text-primary-foreground/40" aria-hidden />
-          <Star className="wed-float-slow pointer-events-none absolute right-[24%] bottom-24 h-5 w-5 fill-brand-orange/50 text-brand-orange/50" aria-hidden />
-          <Zap className="wed-float pointer-events-none absolute left-[16%] bottom-32 h-6 w-6 text-brand-orange/50" aria-hidden />
-          <Music className="wed-float-slow pointer-events-none absolute right-[8%] bottom-40 h-7 w-7 text-primary-foreground/30" aria-hidden />
+          {/* floating decor — coretan tangan */}
+          <Burst className="wed-float pointer-events-none absolute right-[12%] top-14 h-9 w-9 text-brand-orange/80" />
+          <Squiggle className="wed-wiggle pointer-events-none absolute left-[7%] top-24 h-5 w-14 text-primary-foreground/40" />
+          <Ring className="wed-float-slow pointer-events-none absolute right-[24%] bottom-24 h-6 w-6 text-brand-orange/60" />
+          <Squiggle className="wed-float pointer-events-none absolute left-[14%] bottom-32 h-5 w-12 -rotate-12 text-brand-orange/60" />
+          <Burst className="wed-float-slow pointer-events-none absolute right-[8%] bottom-40 h-6 w-6 text-primary-foreground/30" />
 
           <p className={`${hand} relative text-2xl text-brand-orange sm:text-3xl`}>punya rencana acara?</p>
           <h1 className="relative mt-3 text-[32px] font-extrabold leading-[1.12] tracking-tight sm:text-5xl">
@@ -109,7 +128,7 @@ export default function EventOrganizerPage() {
           <div className="relative mt-6 flex flex-wrap gap-2">
             {["150+ event", "50rb+ peserta", "Rating 4.9"].map((chip) => (
               <span key={chip} className="inline-flex items-center gap-1.5 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-3.5 py-1.5 text-[11px] font-semibold backdrop-blur">
-                <Star className="h-3 w-3 fill-brand-orange text-brand-orange" />
+                <Burst className="h-3 w-3 text-brand-orange" />
                 {chip}
               </span>
             ))}
@@ -127,7 +146,7 @@ export default function EventOrganizerPage() {
             {[...marqueeItems, ...marqueeItems].map((item, i) => (
               <span key={i} className="flex items-center gap-8 text-sm font-semibold tracking-wide">
                 {item}
-                <Sparkles className="h-3.5 w-3.5" />
+                <Burst className="h-3.5 w-3.5" />
               </span>
             ))}
           </div>
@@ -138,7 +157,6 @@ export default function EventOrganizerPage() {
           <div className="grid grid-cols-4 divide-x divide-border rounded-3xl border-2 border-dashed border-brand/25 bg-card py-5 shadow-xl shadow-brand-navy/10">
             {stats.map((s) => (
               <div key={s.label} className="px-1 text-center">
-                <s.icon className="mx-auto mb-1.5 h-4 w-4 text-brand-orange" aria-hidden />
                 <p className="text-lg font-extrabold text-brand">{s.value}</p>
                 <p className="mt-0.5 text-[10px] font-medium leading-tight text-muted-foreground">{s.label}</p>
               </div>
@@ -152,7 +170,7 @@ export default function EventOrganizerPage() {
           <div className="grid grid-cols-2 gap-3">
             {services.map((s) => (
               <div key={s.title} className="wed-card-pop rounded-3xl border-2 border-dashed border-border bg-card p-4 hover:border-brand/40">
-                <LuxIcon icon={s.icon} color={s.color} className="mb-3.5" />
+                <StickerIcon icon={s.icon} color={s.color} className="mb-3.5" />
                 <h3 className="text-[13px] font-bold leading-snug text-foreground">{s.title}</h3>
                 <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground">{s.desc}</p>
               </div>
@@ -166,7 +184,7 @@ export default function EventOrganizerPage() {
           <ol className="space-y-3">
             {steps.map((s, i) => (
               <li key={s.title} className="wed-card-pop flex gap-4 rounded-3xl border-2 border-transparent bg-card p-4 shadow-sm hover:border-brand/30">
-                <LuxIcon icon={s.icon} color={s.color} size="sm" />
+                <StickerIcon icon={s.icon} color={s.color} size="sm" />
                 <div>
                   <h3 className="flex items-center gap-1.5 text-sm font-bold text-brand-navy">
                     <span className="rounded-full bg-brand-sky px-2 py-0.5 text-[11px] font-extrabold text-brand">{String(i + 1).padStart(2, "0")}</span> {s.title}
@@ -230,7 +248,7 @@ export default function EventOrganizerPage() {
           <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none]">
             {testimonials.map((t) => (
               <div key={t.name} className="wed-card-pop flex w-[78%] shrink-0 snap-start flex-col rounded-3xl border-2 border-dashed border-border bg-card p-5 sm:w-[46%]">
-                <Sparkles className="mb-3 h-5 w-5 text-brand-orange" aria-hidden />
+                <p className={`${hand} mb-1 text-3xl leading-none text-brand-orange`} aria-hidden>”</p>
                 <p className="flex-1 text-[13px] leading-relaxed text-foreground">“{t.text}”</p>
                 <div className="mt-4 flex items-center gap-3 border-t border-dashed border-border pt-4">
                   <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-sky text-sm font-bold text-brand">
@@ -268,9 +286,9 @@ export default function EventOrganizerPage() {
         <section className="px-4 pt-12">
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand to-brand-navy p-7 text-center text-primary-foreground">
             <div className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-brand-orange/30 blur-2xl" />
-            <PartyPopper className="wed-float pointer-events-none absolute left-[10%] top-8 h-7 w-7 text-brand-orange/60" aria-hidden />
-            <Sparkles className="wed-wiggle pointer-events-none absolute right-[12%] bottom-10 h-6 w-6 text-primary-foreground/30" aria-hidden />
-            <PartyPopper className="wed-pulse-heart relative mx-auto h-9 w-9 text-brand-orange" aria-hidden />
+            <Burst className="wed-float pointer-events-none absolute left-[10%] top-8 h-7 w-7 text-brand-orange/60" />
+            <Squiggle className="wed-wiggle pointer-events-none absolute right-[12%] bottom-10 h-5 w-12 text-primary-foreground/30" />
+            <Burst className="wed-pulse-heart relative mx-auto h-10 w-10 text-brand-orange" />
             <p className={`${hand} relative mt-3 text-2xl text-brand-orange`}>jangan cuma jadi wacana</p>
             <h2 className="relative mt-1 text-2xl font-extrabold leading-snug">Siap bikin acara yang berkesan?</h2>
             <p className="relative mx-auto mt-2 max-w-sm text-sm text-primary-foreground/80">Konsultasi gratis — ceritakan rencana acaramu, kami bantu wujudkan.</p>
