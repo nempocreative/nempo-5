@@ -102,12 +102,12 @@ export default function EventOrganizerPage() {
         <section className="relative overflow-hidden bg-gradient-to-br from-brand-navy via-brand-navy to-brand px-5 pb-20 pt-12 text-primary-foreground">
           <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand/40 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-brand-orange/25 blur-3xl" />
-          {/* floating decor */}
-          <PartyPopper className="wed-float pointer-events-none absolute right-[12%] top-14 h-8 w-8 text-brand-orange/70" aria-hidden />
-          <Sparkles className="wed-wiggle pointer-events-none absolute left-[8%] top-24 h-6 w-6 text-primary-foreground/40" aria-hidden />
-          <Star className="wed-float-slow pointer-events-none absolute right-[24%] bottom-24 h-5 w-5 fill-brand-orange/50 text-brand-orange/50" aria-hidden />
-          <Zap className="wed-float pointer-events-none absolute left-[16%] bottom-32 h-6 w-6 text-brand-orange/50" aria-hidden />
-          <Music className="wed-float-slow pointer-events-none absolute right-[8%] bottom-40 h-7 w-7 text-primary-foreground/30" aria-hidden />
+          {/* floating decor — coretan tangan */}
+          <Burst className="wed-float pointer-events-none absolute right-[12%] top-14 h-9 w-9 text-brand-orange/80" />
+          <Squiggle className="wed-wiggle pointer-events-none absolute left-[7%] top-24 h-5 w-14 text-primary-foreground/40" />
+          <Ring className="wed-float-slow pointer-events-none absolute right-[24%] bottom-24 h-6 w-6 text-brand-orange/60" />
+          <Squiggle className="wed-float pointer-events-none absolute left-[14%] bottom-32 h-5 w-12 -rotate-12 text-brand-orange/60" />
+          <Burst className="wed-float-slow pointer-events-none absolute right-[8%] bottom-40 h-6 w-6 text-primary-foreground/30" />
 
           <p className={`${hand} relative text-2xl text-brand-orange sm:text-3xl`}>punya rencana acara?</p>
           <h1 className="relative mt-3 text-[32px] font-extrabold leading-[1.12] tracking-tight sm:text-5xl">
@@ -146,7 +146,7 @@ export default function EventOrganizerPage() {
             {[...marqueeItems, ...marqueeItems].map((item, i) => (
               <span key={i} className="flex items-center gap-8 text-sm font-semibold tracking-wide">
                 {item}
-                <Sparkles className="h-3.5 w-3.5" />
+                <Burst className="h-3.5 w-3.5" />
               </span>
             ))}
           </div>
