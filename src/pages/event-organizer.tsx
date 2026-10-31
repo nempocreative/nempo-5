@@ -56,13 +56,18 @@ const faqs = [
 const marqueeItems = ["Konser & Festival", "Corporate Event", "Outing & Tour", "Pensi & Wisuda", "Lomba & Turnamen", "Private Party", "Garut • Jawa Barat"];
 
 function StickerIcon({ icon: Icon, color, size = "md", className = "" }: { icon: React.ElementType; color: string; size?: "sm" | "md"; className?: string }) {
-  const box = size === "sm" ? "h-11 w-11 rounded-2xl" : "h-[52px] w-[52px] rounded-2xl";
+  const box = size === "sm" ? "h-11 w-11 rounded-[14px]" : "h-[54px] w-[54px] rounded-[17px]";
   return (
     <span
-      className={`flex shrink-0 items-center justify-center border-[2.5px] border-brand-navy ${box} ${className}`}
-      style={{ background: color, boxShadow: "3px 3px 0 0 var(--color-brand-navy)" }}
+      className={`relative flex shrink-0 items-center justify-center overflow-hidden ${box} ${className}`}
+      style={{
+        background: `linear-gradient(148deg, color-mix(in srgb, ${color} 55%, white) 0%, ${color} 58%, color-mix(in srgb, ${color} 72%, black) 100%)`,
+        boxShadow: `0 4px 0 color-mix(in srgb, ${color} 82%, black), 0 8px 13px -9px ${color}88, inset 0 1px 0 rgba(255,255,255,.54)`,
+      }}
     >
-      <Icon className={`text-white ${size === "sm" ? "h-5 w-5" : "h-6 w-6"}`} strokeWidth={2.4} />
+      <span aria-hidden className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[radial-gradient(ellipse_at_27%_17%,rgba(255,255,255,.42),transparent_56%)]" />
+      <span aria-hidden className="pointer-events-none absolute inset-[1px] rounded-[inherit] border border-white/20" />
+      <Icon className={`relative z-10 text-white drop-shadow-[0_1px_1px_rgba(0,0,0,.25)] ${size === "sm" ? "h-5 w-5" : "h-6 w-6"}`} strokeWidth={2.2} />
     </span>
   );
 }
@@ -170,7 +175,7 @@ export default function EventOrganizerPage() {
           <div className="grid grid-cols-2 gap-3">
             {services.map((s, i) => (
               <div key={s.title} className="wed-card-pop rounded-3xl border-2 border-dashed border-border bg-card p-4 hover:border-brand/40">
-                <span className="mb-3 block h-1.5 w-8 rounded-full" style={{ background: s.color }} />
+                <StickerIcon icon={s.icon} color={s.color} className="mb-3.5" />
                 <h3 className="text-[13px] font-bold leading-snug text-foreground">{s.title}</h3>
                 <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground">{s.desc}</p>
               </div>
@@ -184,6 +189,7 @@ export default function EventOrganizerPage() {
           <ol className="space-y-3">
             {steps.map((s, i) => (
               <li key={s.title} className="wed-card-pop flex gap-4 rounded-3xl border-2 border-transparent bg-card p-4 shadow-sm hover:border-brand/30">
+                <StickerIcon icon={s.icon} color={s.color} size="sm" />
                 <div>
                   <h3 className="flex items-center gap-1.5 text-sm font-bold text-brand-navy">
                     <span className="rounded-full bg-brand-sky px-2 py-0.5 text-[11px] font-extrabold text-brand">{String(i + 1).padStart(2, "0")}</span> {s.title}
