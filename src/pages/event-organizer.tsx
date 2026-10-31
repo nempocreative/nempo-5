@@ -59,11 +59,11 @@ const eoIconCss = `
 @keyframes eo-ring-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
 @keyframes eo-ring-glow { 0%,100% { opacity: .3; } 50% { opacity: .75; } }
 @keyframes eo-tile-shine { 0%, 72% { transform: translateX(-130%) skewX(-18deg); } 100% { transform: translateX(230%) skewX(-18deg); } }
-.eo-ring { position: absolute; inset: -4px -4px -6px; border-radius: 21px; overflow: hidden; pointer-events: none; filter: drop-shadow(0 0 5px var(--ring-color)) saturate(1.2); }
+.eo-ring { position: absolute; inset: -3px -3px -5px; border-radius: 20px; overflow: hidden; padding: 2px; -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; filter: drop-shadow(0 0 5px var(--ring-color)) saturate(1.2); }
 .eo-ring::before { content: ""; position: absolute; left: 50%; top: 50%; width: 180%; height: 180%; transform: translate(-50%, -50%);
   background: conic-gradient(from 0deg, transparent 0deg 190deg, var(--ring-tail) 250deg, var(--ring-color) 320deg, #fff 352deg, transparent 360deg);
   animation: eo-ring-spin 2.6s linear infinite; animation-delay: var(--ring-delay); }
-.eo-glow { position: absolute; inset: -9px; border-radius: 26px; pointer-events: none; background: radial-gradient(circle, var(--ring-color) 0%, transparent 70%); filter: blur(8px); animation: eo-ring-glow 3.2s ease-in-out infinite; animation-delay: var(--ring-delay); }
+.eo-glow { position: absolute; inset: -2px; border-radius: 20px; z-index: -1; pointer-events: none; background: radial-gradient(circle, var(--ring-color) 0%, transparent 70%); filter: blur(4px); animation: eo-ring-glow 3.2s ease-in-out infinite; animation-delay: var(--ring-delay); }
 .eo-shine { position: absolute; inset: 0; width: 45%; pointer-events: none; background: linear-gradient(90deg, transparent, rgba(255,255,255,.45), transparent); animation: eo-tile-shine 4.8s ease-in-out infinite; animation-delay: var(--ring-delay); }
 .wed-card-pop:hover .eo-ring::before { animation-duration: 1.4s; }
 @media (prefers-reduced-motion: reduce) { .eo-ring::before, .eo-glow, .eo-shine { animation: none; } .eo-shine { display: none; } }
@@ -73,7 +73,7 @@ function StickerIcon({ icon: Icon, color, size = "md", className = "", delay = 0
   const box = size === "sm" ? "h-11 w-11 rounded-[14px]" : "h-[54px] w-[54px] rounded-[17px]";
   return (
     <span
-      className={`relative inline-flex w-fit shrink-0 ${className}`}
+      className={`relative isolate m-1.5 inline-flex w-fit shrink-0 ${className}`}
       style={{ "--ring-color": color, "--ring-tail": `color-mix(in srgb, ${color} 35%, transparent)`, "--ring-delay": `${-delay * 0.4}s` } as React.CSSProperties}
     >
       <span aria-hidden className="eo-glow" />
@@ -198,7 +198,7 @@ export default function EventOrganizerPage() {
           <div className="grid grid-cols-2 gap-3">
             {services.map((s, i) => (
               <div key={s.title} className="wed-card-pop rounded-3xl border-2 border-dashed border-border bg-card p-4 hover:border-brand/40">
-                <StickerIcon icon={s.icon} color={s.color} delay={i} className="mb-3.5" />
+                <StickerIcon icon={s.icon} color={s.color} delay={i} className="mb-4" />
                 <h3 className="text-[13px] font-bold leading-snug text-foreground">{s.title}</h3>
                 <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground">{s.desc}</p>
               </div>
