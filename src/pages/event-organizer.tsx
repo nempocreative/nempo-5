@@ -128,7 +128,7 @@ export default function EventOrganizerPage() {
           <div className="relative mt-6 flex flex-wrap gap-2">
             {["150+ event", "50rb+ peserta", "Rating 4.9"].map((chip) => (
               <span key={chip} className="inline-flex items-center gap-1.5 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-3.5 py-1.5 text-[11px] font-semibold backdrop-blur">
-                <Star className="h-3 w-3 fill-brand-orange text-brand-orange" />
+                <Burst className="h-3 w-3 text-brand-orange" />
                 {chip}
               </span>
             ))}
@@ -157,7 +157,6 @@ export default function EventOrganizerPage() {
           <div className="grid grid-cols-4 divide-x divide-border rounded-3xl border-2 border-dashed border-brand/25 bg-card py-5 shadow-xl shadow-brand-navy/10">
             {stats.map((s) => (
               <div key={s.label} className="px-1 text-center">
-                <s.icon className="mx-auto mb-1.5 h-4 w-4 text-brand-orange" aria-hidden />
                 <p className="text-lg font-extrabold text-brand">{s.value}</p>
                 <p className="mt-0.5 text-[10px] font-medium leading-tight text-muted-foreground">{s.label}</p>
               </div>
@@ -171,7 +170,7 @@ export default function EventOrganizerPage() {
           <div className="grid grid-cols-2 gap-3">
             {services.map((s) => (
               <div key={s.title} className="wed-card-pop rounded-3xl border-2 border-dashed border-border bg-card p-4 hover:border-brand/40">
-                <LuxIcon icon={s.icon} color={s.color} className="mb-3.5" />
+                <StickerIcon icon={s.icon} color={s.color} className="mb-3.5" />
                 <h3 className="text-[13px] font-bold leading-snug text-foreground">{s.title}</h3>
                 <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground">{s.desc}</p>
               </div>
@@ -185,7 +184,7 @@ export default function EventOrganizerPage() {
           <ol className="space-y-3">
             {steps.map((s, i) => (
               <li key={s.title} className="wed-card-pop flex gap-4 rounded-3xl border-2 border-transparent bg-card p-4 shadow-sm hover:border-brand/30">
-                <LuxIcon icon={s.icon} color={s.color} size="sm" />
+                <StickerIcon icon={s.icon} color={s.color} size="sm" />
                 <div>
                   <h3 className="flex items-center gap-1.5 text-sm font-bold text-brand-navy">
                     <span className="rounded-full bg-brand-sky px-2 py-0.5 text-[11px] font-extrabold text-brand">{String(i + 1).padStart(2, "0")}</span> {s.title}
@@ -249,7 +248,7 @@ export default function EventOrganizerPage() {
           <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none]">
             {testimonials.map((t) => (
               <div key={t.name} className="wed-card-pop flex w-[78%] shrink-0 snap-start flex-col rounded-3xl border-2 border-dashed border-border bg-card p-5 sm:w-[46%]">
-                <Sparkles className="mb-3 h-5 w-5 text-brand-orange" aria-hidden />
+                <p className={`${hand} mb-1 text-3xl leading-none text-brand-orange`} aria-hidden>”</p>
                 <p className="flex-1 text-[13px] leading-relaxed text-foreground">“{t.text}”</p>
                 <div className="mt-4 flex items-center gap-3 border-t border-dashed border-border pt-4">
                   <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-sky text-sm font-bold text-brand">
@@ -287,9 +286,9 @@ export default function EventOrganizerPage() {
         <section className="px-4 pt-12">
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand to-brand-navy p-7 text-center text-primary-foreground">
             <div className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-brand-orange/30 blur-2xl" />
-            <PartyPopper className="wed-float pointer-events-none absolute left-[10%] top-8 h-7 w-7 text-brand-orange/60" aria-hidden />
-            <Sparkles className="wed-wiggle pointer-events-none absolute right-[12%] bottom-10 h-6 w-6 text-primary-foreground/30" aria-hidden />
-            <PartyPopper className="wed-pulse-heart relative mx-auto h-9 w-9 text-brand-orange" aria-hidden />
+            <Burst className="wed-float pointer-events-none absolute left-[10%] top-8 h-7 w-7 text-brand-orange/60" />
+            <Squiggle className="wed-wiggle pointer-events-none absolute right-[12%] bottom-10 h-5 w-12 text-primary-foreground/30" />
+            <Burst className="wed-pulse-heart relative mx-auto h-10 w-10 text-brand-orange" />
             <p className={`${hand} relative mt-3 text-2xl text-brand-orange`}>jangan cuma jadi wacana</p>
             <h2 className="relative mt-1 text-2xl font-extrabold leading-snug">Siap bikin acara yang berkesan?</h2>
             <p className="relative mx-auto mt-2 max-w-sm text-sm text-primary-foreground/80">Konsultasi gratis — ceritakan rencana acaramu, kami bantu wujudkan.</p>
