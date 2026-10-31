@@ -89,6 +89,12 @@ body,
   --color-dev-sky: #0ea5e9;
   --color-dev-lime: #c6f432;
   --color-dev-paper: #f3f8fc;
+  --color-art-amber: #e9a23b;
+  --color-art-coral: #e8613f;
+  --color-art-teal: #0f766e;
+  --color-art-plum: #6d3b6e;
+  --color-art-ink: #231a12;
+  --color-art-cream: #fbf5ea;
   --font-wed-serif: "Playfair Display", Georgia, serif;
   --font-wed-hand: "Caveat", "Segoe Script", cursive;
   --color-blue-50:  hsl(39 45% 96%);
