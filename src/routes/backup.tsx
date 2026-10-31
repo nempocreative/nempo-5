@@ -115,8 +115,8 @@ function BackupPage() {
                 {s.complete ? <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" /> : <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />}
                 <span>
                   {s.complete
-                    ? `Lengkap: ${s.totalRows.toLocaleString("id-ID")} data dari ${s.tables} tabel siap diunduh.`
-                    : `Ada tabel yang belum lengkap: ${s.problems.join("; ")}. Coba siapkan ulang.`}
+                    ? `Lengkap: ${s.totalRows.toLocaleString("id-ID")} data dari ${s.tables} tabel akan masuk ke backup.`
+                    : `Ada tabel yang belum lengkap: ${s.problems.join("; ")}. Coba cek ulang.`}
                 </span>
               </div>
               <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
