@@ -286,9 +286,103 @@ type ChatMsg = { from: "bot" | "user"; text: string; chips?: string[]; wa?: bool
 
 const GREET_MSG: ChatMsg = {
   from: "bot",
-  text: "Halo, aku Buddy. Aku bisa bantu cari ide wisata, kuliner, event, tiket, sampai rencana perjalanan. Pilih topik di bawah atau ceritakan tujuanmu.",
-  chips: ["Wisata dekat sini", "Kuliner wajib coba", "Cara pesan tiket", "Event terdekat", "Rencana trip 1 hari", "Cara pakai Nempo"],
+  text: "Halo, aku Buddy Nempo. Aku bisa bantu jelaskan layanan, paket, dan harga Nempo Organizer — dari acara, wedding, sosmed, sampai website. Pilih topik di bawah atau ceritakan rencanamu.",
+  chips: ["Paket Event Organizer", "Paket Wedding Organizer", "Harga sosmed management", "Bikin website usaha", "Talent MC & band", "Chat Admin"],
 };
+
+const BOT_QA: { keys: string[]; answer: string; chips?: string[]; wa?: boolean }[] = [
+  {
+    keys: ["event organizer", "paket eo", " eo", "eo ", "acara", "event", "festival", "konser", "gathering", "seminar"],
+    answer: "Event Organizer Nempo siap bantu dari konsep, rundown, vendor, sampai hari-H. Paketnya mulai Basic Rp 3,5 jt (acara intim hingga 100 tamu), Premium Rp 12 jt (hingga 500 tamu), sampai Exclusive untuk festival & konser besar.",
+    chips: ["Detail paket EO", "Cara order", "DM Admin"],
+  },
+  {
+    keys: ["wedding", "pernikahan", "resepsi", "paket wo", " wo", "wo ", "lamaran", "adat"],
+    answer: "Wedding Organizer Nempo punya tiga paket: Essential Rp 2,5 jt (tim 4 orang), Signature Rp 4 jt (tim 6), dan Premium Rp 6 jt (tim 8). Ada juga opsi upacara adat Sunda yang bisa digabung ke paket.",
+    chips: ["Detail paket WO", "Opsi adat Sunda", "DM Admin"],
+  },
+  {
+    keys: ["undangan", "invitation", "softcopy"],
+    answer: "Wedding Invitation dari Nempo adalah undangan digital sekali bayar Rp 199 rb — ada nama tamu, countdown, galeri, dan RSVP. Sampel interaktifnya bisa langsung dicoba di halamannya.",
+    chips: ["Detail undangan", "DM Admin"],
+  },
+  {
+    keys: ["sosmed", "social media", "instagram", "ig ", "feed", "story", "reels", "tiktok", "konten", "ads"],
+    answer: "Sosmed Management Nempo: Instagram Ads & Story mulai Rp 250 rb, Feed Rp 1,25 jt, Reels Rp 650 rb, sampai TikTok. Ada juga paket Social Media Rp 4 jt dan All Promotion Rp 7,5 jt.",
+    chips: ["Detail harga sosmed", "DM Admin"],
+  },
+  {
+    keys: ["website", "web ", "company profile", "domain", "landing page", "link bio", "ticketing"],
+    answer: "Web Development Nempo: Company Website Rp 1,5 jt, Link Bio Rp 49 rb, dan Event Ticketing Rp 499 rb. Ada juga paket bulanan mulai Rp 79 rb/bulan (Mulai Online) sampai Super App Rp 699 rb/bulan.",
+    chips: ["Detail harga website", "DM Admin"],
+  },
+  {
+    keys: ["digi", "aplikasi", "sistem", "kasir", "qr menu", "business system", "crm", "stok", "hpp"],
+    answer: "Business System (Digi Nempo) punya 15 modul untuk usaha: Kasir, QR Menu, Booking, CRM, Loyalty, Stok, HPP, Invoice, HR, dan lainnya — mulai Rp 49 rb/bulan per modul, atau ambil paket Super App biar semuanya terhubung.",
+    chips: ["Detail Business System", "DM Admin"],
+  },
+  {
+    keys: ["desain", "design", "logo", "branding", "poster", "merchandise", "kreatif"],
+    answer: "Design Creative Nempo mengerjakan branding & logo, konten visual sosmed, foto/video, desain event, merchandise, sampai materi campaign. Desainnya dihitung per brief, jadi harga menyesuaikan kebutuhanmu.",
+    chips: ["Detail Design Creative", "DM Admin"],
+  },
+  {
+    keys: ["talent", "mc", "band", "musisi", "penari", "penyanyi", "model", "host"],
+    answer: "Talent Management Nempo punya 8 kategori: MC & host, band & musisi, penari, penyanyi, model, seni budaya Sunda, content creator, dan fotografer/videografer. Harganya menyesuaikan per acara — ceritakan kebutuhanmu ke Admin.",
+    chips: ["DM Admin"],
+    wa: true,
+  },
+  {
+    keys: ["harga", "biaya", "budget", "tarif", "berapa"],
+    answer: "Sebagian layanan Nempo sudah ada harganya: WO mulai Rp 2,5 jt, EO mulai Rp 3,5 jt, sosmed mulai Rp 250 rb, website mulai Rp 49 rb, undangan digital Rp 199 rb. Design dan Talent menyesuaikan kebutuhan. Mau detail yang mana?",
+    chips: ["Lihat semua harga", "Detail paket WO", "Detail paket EO"],
+  },
+  {
+    keys: ["cara order", "cara pesan", "proses", "mulai", "booking", "gimana"],
+    answer: "Caranya gampang: 1) ceritakan rencana atau kebutuhanmu, 2) Buddy arahkan ke layanan yang cocok, 3) DM Instagram @nempo.id untuk konsultasi & penawaran resmi, 4) deal, lalu tim Nempo mulai kerja.",
+    chips: ["Hubungi Admin CS"],
+    wa: true,
+  },
+  {
+    keys: ["area", "lokasi", "jabar", "jawa barat", "garut", "wilayah"],
+    answer: "Nempo Organizer melayani seluruh Jawa Barat — dari acara besar sampai kebutuhan digital usaha. Untuk lokasi di luar Jabar, tetap bisa dibahas lewat Admin.",
+    chips: ["DM Admin"],
+  },
+  {
+    keys: ["promo", "diskon", "voucher", "murah", "gratis"],
+    answer: "Info promo dan paket terbaru biasanya diumumkan di Instagram @nempo.id. Untuk harga khusus (acara besar, paket gabungan, kerja sama rutin), langsung diskusikan dengan Admin.",
+    chips: ["Instagram @nempo.id"],
+  },
+  {
+    keys: ["portofolio", "karya", "contoh", "hasil", "pengalaman"],
+    answer: "Karya dan liputan acara Nempo banyak dibagikan di Instagram @nempo.id — dari wedding, festival, sampai konten sosmed klien. Mau lihat contoh untuk rencanamu?",
+    chips: ["Instagram @nempo.id", "DM Admin"],
+  },
+  {
+    keys: ["nempo itu apa", "apa itu nempo", "nempo organizer", "jasa", "layanan"],
+    answer: "Nempo Organizer adalah tim kreatif untuk acara & usaha: Event Organizer, Wedding Organizer, Wedding Invitation, Sosmed Management, Web Development, Business System, Design Creative, dan Talent Management.",
+    chips: ["Lihat semua layanan", "Detail paket EO", "Detail paket WO"],
+  },
+  {
+    keys: ["admin", "cs", "manusia", "orang", "operator", "bantuan", "kontak", "hubungi", "whatsapp"],
+    answer: "Tentu! Admin Nempo siap membantu lewat DM Instagram @nempo.id setiap hari. Ceritakan rencana atau kendalamu, nanti dibantu dari konsultasi sampai penawaran.",
+    wa: true,
+  },
+];
+
+function botReply(input: string): ChatMsg {
+  const txt = input.toLowerCase();
+  for (const qa of BOT_QA) {
+    if (qa.keys.some((k) => txt.includes(k))) {
+      return { from: "bot", text: qa.answer, chips: qa.chips, wa: qa.wa };
+    }
+  }
+  return {
+    from: "bot",
+    text: "Aku belum menemukan jawaban yang paling pas. Coba tanyakan tentang paket EO, wedding organizer, sosmed, website, business system, design, talent, atau harga — atau langsung chat Admin.",
+    chips: ["Lihat semua layanan", "Cara order", "Hubungi Admin CS"],
+  };
+}
 
 const BOT_QA: { keys: string[]; answer: string; chips?: string[]; wa?: boolean }[] = [
   {
