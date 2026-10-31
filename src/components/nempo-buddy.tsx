@@ -78,6 +78,8 @@ export function NempoBuddy() {
         </>}
       </div>
     </>}
-    <Button ref={trigger} onClick={() => { if (open) close(); else { setMode("home"); setOpen(true); } }} aria-label={open ? "Tutup Nempo Buddy" : "Buka Nempo Buddy"} aria-expanded={open} className="fixed bottom-32 right-0 z-50 h-11 gap-2 rounded-l-lg rounded-r-none bg-brand text-brand-on shadow-lg hover:bg-brand/90 md:bottom-20"><MessageCircle className="h-5 w-5" /><span className="text-xs font-bold">Nempo Buddy</span><Heart className="h-3 w-3" /></Button>
+    <div className="fixed bottom-32 right-0 z-50 md:bottom-20">
+      <Button ref={trigger} onClick={() => { if (open) close(); else { setMode("home"); setOpen(true); } }} aria-label={open ? "Tutup Nempo Buddy" : "Buka Nempo Buddy"} aria-expanded={open} className="h-11 gap-2 rounded-l-lg rounded-r-none bg-brand text-brand-on shadow-lg hover:bg-brand/90"><MessageCircle className="h-5 w-5" /><span className="text-xs font-bold">Nempo Buddy</span><Heart className="h-3 w-3" /></Button>
+    </div>
   </>;
 }
