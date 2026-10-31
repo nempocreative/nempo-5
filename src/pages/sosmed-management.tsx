@@ -34,7 +34,7 @@ const faqs = [
   { q: "Mau sekalian tampil di website Nempo?", a: "Pilih All Promotion: semua isi Paket Social Media plus banner dan rekomendasi event di website selama 2 minggu." },
 ];
 
-const marqueeItems = ["Instagram Feed", "Reels", "Story", "Highlight", "Instagram Ads", "TikTok", "Garut • Jawa Barat"];
+const marqueeItems = ["Instagram Feed", "Reels", "Story", "Highlight", "Instagram Ads", "TikTok"];
 
 type Filter = "Semua" | SosmedItem["platform"];
 const FILTERS: Filter[] = ["Semua", "Instagram", "TikTok"];
@@ -83,7 +83,6 @@ function PhoneMockup() {
         <span className="h-7 w-7 rounded-full border-2 border-sos-pink bg-sos-blush" />
         <div>
           <p className="text-[10px] font-extrabold text-sos-ink">nempo.id</p>
-          <p className="text-[8px] text-muted-foreground">Garut, Jawa Barat</p>
         </div>
       </div>
       <div className="grid grid-cols-3 gap-1">
@@ -97,7 +96,7 @@ function PhoneMockup() {
         <span className="flex items-center gap-1 text-[9px] font-bold text-sos-pink"><Heart className="h-3 w-3 fill-sos-pink" /> 2.481</span>
         <span className="text-[9px] text-muted-foreground">+128 pengikut baru</span>
       </div>
-      <span className={`${hand} wed-wiggle absolute -left-10 -top-5 -rotate-12 rounded-full bg-sos-pink px-3 py-1 text-base text-primary-foreground`}>
+      <span className={`${hand} wed-wiggle absolute -top-7 left-2 -rotate-6 rounded-full bg-sos-pink px-3 py-1 text-base text-primary-foreground`}>
         rame nih!
       </span>
     </div>
@@ -116,8 +115,7 @@ export default function SosmedManagementPage() {
         <section className="relative overflow-hidden bg-sos-ink px-5 pb-20 pt-12 text-primary-foreground">
           <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-sos-pink/40 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-sos-lilac/40 blur-3xl" />
-          <Burst className="wed-float pointer-events-none absolute right-[8%] top-10 h-8 w-8 text-sos-lilac/70" />
-          <Squiggle className="wed-wiggle pointer-events-none absolute left-[6%] bottom-28 h-5 w-14 text-sos-pink/70" />
+          <Burst className="wed-float pointer-events-none absolute right-[3%] top-[6%] h-8 w-8 text-sos-lilac/70" />
 
           <div className="relative mx-auto grid max-w-5xl items-center gap-10 sm:grid-cols-[1.2fr_1fr]">
             <div>
