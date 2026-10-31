@@ -10,6 +10,7 @@
 <!-- LOVABLE:END -->
 
 ## Architecture rules
+- Wedding package prices, inclusions, and adat totals live in a browser-safe data module shared by the page and its rule tests; why: keep calculations and package details consistent with the Kenalan Nempo source. The wedding leaf route mounts NempoShell for page-specific metadata without replacing internal page routing.
 - The NEMPO site (migrated from Replit repo nempocreative/organizer, artifact nempo-garut-web) renders client-only through `src/components/nempo-shell.tsx`, mounted by `src/routes/index.tsx` and the catch-all `src/routes/$.tsx`; why: its 100+ pages rely on browser APIs and were ported as-is.
 - Page-level routing inside the NEMPO app goes through `src/lib/wouter.tsx`, a wouter-compatible API backed by TanStack Router; why: keeps one router without rewriting every page. New pages are added to the `Switch` in `src/nempo-app.tsx`.
 - tsconfig strict extras (noUncheckedIndexedAccess, exactOptionalPropertyTypes, etc.) are off; why: the imported code was written without them.
