@@ -15,7 +15,7 @@ const services = [
   { icon: Lightbulb, title: "Strategi Konten", color: "var(--color-sos-pink)", desc: "Ide konten, pilar, dan kalender posting yang pas dengan target audiens." },
   { icon: ImageIcon, title: "Desain & Video", color: "var(--color-sos-lilac)", desc: "Materi feed, story, dan reels dibuat langsung oleh tim Nempo Organizer." },
   { icon: PenLine, title: "Caption & Hashtag", color: "var(--color-sos-ink)", desc: "Hashtag utama dan tag akun yang relevan biar konten gampang ditemukan." },
-  { icon: CalendarClock, title: "Jadwal & Publikasi", color: "var(--color-brand)", desc: "Konten diposting rutin sesuai jadwal — kamu tinggal pantau." },
+  { icon: CalendarClock, title: "Jadwal & Publikasi", color: "var(--color-sos-cherry)", desc: "Konten diposting rutin sesuai jadwal — kamu tinggal pantau." },
   { icon: Megaphone, title: "Iklan Instagram", color: "var(--color-sos-pink)", desc: "Iklan berbayar dengan tombol CTA langsung ke halaman event kamu." },
   { icon: BarChart3, title: "Pantau Hasil", color: "var(--color-sos-lilac)", desc: "Evaluasi performa konten untuk perbaikan di periode berikutnya." },
 ];
@@ -74,8 +74,8 @@ function Burst({ className = "" }: { className?: string }) {
 function PhoneMockup() {
   const tiles = [
     "bg-sos-pink", "bg-sos-lilac", "bg-sos-ink",
-    "bg-brand", "bg-sos-blush", "bg-sos-pink",
-    "bg-sos-lilac", "bg-brand-sky", "bg-brand",
+    "bg-sos-cherry", "bg-sos-blush", "bg-sos-pink",
+    "bg-sos-lilac", "bg-sos-cherry", "bg-sos-blush",
   ];
   return (
     <div className="relative mx-auto w-[190px] rotate-3 rounded-[28px] border-[3px] border-sos-ink bg-card p-2.5" style={{ boxShadow: "6px 6px 0 0 var(--color-sos-ink)" }}>
