@@ -44,7 +44,7 @@ function BrowserMockup() {
       <span className={`${hand} wed-wiggle absolute -top-7 right-2 z-10 rotate-6 rounded-full bg-dev-lime px-3 py-0.5 text-lg text-dev-ink`}>klik tab-nya!</span>
       <div className="overflow-hidden rounded-2xl border-[3px] border-dev-ink bg-card" style={{ boxShadow: "8px 8px 0 0 var(--color-dev-sky)" }}>
         <div className="flex items-center gap-2 border-b-[3px] border-dev-ink bg-dev-paper px-3 py-2">
-          <span className="h-2.5 w-2.5 rounded-full bg-sos-pink" />
+          <span className="h-2.5 w-2.5 rounded-full bg-dot-red" />
           <span className="h-2.5 w-2.5 rounded-full bg-brand-orange" />
           <span className="h-2.5 w-2.5 rounded-full bg-dev-lime" />
           <span className={`${mono} ml-2 flex-1 truncate rounded-md bg-card px-2 py-0.5 text-[10px] text-dev-ink/70`}>https://{current.url}</span>
