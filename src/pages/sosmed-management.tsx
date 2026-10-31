@@ -14,7 +14,7 @@ const hand = "font-[family-name:var(--font-wed-hand)]";
 const services = [
   { icon: Lightbulb, title: "Strategi Konten", color: "var(--color-sos-pink)", desc: "Ide konten, pilar, dan kalender posting yang pas dengan target audiens." },
   { icon: ImageIcon, title: "Desain & Video", color: "var(--color-sos-lilac)", desc: "Materi feed, story, dan reels dibuat langsung oleh tim Nempo Organizer." },
-  { icon: PenLine, title: "Caption & Hashtag", color: "var(--color-brand-orange)", desc: "Hashtag utama dan tag akun yang relevan biar konten gampang ditemukan." },
+  { icon: PenLine, title: "Caption & Hashtag", color: "var(--color-sos-ink)", desc: "Hashtag utama dan tag akun yang relevan biar konten gampang ditemukan." },
   { icon: CalendarClock, title: "Jadwal & Publikasi", color: "var(--color-brand)", desc: "Konten diposting rutin sesuai jadwal — kamu tinggal pantau." },
   { icon: Megaphone, title: "Iklan Instagram", color: "var(--color-sos-pink)", desc: "Iklan berbayar dengan tombol CTA langsung ke halaman event kamu." },
   { icon: BarChart3, title: "Pantau Hasil", color: "var(--color-sos-lilac)", desc: "Evaluasi performa konten untuk perbaikan di periode berikutnya." },
@@ -42,10 +42,14 @@ const FILTERS: Filter[] = ["Semua", "Instagram", "TikTok"];
 function StickerIcon({ icon: Icon, color, className = "" }: { icon: React.ElementType; color: string; className?: string }) {
   return (
     <span
-      className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border-[2.5px] border-sos-ink ${className}`}
-      style={{ background: color, boxShadow: "3px 3px 0 0 var(--color-sos-ink)" }}
+      className={`relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl ${className}`}
+      style={{
+        background: `linear-gradient(148deg, color-mix(in srgb, ${color} 55%, white) 0%, ${color} 58%, color-mix(in srgb, ${color} 72%, black) 100%)`,
+        boxShadow: `0 4px 0 color-mix(in srgb, ${color} 82%, black), 0 8px 13px -9px color-mix(in srgb, ${color} 55%, transparent), inset 0 1px 0 rgba(255,255,255,.54)`,
+      }}
     >
-      <Icon className="h-6 w-6 text-primary-foreground" strokeWidth={2.4} />
+      <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/40 to-transparent" />
+      <Icon className="relative h-6 w-6 text-primary-foreground" strokeWidth={2.4} />
     </span>
   );
 }
@@ -69,9 +73,9 @@ function Burst({ className = "" }: { className?: string }) {
 /* Mini mockup HP berisi grid feed — pengganti ilustrasi stok */
 function PhoneMockup() {
   const tiles = [
-    "bg-sos-pink", "bg-brand-orange", "bg-sos-lilac",
+    "bg-sos-pink", "bg-sos-lilac", "bg-sos-ink",
     "bg-brand", "bg-sos-blush", "bg-sos-pink",
-    "bg-sos-lilac", "bg-brand-sky", "bg-brand-orange",
+    "bg-sos-lilac", "bg-brand-sky", "bg-brand",
   ];
   return (
     <div className="relative mx-auto w-[190px] rotate-3 rounded-[28px] border-[3px] border-sos-ink bg-card p-2.5" style={{ boxShadow: "6px 6px 0 0 var(--color-sos-ink)" }}>
@@ -93,7 +97,7 @@ function PhoneMockup() {
         <span className="flex items-center gap-1 text-[9px] font-bold text-sos-pink"><Heart className="h-3 w-3 fill-sos-pink" /> 2.481</span>
         <span className="text-[9px] text-muted-foreground">+128 pengikut baru</span>
       </div>
-      <span className={`${hand} wed-wiggle absolute -left-10 -top-5 -rotate-12 rounded-full bg-brand-orange px-3 py-1 text-base text-primary-foreground`}>
+      <span className={`${hand} wed-wiggle absolute -left-10 -top-5 -rotate-12 rounded-full bg-sos-pink px-3 py-1 text-base text-primary-foreground`}>
         rame nih!
       </span>
     </div>
@@ -112,7 +116,7 @@ export default function SosmedManagementPage() {
         <section className="relative overflow-hidden bg-sos-ink px-5 pb-20 pt-12 text-primary-foreground">
           <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-sos-pink/40 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-sos-lilac/40 blur-3xl" />
-          <Burst className="wed-float pointer-events-none absolute right-[8%] top-10 h-8 w-8 text-brand-orange/80" />
+          <Burst className="wed-float pointer-events-none absolute right-[8%] top-10 h-8 w-8 text-sos-lilac/70" />
           <Squiggle className="wed-wiggle pointer-events-none absolute left-[6%] bottom-28 h-5 w-14 text-sos-pink/70" />
 
           <div className="relative mx-auto grid max-w-5xl items-center gap-10 sm:grid-cols-[1.2fr_1fr]">
@@ -122,7 +126,7 @@ export default function SosmedManagementPage() {
                 Biar sosmed <span className="text-sos-pink">rame</span>,<br />
                 kami yang <span className="relative inline-block">
                   urus
-                  <Squiggle className="absolute -bottom-3 left-0 h-3 w-full text-brand-orange" />
+                  <Squiggle className="absolute -bottom-3 left-0 h-3 w-full text-sos-pink" />
                 </span>.
               </h1>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-primary-foreground/80">
@@ -189,7 +193,7 @@ export default function SosmedManagementPage() {
                   }`}
                   style={b.popular ? { boxShadow: "6px 6px 0 0 var(--color-sos-pink)" } : undefined}
                 >
-                  <span className="wed-sticker wed-wiggle absolute -right-1 top-5 rotate-3 rounded-full bg-brand-orange px-3.5 py-1.5 text-[10px] font-bold tracking-wide text-primary-foreground">
+                  <span className="wed-sticker wed-wiggle absolute -right-1 top-5 rotate-3 rounded-full bg-sos-pink px-3.5 py-1.5 text-[10px] font-bold tracking-wide text-primary-foreground">
                     HEMAT {rupiah(bundleSaving(b))}
                   </span>
                   <p className={`${hand} text-xl ${b.popular ? "text-sos-pink" : "text-sos-lilac"}`}>{b.popular ? "paling laris" : "paling lengkap"}</p>
