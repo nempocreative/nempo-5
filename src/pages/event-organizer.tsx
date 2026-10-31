@@ -6,7 +6,7 @@ import {
   PartyPopper, Building2, Music, GraduationCap, Trophy,
   MessageCircle, ClipboardList, Palette, Wrench, FileCheck,
   Check, ChevronDown, Award, Users, CalendarCheck, MapPin, ArrowRight,
-  Sparkles, Star, Zap, Confetti,
+  Sparkles, Star, Zap,
 } from "lucide-react";
 
 const hand = "font-[family-name:var(--font-wed-hand)]";
