@@ -148,7 +148,7 @@ export function NempoFactsSection({ factIdx, onFactChange }: NempoFactsSectionPr
           {facts.map((fact, index) => (
             <article key={fact.title} className="fact-card group relative flex min-h-[138px] flex-col overflow-hidden rounded-2xl bg-gray-50 p-4">
               {/* lingkaran dekor sepusat dengan badge nomor */}
-              <span aria-hidden="true" className="pointer-events-none absolute right-[-4px] top-[2px] h-[72px] w-[72px] rounded-full opacity-90 transition-transform duration-500 group-hover:scale-110" style={{ backgroundColor: fact.tint }} />
+              <span aria-hidden="true" className="pointer-events-none absolute right-[4px] top-[10px] h-14 w-14 rounded-full opacity-90 transition-transform duration-500 group-hover:scale-110" style={{ backgroundColor: fact.tint }} />
               <div className="relative z-10 flex items-center justify-between gap-2">
                 <span
                   className="fact-icon-wrap grid h-11 w-11 shrink-0 place-items-center rounded-xl"
