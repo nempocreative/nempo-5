@@ -14,7 +14,7 @@ const services = [
   { icon: MapPin, title: "Outing & Tour", color: "#6366F1", desc: "Perjalanan wisata rombongan, outing kantor, dan tur komunitas dengan transportasi lengkap." },
   { icon: Building2, title: "Corporate Event", color: "#0EA5E9", desc: "Gathering, launching produk, seminar, rapat kerja, dan family day perusahaan." },
   { icon: Music, title: "Konser & Festival", color: "#DB2777", desc: "Produksi panggung, sound, lighting, tiketing digital, dan manajemen talent." },
-  { icon: GraduationCap, title: "Event Sekolah & Kampus", color: "#D97706", desc: "Pensi, wisuda, perpisahan, seminar, dan buku tahunan digital." },
+  { icon: GraduationCap, title: "Event Sekolah & Kampus", color: "#14B8A6", desc: "Pensi, wisuda, perpisahan, seminar, dan buku tahunan digital." },
   { icon: Trophy, title: "Lomba & Turnamen", color: "#0F766E", desc: "Registrasi online, penjurian, bracket, hingga penyerahan hadiah." },
   { icon: PartyPopper, title: "Ulang Tahun & Private Party", color: "#8B5CF6", desc: "Pesta keluarga, sweet seventeen, dan acara komunitas yang berkesan." },
 ];
@@ -23,7 +23,7 @@ const steps = [
   { icon: MessageCircle, title: "Konsultasi Gratis", color: "#6366F1", desc: "Ceritakan kebutuhan, tanggal, jumlah tamu, dan budget kamu." },
   { icon: ClipboardList, title: "Konsep & Penawaran", color: "#0EA5E9", desc: "Kami susun konsep, rundown awal, dan rincian biaya transparan." },
   { icon: Palette, title: "Persiapan & Desain", color: "#DB2777", desc: "Desain visual, vendor, venue, talent, dan technical meeting." },
-  { icon: Wrench, title: "Eksekusi Hari H", color: "#D97706", desc: "Tim lapangan mengatur semua agar acara berjalan sesuai rundown." },
+  { icon: Wrench, title: "Eksekusi Hari H", color: "#14B8A6", desc: "Tim lapangan mengatur semua agar acara berjalan sesuai rundown." },
   { icon: FileCheck, title: "Laporan & Dokumentasi", color: "#0F766E", desc: "Foto, video highlight, dan evaluasi acara diserahkan ke kamu." },
 ];
 
@@ -101,24 +101,24 @@ export default function EventOrganizerPage() {
         {/* Hero */}
         <section className="relative overflow-hidden bg-brand px-5 pb-20 pt-12 text-primary-foreground">
           <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand/40 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-brand-orange/25 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-primary-foreground/25 blur-3xl" />
           {/* floating decor — coretan tangan */}
-          <Burst className="wed-float pointer-events-none absolute right-[12%] top-14 h-9 w-9 text-brand-orange/80" />
+          <Burst className="wed-float pointer-events-none absolute right-[12%] top-14 h-9 w-9 text-primary-foreground/80" />
           <Squiggle className="wed-wiggle pointer-events-none absolute left-[7%] top-24 h-5 w-14 text-primary-foreground/40" />
-          <Ring className="wed-float-slow pointer-events-none absolute right-[24%] bottom-24 h-6 w-6 text-brand-orange/60" />
-          <Squiggle className="wed-float pointer-events-none absolute left-[14%] bottom-32 h-5 w-12 -rotate-12 text-brand-orange/60" />
+          <Ring className="wed-float-slow pointer-events-none absolute right-[24%] bottom-24 h-6 w-6 text-primary-foreground/60" />
+          <Squiggle className="wed-float pointer-events-none absolute left-[14%] bottom-32 h-5 w-12 -rotate-12 text-primary-foreground/60" />
           <Burst className="wed-float-slow pointer-events-none absolute right-[8%] bottom-40 h-6 w-6 text-primary-foreground/30" />
 
-          <p className={`${hand} relative text-2xl text-brand-orange sm:text-3xl`}>punya rencana acara?</p>
+          <p className={`${hand} relative text-2xl text-brand-sky sm:text-3xl`}>punya rencana acara?</p>
           <h1 className="relative mt-3 text-[32px] font-extrabold leading-[1.12] tracking-tight sm:text-5xl">
             Acara impianmu,<br />
-            <span className="text-brand-orange">kami yang urus</span> dari awal sampai akhir.
+            <span className="text-brand-sky">kami yang urus</span> dari awal sampai akhir.
           </h1>
           <p className="relative mt-4 max-w-md text-sm leading-relaxed text-primary-foreground/80">
             Event organizer asal Garut — konsep kreatif, vendor terpercaya, dan tim lapangan berpengalaman di seluruh Jawa Barat.
           </p>
           <div className="relative mt-7 flex flex-wrap gap-3">
-            <a href="#paket" className="wed-sticker flex-1 rounded-full bg-brand-orange px-5 py-3.5 text-center text-sm font-bold text-primary-foreground shadow-lg shadow-brand-orange/30 transition-transform active:scale-[0.98] sm:flex-none sm:px-8">
+            <a href="#paket" className="wed-sticker flex-1 rounded-full bg-card px-5 py-3.5 text-center text-sm font-bold text-brand shadow-lg shadow-brand-navy/20 transition-transform active:scale-[0.98] sm:flex-none sm:px-8">
               Lihat Paket
             </a>
             <Link href="/price-list" className="flex-1 rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-5 py-3.5 text-center text-sm font-bold backdrop-blur transition-transform active:scale-[0.98] sm:flex-none sm:px-8">
@@ -128,20 +128,20 @@ export default function EventOrganizerPage() {
           <div className="relative mt-6 flex flex-wrap gap-2">
             {["150+ event", "50rb+ peserta", "Rating 4.9"].map((chip) => (
               <span key={chip} className="inline-flex items-center gap-1.5 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-3.5 py-1.5 text-[11px] font-semibold backdrop-blur">
-                <Burst className="h-3 w-3 text-brand-orange" />
+                <Burst className="h-3 w-3 text-brand-sky" />
                 {chip}
               </span>
             ))}
           </div>
 
           {/* wavy divider */}
-          <svg className="absolute bottom-0 left-0 w-full text-brand-orange" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden>
+          <svg className="absolute bottom-0 left-0 w-full text-brand-sky" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden>
             <path d="M0,32 C240,60 480,4 720,28 C960,52 1200,8 1440,32 L1440,60 L0,60 Z" fill="currentColor" />
           </svg>
         </section>
 
         {/* Marquee ribbon */}
-        <div className="overflow-hidden bg-brand-orange py-3 text-primary-foreground" aria-hidden>
+        <div className="overflow-hidden bg-brand-sky py-3 text-brand" aria-hidden>
           <div className="wed-marquee flex w-max items-center gap-8">
             {[...marqueeItems, ...marqueeItems].map((item, i) => (
               <span key={i} className="flex items-center gap-8 text-sm font-semibold tracking-wide">
@@ -209,11 +209,11 @@ export default function EventOrganizerPage() {
                 }`}
               >
                 {p.popular && (
-                  <span className="wed-sticker wed-wiggle absolute -right-1 top-5 rotate-3 rounded-full bg-brand-orange px-3.5 py-1.5 text-[10px] font-bold tracking-wide text-primary-foreground">
+                  <span className="wed-sticker wed-wiggle absolute -right-1 top-5 rotate-3 rounded-full bg-card px-3.5 py-1.5 text-[10px] font-bold tracking-wide text-brand">
                     PALING DIMINATI
                   </span>
                 )}
-                <p className={`${hand} text-xl ${p.popular ? "text-brand-orange" : "text-brand"}`}>paket</p>
+                <p className={`${hand} text-xl ${p.popular ? "text-brand-sky" : "text-brand"}`}>paket</p>
                 <h3 className="-mt-1 text-xl font-extrabold">{p.name}</h3>
                 <p className={`text-xs ${p.popular ? "text-primary-foreground/75" : "text-muted-foreground"}`}>{p.note}</p>
                 <p className={`mt-3 text-2xl font-extrabold ${p.popular ? "" : "text-brand"}`}>{p.price}</p>
@@ -221,8 +221,8 @@ export default function EventOrganizerPage() {
                 <ul className="space-y-2">
                   {p.items.map((it) => (
                     <li key={it} className="flex items-start gap-2.5 text-[13px]">
-                      <span className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full ${p.popular ? "bg-brand-orange" : "bg-brand-sky"}`}>
-                        <Check className={`h-2.5 w-2.5 ${p.popular ? "text-primary-foreground" : "text-brand"}`} strokeWidth={3} />
+                      <span className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full ${p.popular ? "bg-card" : "bg-brand-sky"}`}>
+                        <Check className={`h-2.5 w-2.5 ${p.popular ? "text-brand" : "text-brand"}`} strokeWidth={3} />
                       </span>
                       {it}
                     </li>
@@ -247,7 +247,7 @@ export default function EventOrganizerPage() {
           <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none]">
             {testimonials.map((t) => (
               <div key={t.name} className="wed-card-pop flex w-[78%] shrink-0 snap-start flex-col rounded-3xl border-2 border-dashed border-border bg-card p-5 sm:w-[46%]">
-                <p className={`${hand} mb-1 text-3xl leading-none text-brand-orange`} aria-hidden>”</p>
+                <p className={`${hand} mb-1 text-3xl leading-none text-brand`} aria-hidden>”</p>
                 <p className="flex-1 text-[13px] leading-relaxed text-foreground">“{t.text}”</p>
                 <div className="mt-4 flex items-center gap-3 border-t border-dashed border-border pt-4">
                   <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-sky text-sm font-bold text-brand">
@@ -284,14 +284,14 @@ export default function EventOrganizerPage() {
         {/* CTA */}
         <section className="px-4 pt-12">
           <div className="relative overflow-hidden rounded-3xl bg-brand p-7 text-center text-primary-foreground">
-            <div className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-brand-orange/30 blur-2xl" />
-            <Burst className="wed-float pointer-events-none absolute left-[10%] top-8 h-7 w-7 text-brand-orange/60" />
+            <div className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-primary-foreground/30 blur-2xl" />
+            <Burst className="wed-float pointer-events-none absolute left-[10%] top-8 h-7 w-7 text-primary-foreground/60" />
             <Squiggle className="wed-wiggle pointer-events-none absolute right-[12%] bottom-10 h-5 w-12 text-primary-foreground/30" />
-            <Burst className="wed-pulse-heart relative mx-auto h-10 w-10 text-brand-orange" />
-            <p className={`${hand} relative mt-3 text-2xl text-brand-orange`}>jangan cuma jadi wacana</p>
+            <Burst className="wed-pulse-heart relative mx-auto h-10 w-10 text-brand-sky" />
+            <p className={`${hand} relative mt-3 text-2xl text-brand-sky`}>jangan cuma jadi wacana</p>
             <h2 className="relative mt-1 text-2xl font-extrabold leading-snug">Siap bikin acara yang berkesan?</h2>
             <p className="relative mx-auto mt-2 max-w-sm text-sm text-primary-foreground/80">Konsultasi gratis — ceritakan rencana acaramu, kami bantu wujudkan.</p>
-            <Link href="/price-list" className="wed-sticker relative mt-6 inline-flex items-center gap-2 rounded-full bg-brand-orange px-7 py-3.5 text-sm font-bold text-primary-foreground shadow-lg shadow-brand-orange/30">
+            <Link href="/price-list" className="wed-sticker relative mt-6 inline-flex items-center gap-2 rounded-full bg-card px-7 py-3.5 text-sm font-bold text-brand shadow-lg shadow-brand-navy/20">
               Mulai Konsultasi <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -304,7 +304,7 @@ export default function EventOrganizerPage() {
 function SectionHead({ eyebrow, title, sub, note }: { eyebrow: string; title: string; sub?: string; note?: string }) {
   return (
     <div className="mb-6">
-      <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-brand-orange">{eyebrow}</p>
+      <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-brand">{eyebrow}</p>
       <h2 className="mt-1 text-[22px] font-extrabold leading-tight text-brand-navy">{title}</h2>
       {note && <p className={`${hand} mt-0.5 text-xl text-brand`}>{note}</p>}
       {sub && <p className="mt-1 text-sm text-muted-foreground">{sub}</p>}
