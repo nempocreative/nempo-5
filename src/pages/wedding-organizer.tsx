@@ -109,7 +109,7 @@ export default function WeddingOrganizerPage() {
 
           <article className="wed-card-pop relative mt-6 rounded-3xl border-2 border-dashed border-wed-gold/50 bg-card p-6 sm:p-8" aria-label={`Paket ${selected.name}`}>
             {pkg === 1 && (
-              <span className="wed-sticker wed-wiggle absolute -top-4 right-6 inline-flex items-center gap-1.5 rounded-full bg-wed-gold px-4 py-1.5 text-xs font-bold text-wed-ink">
+              <span className="wed-sticker wed-wiggle absolute -top-4 right-6 inline-flex items-center gap-1.5 rounded-full bg-wed-dust px-4 py-1.5 text-xs font-bold text-primary-foreground">
                 <PartyPopper className="h-3.5 w-3.5" /> Paling Laris
               </span>
             )}
