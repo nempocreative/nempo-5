@@ -200,7 +200,7 @@ export const api = {
       const url = URL.createObjectURL(blob);
       const anchor = document.createElement("a");
       anchor.href = url;
-      anchor.download = `nempo-garut-backup-${new Date().toISOString().slice(0, 10)}.json`;
+      anchor.download = `nempo-organizer-backup-${new Date().toISOString().slice(0, 10)}.json`;
       document.body.appendChild(anchor);
       anchor.click();
       anchor.remove();
