@@ -146,9 +146,10 @@ export function NempoFactsSection({ factIdx, onFactChange }: NempoFactsSectionPr
 
         <div className="grid flex-1 grid-cols-2 content-center gap-3">
           {facts.map((fact, index) => (
-            <article key={fact.title} className="fact-card group relative flex min-h-[138px] flex-col rounded-2xl bg-gray-50 p-4">
-              <span aria-hidden="true" className="pointer-events-none absolute -right-5 -top-6 h-20 w-20 rounded-full opacity-70 transition-transform duration-500 group-hover:scale-125" style={{ backgroundColor: fact.tint }} />
-              <div className="relative z-10 flex items-start justify-between gap-2">
+            <article key={fact.title} className="fact-card group relative flex min-h-[138px] flex-col overflow-hidden rounded-2xl bg-gray-50 p-4">
+              {/* lingkaran dekor sepusat dengan badge nomor */}
+              <span aria-hidden="true" className="pointer-events-none absolute right-[4px] top-[10px] h-14 w-14 rounded-full opacity-90 transition-transform duration-500 group-hover:scale-110" style={{ backgroundColor: fact.tint }} />
+              <div className="relative z-10 flex items-center justify-between gap-2">
                 <span
                   className="fact-icon-wrap grid h-11 w-11 shrink-0 place-items-center rounded-xl"
                   style={{ background: fact.gradient, color: fact.accent, "--glow": fact.glow, animationDelay: `${index * 0.75}s` } as CSSProperties}
@@ -159,8 +160,11 @@ export function NempoFactsSection({ factIdx, onFactChange }: NempoFactsSectionPr
                     strokeWidth={2.1}
                   />
                 </span>
-                <span className="pt-1 text-[9px] font-bold tracking-widest text-gray-300">
-                  0{index + 1}
+                <span
+                  className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white text-[11px] font-extrabold leading-none tabular-nums shadow-sm ring-1 ring-black/5"
+                  style={{ color: fact.accent }}
+                >
+                  {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
               <div className="relative z-10 mt-3">
