@@ -222,7 +222,7 @@ export default function EventOrganizerPage() {
                   {p.items.map((it) => (
                     <li key={it} className="flex items-start gap-2.5 text-[13px]">
                       <span className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full ${p.popular ? "bg-card" : "bg-brand-sky"}`}>
-                        <Check className={`h-2.5 w-2.5 ${p.popular ? "text-primary-foreground" : "text-brand"}`} strokeWidth={3} />
+                        <Check className={`h-2.5 w-2.5 ${p.popular ? "text-brand" : "text-brand"}`} strokeWidth={3} />
                       </span>
                       {it}
                     </li>
