@@ -95,7 +95,7 @@ function BackupPage() {
           </p>
 
           <div className="mt-5 flex flex-wrap gap-3">
-            <Button onClick={prepare} disabled={loading} variant={backup ? "outline" : "default"}>
+            <Button onClick={prepare} disabled={loading}>
               {loading ? <RefreshCw className="h-4 w-4 animate-spin" /> : <RefreshCw className="h-4 w-4" />}
               {loading ? "Menyiapkan..." : backup ? "Siapkan Ulang" : "Siapkan Backup"}
             </Button>
