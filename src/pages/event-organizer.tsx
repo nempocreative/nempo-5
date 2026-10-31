@@ -99,7 +99,7 @@ export default function EventOrganizerPage() {
     <Layout>
       <div className="bg-background pb-12">
         {/* Hero */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-brand via-brand to-brand-orange/70 px-5 pb-20 pt-12 text-primary-foreground">
+        <section className="relative overflow-hidden bg-brand px-5 pb-20 pt-12 text-primary-foreground">
           <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand/40 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-brand-orange/25 blur-3xl" />
           {/* floating decor — coretan tangan */}
@@ -168,9 +168,9 @@ export default function EventOrganizerPage() {
         <section className="px-4 pt-12">
           <SectionHead eyebrow="Layanan" title="Satu tim untuk semua jenis acara" note="apapun acaranya, gas!" />
           <div className="grid grid-cols-2 gap-3">
-            {services.map((s) => (
+            {services.map((s, i) => (
               <div key={s.title} className="wed-card-pop rounded-3xl border-2 border-dashed border-border bg-card p-4 hover:border-brand/40">
-                <StickerIcon icon={s.icon} color={s.color} className="mb-3.5" />
+                <span className="mb-3 block h-1.5 w-8 rounded-full" style={{ background: s.color }} />
                 <h3 className="text-[13px] font-bold leading-snug text-foreground">{s.title}</h3>
                 <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground">{s.desc}</p>
               </div>
@@ -184,7 +184,6 @@ export default function EventOrganizerPage() {
           <ol className="space-y-3">
             {steps.map((s, i) => (
               <li key={s.title} className="wed-card-pop flex gap-4 rounded-3xl border-2 border-transparent bg-card p-4 shadow-sm hover:border-brand/30">
-                <StickerIcon icon={s.icon} color={s.color} size="sm" />
                 <div>
                   <h3 className="flex items-center gap-1.5 text-sm font-bold text-brand-navy">
                     <span className="rounded-full bg-brand-sky px-2 py-0.5 text-[11px] font-extrabold text-brand">{String(i + 1).padStart(2, "0")}</span> {s.title}
@@ -205,7 +204,7 @@ export default function EventOrganizerPage() {
                 key={p.name}
                 className={`wed-card-pop relative overflow-hidden rounded-3xl p-6 ${
                   p.popular
-                    ? "bg-gradient-to-br from-brand to-brand/75 text-primary-foreground shadow-xl shadow-brand/25"
+                    ? "bg-brand text-primary-foreground shadow-xl shadow-brand/25"
                     : "border-2 border-dashed border-border bg-card text-foreground"
                 }`}
               >
@@ -284,7 +283,7 @@ export default function EventOrganizerPage() {
 
         {/* CTA */}
         <section className="px-4 pt-12">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand via-brand to-brand-orange/70 p-7 text-center text-primary-foreground">
+          <div className="relative overflow-hidden rounded-3xl bg-brand p-7 text-center text-primary-foreground">
             <div className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-brand-orange/30 blur-2xl" />
             <Burst className="wed-float pointer-events-none absolute left-[10%] top-8 h-7 w-7 text-brand-orange/60" />
             <Squiggle className="wed-wiggle pointer-events-none absolute right-[12%] bottom-10 h-5 w-12 text-primary-foreground/30" />
