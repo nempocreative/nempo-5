@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as BackupRouteImport } from './routes/backup'
 import { Route as SosmedManagementRouteImport } from './routes/sosmed-management'
+import { Route as WebDevelopmentRouteImport } from './routes/web-development'
 import { Route as WeddingInvitationRouteImport } from './routes/wedding-invitation'
 import { Route as WeddingOrganizerRouteImport } from './routes/wedding-organizer'
 import { Route as AdminPanelIndexRouteImport } from './routes/admin-panel.index'
@@ -46,6 +47,11 @@ const BackupRoute = BackupRouteImport.update({
 const SosmedManagementRoute = SosmedManagementRouteImport.update({
   id: '/sosmed-management',
   path: '/sosmed-management',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WebDevelopmentRoute = WebDevelopmentRouteImport.update({
+  id: '/web-development',
+  path: '/web-development',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WeddingInvitationRoute = WeddingInvitationRouteImport.update({
@@ -124,6 +130,7 @@ export interface FileRoutesByFullPath {
   '/$': typeof SplatRoute
   '/backup': typeof BackupRoute
   '/sosmed-management': typeof SosmedManagementRoute
+  '/web-development': typeof WebDevelopmentRoute
   '/wedding-invitation': typeof WeddingInvitationRoute
   '/wedding-organizer': typeof WeddingOrganizerRoute
   '/admin-panel/$': typeof AdminPanelSplatRoute
@@ -144,6 +151,7 @@ export interface FileRoutesByTo {
   '/$': typeof SplatRoute
   '/backup': typeof BackupRoute
   '/sosmed-management': typeof SosmedManagementRoute
+  '/web-development': typeof WebDevelopmentRoute
   '/wedding-invitation': typeof WeddingInvitationRoute
   '/wedding-organizer': typeof WeddingOrganizerRoute
   '/admin-panel/$': typeof AdminPanelSplatRoute
@@ -165,6 +173,7 @@ export interface FileRoutesById {
   '/$': typeof SplatRoute
   '/backup': typeof BackupRoute
   '/sosmed-management': typeof SosmedManagementRoute
+  '/web-development': typeof WebDevelopmentRoute
   '/wedding-invitation': typeof WeddingInvitationRoute
   '/wedding-organizer': typeof WeddingOrganizerRoute
   '/admin-panel/$': typeof AdminPanelSplatRoute
@@ -187,6 +196,7 @@ export interface FileRouteTypes {
     | '/$'
     | '/backup'
     | '/sosmed-management'
+    | '/web-development'
     | '/wedding-invitation'
     | '/wedding-organizer'
     | '/admin-panel/$'
@@ -207,6 +217,7 @@ export interface FileRouteTypes {
     | '/$'
     | '/backup'
     | '/sosmed-management'
+    | '/web-development'
     | '/wedding-invitation'
     | '/wedding-organizer'
     | '/admin-panel/$'
@@ -227,6 +238,7 @@ export interface FileRouteTypes {
     | '/$'
     | '/backup'
     | '/sosmed-management'
+    | '/web-development'
     | '/wedding-invitation'
     | '/wedding-organizer'
     | '/admin-panel/$'
@@ -248,6 +260,7 @@ export interface RootRouteChildren {
   SplatRoute: typeof SplatRoute
   BackupRoute: typeof BackupRoute
   SosmedManagementRoute: typeof SosmedManagementRoute
+  WebDevelopmentRoute: typeof WebDevelopmentRoute
   WeddingInvitationRoute: typeof WeddingInvitationRoute
   WeddingOrganizerRoute: typeof WeddingOrganizerRoute
   AdminPanelSplatRoute: typeof AdminPanelSplatRoute
@@ -292,6 +305,13 @@ declare module '@tanstack/react-router' {
       path: '/sosmed-management'
       fullPath: '/sosmed-management'
       preLoaderRoute: typeof SosmedManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/web-development': {
+      id: '/web-development'
+      path: '/web-development'
+      fullPath: '/web-development'
+      preLoaderRoute: typeof WebDevelopmentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/wedding-invitation': {
@@ -400,6 +420,7 @@ const rootRouteChildren: RootRouteChildren = {
   SplatRoute: SplatRoute,
   BackupRoute: BackupRoute,
   SosmedManagementRoute: SosmedManagementRoute,
+  WebDevelopmentRoute: WebDevelopmentRoute,
   WeddingInvitationRoute: WeddingInvitationRoute,
   WeddingOrganizerRoute: WeddingOrganizerRoute,
   AdminPanelSplatRoute: AdminPanelSplatRoute,

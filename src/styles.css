@@ -46,6 +46,12 @@
     radial-gradient(30rem 22rem at 50% 100%, rgba(180, 70, 106, 0.14), transparent 65%),
     #fbeef1;
 }
+.dev-grid-bg {
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--color-dev-sky) 14%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--color-dev-sky) 14%, transparent) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
 .wed-sticker {
   box-shadow: 0 3px 0 rgba(58, 31, 43, 0.18);
 }
@@ -79,6 +85,10 @@ body,
   --color-sos-blush: #ffe4e6;
   --color-sos-lilac: #7c3aed;
   --color-sos-ink: #2a1033;
+  --color-dev-ink: #0b2138;
+  --color-dev-sky: #0ea5e9;
+  --color-dev-lime: #c6f432;
+  --color-dev-paper: #f3f8fc;
   --font-wed-serif: "Playfair Display", Georgia, serif;
   --font-wed-hand: "Caveat", "Segoe Script", cursive;
   --color-blue-50:  hsl(39 45% 96%);
